@@ -1,0 +1,111 @@
+/**
+ * @author nuer
+ * @time 20151231
+ */
+
+@mixin base-icon{
+	display: -moz-inline-box;
+	-moz-box-orient: vertical;
+	display: inline-block;
+	vertical-align: middle;
+	background-repeat: no-repeat;
+}
+
+.ico-help-16{
+	@include fis-icon(16px);
+	background-image:url(./img/help-16.png?__sprite);
+}
+
+.ico-edit-36{
+	@include fis-icon(36px);
+	background-image:url(./img/pen-36.png?__sprite);
+}
+
+.ico-shrink-up{
+  	@include fis-icon-rect(8px, 5px);
+	background-image: url(./img/i-shrink-up.png?__sprite);
+}
+
+
+.ico-shrink-down{
+  	@include fis-icon-rect(8px, 5px);
+	background-image: url(./img/i-shrink-down.png?__sprite);
+}
+
+
+/*搜索icon */
+.ico-search{
+  @include fis-icon(18px);
+  background-image: url(img/ico-search.png?__sprite);
+}
+
+/* 对勾icon */
+.ico-checked{
+	@include fis-icon-rect(19px, 15px);
+	background-image: url(./img/checked_img.png?__sprite);
+}
+/*右边蓝色箭头*/
+.ico-right-blue{
+	color: #0096e1;
+	font-weight:700;
+	font-style: normal;
+	font-family: simsun;
+}
+/*右边灰色箭头*/
+.ico-right-gray{
+	color: gray;
+	font-weight:700;
+	font-style: normal;
+	font-family: simsun;
+}
+
+/*下边蓝色箭头*/
+.ico-down-blue, .peg-down{
+	@include fis-icon-rect(10px, 6px);
+	background-image: url(./img/down_blue_10x6.png?__sprite);
+}
+
+/*上边蓝色箭头*/
+.ico-up-blue, .peg-up{
+	@include fis-icon-rect(10px, 6px);
+	background-image: url(./img/up_blue_10x6.png?__sprite);
+}
+
+/* 1正确 2错误 5半对半错 6未批改 7未提交 */
+/* 正确 */
+.ico-right,.ico-status-1{
+	@include fis-icon-rect(17px, 13px);
+	background-image:url(./img/right_17x13.png?__sprite);
+}
+/* 错误 未提交 */
+.ico-wrong,.ico-status-2,.ico-status-7{
+	@include fis-icon-rect(13px, 13px);
+	background-image:url(./img/wrong_13x13.png?__sprite);
+}
+/* 半对 */
+.ico-half,.ico-status-5{
+	@include fis-icon-rect(17px, 13px);
+	background-image:url(./img/half_17x13.png?__sprite);
+}
+/* 未批改 */
+.ico-none,.ico-status-6{
+	@include fis-icon-rect(11px, 14px);
+	background-image:url(./img/none_11x14.png?__sprite);
+}
+
+/* 白色向上箭头 10x6 */
+.ico-white-up-10-6{
+  	@include fis-icon-rect(10px, 6px);
+  	background-image: url(./img/ico-white-up-10-6.png?__sprite);
+}
+/* 深灰向下箭头 10x6 */
+.ico-black-down-10-6{
+  @include fis-icon-rect(10px, 6px);
+  background-image: url(./img/ico-black-down-10-6.png?__sprite);
+}
+
+/* 灰色向上箭头 10x6 */
+.ico-gray-up-10-6{
+  @include fis-icon-rect(10px, 6px);
+  background-image: url(./img/ico-gray-up-10-6.png?__sprite);
+}

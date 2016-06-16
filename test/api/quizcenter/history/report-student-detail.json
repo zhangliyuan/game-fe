@@ -1,0 +1,88 @@
+{
+    "code": 0,
+    "msg": "",
+    "data": {
+        "collection_info": {
+            "id": "1",
+            "name": "学习向量",
+            "type": "1",
+            "question_count": "20",
+            "total_question_count": "25"
+        },
+        "student_info": {
+            "id": "1",
+            "name": "Marry",
+            "answer_count": "8",
+            "totalanswer_count": "10",
+            "start_time": "1449716425",
+            "last_time": "1449716425",
+            "end_time": "1449716425",
+            "question_list": [
+                {
+                    "id": "1",
+                    "type": "1",
+                    "answer_id": "100",
+                    "status": "1",
+                    "children": [
+                        {
+                            "id": "2",
+                            "type": "2",
+                            "status": "1"
+                        }
+                    ]
+                },
+                {
+                    "id": "2",
+                    "type": "1",
+                    "answer_id": "101",
+                    "status": "1",
+                    "children": [
+                        {
+                            "id": "3",
+                            "type": "1",
+                            "status": "0"
+                        }
+                    ]
+                }
+            ],
+            "knowledgeList": [
+                {
+                    "id": "1",
+                    "name": "向是量",
+                    "question_count": "20",
+                    "question_report_rouds": [
+                        {
+                            "type": "6",
+                            "type_count": "8"
+                        }
+                    ],
+                    "total_question_count": "20",
+                    "total_question_report_rouds": [
+                        {
+                            "type": "6",
+                            "type_count": "8"
+                        }
+                    ]
+                },
+                {
+                    "id": "2",
+                    "name": "圣诞节是第三",
+                    "question_count": "30",
+                    "question_report_rouds": [
+                        {
+                            "type": "5",
+                            "type_count": "15"
+                        }
+                    ],
+                    "total_question_count": "35",
+                    "total_question_report_rouds": [
+                        {
+                            "type": "6",
+                            "type_count": "10"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

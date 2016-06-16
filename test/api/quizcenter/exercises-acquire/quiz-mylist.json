@@ -1,0 +1,106 @@
+{
+    "code": 0,
+    "msg": "",
+    "data": {
+        "total_count": "10",
+        "page_size": "10",
+        "total_page": "5",
+        "list": [
+            {
+                "id": "10054",
+                "difficulty": "3",
+                "type_id": "49",
+                "type_name": "听力题",
+                "translation":"理解文中重要词语概念的含义 ",
+                "audio_json":{
+                    "url":"http://ra.okjiaoyu.cn/ra_DlS3NJetTW.mp3",
+                    "name":"aaa",
+                    "size": "3.4M"
+                },
+                "type_alias": "",
+                "children":[],
+                "question_body": "<p>组题中心有哪些题型</p>",
+                "option_list": "[]",
+                "question_answer_list": ["<p>各题型</p>"],
+                "analysis": "理解文中重要词语/概念的含义 ",
+                "audio": "",
+                "video": "",
+                "is_favorite": "1",
+                "is_wrong": "0"
+            },
+            {
+                "id": "10055",
+                "difficulty": "3",
+                "type_id": "49",
+                "translation":"tingli题译文",
+                "type_name": "简答题",
+                "audio_json":{
+                    "url":"http://ra.okjiaoyu.cn/ra_DeSZXlwIFO.mp3",
+                    "name":"aaa",
+                    "size": "3.4M"
+                },
+                "type_alias": "",
+                "children":[],
+                "question_body": "<p>组题中心有哪些题型</p>",
+                "option_list": "[]",
+                "question_answer_list": ["<p>各题型</p>"],
+                "analysis": "理解文中重要词语/概念的含义 ",
+                "audio": "",
+                "video": "",
+                "is_favorite": "1",
+                "is_wrong": "0"
+            },
+            {
+                "id": "10056",
+                "difficulty": "3",
+                "type_id": "49",
+                "type_name": "简答题",
+                "audio_json":{
+                    "url":"http://ra.okjiaoyu.cn/ra_DeSZXlwIFO.mp3",
+                    "name":"aaa",
+                    "size": "3.4M"
+                },
+                "type_alias": "",
+                "children":[],
+                "question_body": "<p>组题中心有哪些题型</p>",
+                "option_list": "[]",
+                "question_answer_list": ["<p>各题型</p>"],
+                "analysis": "理解文中重要词语/概念的含义 ",
+                "audio": "",
+                "video": "",
+                "is_favorite": "1",
+                "is_wrong": "0"
+            },
+            {
+                "id": "10053",
+                "difficulty": "3",
+                "type_id": "3",
+                "type_name": "填空题",
+                "type_alias": "填空题",
+                "question_body": "<p>此不为远者小而近者大乎？&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p>为：<input type='text' readonly=\"true\" class='questions-blank' value=\"1\" contenteditable=\"true\"/>&nbsp;</p>",
+                "option_list": "[]",
+                "question_answer_list": ["<p>是</p>"],
+                "analysis": "",
+                "audio": "",
+                "video": "",
+                "is_favorite": "1",
+                "is_wrong": "0"
+            },
+            {
+                "id": "10052",
+                "difficulty": "3",
+                "type_id": "2",
+                "type_name": "判断题",
+                "type_alias": "判断题",
+                "question_body": "下列使用相同修辞手法的两个句子正确的是（）",
+                "option_list": "[]",
+                "question_answer_list": ["正确"],
+                "analysis": "修辞手法",
+                "audio": "",
+                "video": "",
+                "is_favorite": "1",
+                "is_wrong": "0"
+            }
+        ]
+    }
+}

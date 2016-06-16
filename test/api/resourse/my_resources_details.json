@@ -1,0 +1,66 @@
+{
+    "code": 0,
+    "msg": "",
+    "data": {
+        "list": [
+            {
+                "id": "81212",
+                "type_res":"VIDEO",
+                "type_res_file":"1",
+                "type": "1",
+                "publish_time": "1446307200000",
+                "name":"细胞的生活环境，12345678",
+                "grade_name": "必修2",
+                "chaper_info": "第2章 动物和人体... > 第2节 通过激素的调节",
+                "cover": "",
+                "version_name":"北大版",
+                "download_count": "201",
+                "quote_count": "199",
+                "fav_count": "102",
+                "is_my": "1"
+            },
+            {
+                "id": "81212",
+                "type_res":"VIDEO",
+                "publish_time": "1446307200000",
+                "name":"细胞的生活环境，12345678",
+                "grade_name": "必修2",
+                "chaper_info": "第2章 动物和人体... > 第2节 通过激素的调节",
+                "cover": "http://rw.okjiaoyu.cn/rw_D9CsTcTW3S.pptx_1.png?imageView2/2/w/70",
+                "download_count": "201",
+                "quote_count": "199",
+                "fav_count": "102",
+                "is_my": "1"
+            },{
+                "id": "81212",
+                "type_res":"PDF",
+                "publish_time": "1446307200000",
+                "name":"细胞的生活环境，12345678",
+                "grade_name": "必修2",
+                "chaper_info": "第2章 动物和人体... > 第2节 通过激素的调节",
+                "cover": "http://rw.okjiaoyu.cn/rw_D9CsTcTW3S.pptx_1.png?imageView2/2/w/70",
+                "download_count": "201",
+                "quote_count": "199",
+                "fav_count": "102",
+                "is_my": "1"
+            },{
+                "id": "81212",
+                "type_res":"PDF",
+                "publish_time": "1446307200000",
+                "name":"细胞的生活环境，12345678",
+                "grade_name": "必修2",
+                "chaper_info": "第2章 动物和人体... > 第2节 通过激素的调节",
+                "cover": "http://rw.okjiaoyu.cn/rw_D9CsTcTW3S.pptx_1.png?imageView2/2/w/70",
+                "download_count": "201",
+                "quote_count": "199",
+                "fav_count": "102",
+                "is_my": "1"
+            }
+
+        ],
+        "current_page": "2",
+        "total_count": "6",
+        "total_page": "2",
+        "page_size":"2"
+    }
+}

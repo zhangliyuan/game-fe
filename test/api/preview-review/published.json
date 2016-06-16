@@ -1,0 +1,60 @@
+{
+    "code": 0,
+    "msg": "",
+    "data": {
+        "list": [
+            {
+                "id": "1001",
+                "name": "三角函数的练习",
+                "status": "1",
+                "start_time": "1446307200000",
+                "end_time": "1446307200000",
+                "stage_name": "高一",
+                "class_id": "1",
+                "class_name": "实验1",
+                "type": "1",
+                "student_count": "100",
+                "submit_count": "80",
+                 "target_info": "Marry  Cencent Rhino",
+                "version_name": "人教版",
+                "chaper_info": "第2章 动物和人体... > 第2节 通过激素的调节"
+            },
+            {
+                "id": "10012",
+                "name": "人教版 第二章 陆地和海... 第二节 海陆的变迁",
+                "status": "0",
+                "start_time": "1546307200000",
+                "end_time": "1556307200000",
+                "stage_name": "高一",
+                "class_id": "1",
+                "class_name": "实验2",
+                "type": "2",
+                "student_count": "80",
+                "submit_count": "50",
+                "target_info": "Marry  Cencent Rhino",
+                "version_name": "人教版",
+                "chaper_info": "七年级上·第二章 陆地和海洋·第二节 海陆的变迁"
+            },
+            {
+                "id": "10014",
+                "name": "地球的运动》教学设计(第2课时",
+                "status": "",
+                "start_time": "1566307200000",
+                "end_time": "1566307200001",
+                "stage_name": "高二",
+                "class_id": "2",
+                "class_name": "实验1",
+                "type": "2",
+                "student_count": "90",
+                "submit_count": "80",
+                 "target_info": "Marry  Cencent Rhino",
+                "version_name": "人教版",
+                "chaper_info": "第2章 动物和人体... > 第2节 通过激素的调节"
+            },
+
+        ],
+        "current_page": "1",
+        "total_count": "1",
+        "total_page": "1"
+    }
+}

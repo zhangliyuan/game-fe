@@ -1,0 +1,166 @@
+/*
+ * let ie support html5 tags
+ */
+body,html{height: 100%;width: 100%;}
+section, header, nav, footer, article {
+    display: block;
+}
+.line, .clearfix {
+	@include fis-clearfix;
+}
+.fl{
+	@include fis-float-left;
+}
+.fr {
+	@include fis-float-right;
+}
+/* 
+	$description: space 0px 5px 10px 15px 20px 
+	$className: mt-0, mt-5, mt-10, mt-15, mt-20
+				mb-0, mb-5, mb-10, mb-15, mb-20
+				ml-0, ml-5, ml-10, ml-15, ml-20
+				mr-0, mr-5, mr-10, mr-15, mr-20 
+				pt-0, pt-5, pt-10, pt-15, pt-20
+				pb-0, pb-5, pb-10, pb-15, pb-20
+				pl-0, pl-5, pl-10, pl-15, pl-20
+				pr-0, pr-5, pr-10, pr-15, pr-20 
+*/
+@for $i from 0 through 4{
+	.mt-#{5*$i}{
+		margin-top:5*$i +px;
+	}
+	.mb-#{5*$i}{
+		margin-bottom:5*$i +px;
+	}
+	.ml-#{5*$i}{
+		margin-left:5*$i +px;
+	}
+	.mr-#{5*$i}{
+		margin-right:5*$i +px;
+	}
+	.pt-#{5*$i}{
+		padding-top:5*$i +px;
+	}
+	.pb-#{5*$i}{
+		padding-bottom:5*$i +px;
+	}
+	.pl-#{5*$i}{
+		padding-left:5*$i +px;
+	}
+	.pr-#{5*$i}{
+		padding-right:5*$i +px;
+	}
+}
+
+/* 
+	$description: 垂直对齐 
+	$className: v-middle, v-baseline, v-top, v-text-top, v-text-bottom
+*/
+@each $pos in middle, baseline, top, text-top, text-bottom {
+	.v-#{$pos}{
+		vertical-align:#{$pos};
+	}
+}
+/* 
+	$description: 水平对齐 
+	$className: h-center, h-left, h-right
+*/
+@each $pos in center, left, right {
+	.h-#{$pos}{
+		text-align:#{$pos};
+	}
+}
+/* 
+	$description: display 
+	$className: inline-block, inline, block, none
+*/
+@each $dis in inline-block, inline, block, none {
+	.#{$dis}{
+		@if $dis == inline-block {
+			@include fis-inline-block;
+		} @else {
+			display: #{$dis};
+		}
+	}
+}
+.visible {
+    visibility: hidden;
+}
+/* 
+	$description: position 
+	$className: pos-relative, pos-absolute, pos-fixed, pos-static
+*/
+@each $pos in relative, absolute, fixed, static {
+	.pos-#{$pos}{
+		position:#{$pos};
+	}
+}
+/* 鼠标手势 */
+.cur-default{
+	cursor: default!important;
+}
+
+.cur-pointer{
+    cursor: pointer;
+}
+
+
+/*!
+ * Loading状态
+ */
+.page-mask{
+	position: fixed;
+	right: 0;
+	top:0;
+	left: 0;
+	bottom: 0;
+	z-index: 200;
+	background: #FFF;
+	background:  rgba(255,255,255,0.3);
+	.loading{
+		width:250px;
+		height: 250px;
+		background: url(./img/loading_global.gif) no-repeat center center #FFF;
+		position: absolute;
+		left: 50%;
+		top:50%;
+		margin-top: -125px;
+		margin-left: -125px;
+		&:before {
+			content: '';
+			position: absolute;
+			background: rgba(255,255,255,0.3);
+			@include fis-border-radius;
+			padding: 10px;
+			left: -10px;
+			top:-10px;
+			height: 100%;
+			width: 100%;
+		}
+	}
+}
+.wgt-loading{
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-image: url(./img/loading.gif);
+}
+
+@each $type in disc, upper-alpha, lower-alpha, decimal, circle, square {
+  .list-style-#{$type},
+  .list-style-#{$type} li{
+	list-style-type:#{$type};
+  }
+}
+
+.text-search-box{
+  padding: 0 30px 0 10px;
+  outline:none;
+  border: 1px solid #d9d9d9;
+  border-radius: 17px;
+  height: 34px;
+  width:360px;
+}

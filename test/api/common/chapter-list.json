@@ -1,0 +1,240 @@
+{
+    "requestid": "1959063701",
+    "code": 0,
+    "msg": "",
+    "data": {
+        "list": [
+            {
+                "id": "11083",
+                "level": "1",
+                "prefix_name": "第1章",
+                "name": "人体的内环境与稳态",
+                "children": [
+                    {
+                        "id": "11084",
+                        "level": "2",
+                        "prefix_name": "第1节",
+                        "name": "细胞生活的环境",
+                        "children": [],
+                        "question_count": "1331"
+                    },
+                    {
+                        "id": "11085",
+                        "level": "2",
+                        "prefix_name": "第2节",
+                        "name": "内环境稳态的重要性",
+                        "children": [],
+                        "question_count": "751"
+                    }
+                ],
+                "question_count": "1968"
+            },
+            {
+                "id": "11086",
+                "level": "1",
+                "prefix_name": "第2章",
+                "name": "动物和人体生命活动的调节",
+                "children": [
+                    {
+                        "id": "11087",
+                        "level": "2",
+                        "prefix_name": "第1节",
+                        "name": "通过神经系统的调节",
+                        "children": [],
+                        "question_count": "1876"
+                    },
+                    {
+                        "id": "11088",
+                        "level": "2",
+                        "prefix_name": "第2节",
+                        "name": "通过激素的调节",
+                        "children": [],
+                        "question_count": "800"
+                    },
+                    {
+                        "id": "11089",
+                        "level": "2",
+                        "prefix_name": "第3节",
+                        "name": "神经调节与体液调节的关系",
+                        "children": [],
+                        "question_count": "180"
+                    },
+                    {
+                        "id": "11090",
+                        "level": "2",
+                        "prefix_name": "第4节",
+                        "name": "免疫调节",
+                        "children": [],
+                        "question_count": "1480"
+                    }
+                ],
+                "question_count": "4134"
+            },
+            {
+                "id": "11091",
+                "level": "1",
+                "prefix_name": "第3章",
+                "name": "植物的激素调节",
+                "children": [
+                    {
+                        "id": "11092",
+                        "level": "2",
+                        "prefix_name": "第1节",
+                        "name": "植物生长素的发现",
+                        "children": [],
+                        "question_count": "1268"
+                    },
+                    {
+                        "id": "11093",
+                        "level": "2",
+                        "prefix_name": "第2节",
+                        "name": "生长素的生理作用",
+                        "children": [],
+                        "question_count": "193"
+                    },
+                    {
+                        "id": "11094",
+                        "level": "2",
+                        "prefix_name": "第3节",
+                        "name": "其他植物激素",
+                        "children": [],
+                        "question_count": "259"
+                    }
+                ],
+                "question_count": "1672"
+            },
+            {
+                "id": "11095",
+                "level": "1",
+                "prefix_name": "第4章",
+                "name": "种群和群落",
+                "children": [
+                    {
+                        "id": "11096",
+                        "level": "2",
+                        "prefix_name": "第1节",
+                        "name": "种群的特征",
+                        "children": [],
+                        "question_count": "517"
+                    },
+                    {
+                        "id": "11097",
+                        "level": "2",
+                        "prefix_name": "第2节",
+                        "name": "种群数量的变化",
+                        "children": [],
+                        "question_count": "747"
+                    },
+                    {
+                        "id": "11098",
+                        "level": "2",
+                        "prefix_name": "第3节",
+                        "name": "群落的结构",
+                        "children": [],
+                        "question_count": "708"
+                    },
+                    {
+                        "id": "11099",
+                        "level": "2",
+                        "prefix_name": "第4节",
+                        "name": "群落的演替",
+                        "children": [],
+                        "question_count": "458"
+                    }
+                ],
+                "question_count": "1825"
+            },
+            {
+                "id": "11100",
+                "level": "1",
+                "prefix_name": "第5章",
+                "name": "生态系统及其稳定性",
+                "children": [
+                    {
+                        "id": "11101",
+                        "level": "2",
+                        "prefix_name": "第1节",
+                        "name": "生态系统的结构",
+                        "children": [],
+                        "question_count": "443"
+                    },
+                    {
+                        "id": "11102",
+                        "level": "2",
+                        "prefix_name": "第2节",
+                        "name": "生态系统的能量流动",
+                        "children": [],
+                        "question_count": "463"
+                    },
+                    {
+                        "id": "11103",
+                        "level": "2",
+                        "prefix_name": "第3节",
+                        "name": "生态系统的物质循环",
+                        "children": [],
+                        "question_count": "232"
+                    },
+                    {
+                        "id": "11104",
+                        "level": "2",
+                        "prefix_name": "第4节",
+                        "name": "生态系统的信息传递",
+                        "children": [],
+                        "question_count": "192"
+                    },
+                    {
+                        "id": "11105",
+                        "level": "2",
+                        "prefix_name": "第5节",
+                        "name": "生态系统的稳定性",
+                        "children": [],
+                        "question_count": "265"
+                    }
+                ],
+                "question_count": "1384"
+            },
+            {
+                "id": "11106",
+                "level": "1",
+                "prefix_name": "第6章",
+                "name": "生态环境的保护",
+                "children": [
+                    {
+                        "id": "11107",
+                        "level": "2",
+                        "prefix_name": "第1节",
+                        "name": "人口增长对生态环境的影响",
+                        "children": [],
+                        "question_count": "0"
+                    },
+                    {
+                        "id": "11108",
+                        "level": "2",
+                        "prefix_name": "第2节",
+                        "name": "保护我们共同的家园",
+                        "children": [],
+                        "question_count": "0"
+                    }
+                ],
+                "question_count": "0"
+            },
+            {
+                "id": "25928",
+                "level": "1",
+                "prefix_name": "",
+                "name": "总复习",
+                "children": [
+                    {
+                        "id": "25929",
+                        "level": "2",
+                        "prefix_name": "",
+                        "name": "期末考试",
+                        "children": [],
+                        "question_count": "0"
+                    }
+                ],
+                "question_count": "0"
+            }
+        ]
+    }
+}

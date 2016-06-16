@@ -1,0 +1,63 @@
+{
+    "code": 0,
+    "msg": "",
+    "data": {
+        "list": [
+            {
+                "id": "81212",
+                "type": "1",
+                "publish_time": "1446307200000",
+                "grade_name": "必修3",
+                "chaper_info": "第2章 动物和人体... > 第2节 通过激素的调节",
+                "cover": "http://***.mp3",
+                "download_count": "201",
+                "quote_count": "190",
+                "fav_count": "92"
+            },
+            {
+                "id": "822123",
+                "type": "2",
+                "publish_time": "1446307200001",
+                "grade_name": "必修1",
+                "chaper_info": "第四章 第一节 天气和气候 导学案",
+                "cover": "http://***.jpg",
+                "download_count": "101",
+                "quote_count": "199",
+                "fav_count": "120"
+            },
+            {
+                "id": "813312",
+                "type": "3",
+                "publish_time": "1446307200002",
+                "grade_name": "必修3",
+                "chaper_info": "第初中地理地球的运动复习学案",
+                "cover": "http://***.DOC",
+                "download_count": "201",
+                "quote_count": "129",
+                "fav_count": "102"
+            },
+            {
+                "id": "813312",
+                "type": "4",
+                "publish_time": "1446307200003",
+                "grade_name": "必修2",
+                "chaper_info": "第二章 陆地和海洋",
+                "cover": "http://***.ppt",
+                "download_count": "201",
+                "quote_count": "129",
+                "fav_count": "102"
+            },
+            {
+                "id": "813312",
+                "type": "5",
+                "publish_time": "1446307200004",
+                "grade_name": "必修1",
+                "chaper_info": "第五章 发展与合作",
+                "cover": "http://***.SWF",
+                "download_count": "201",
+                "quote_count": "129",
+                "fav_count": "102"
+            }
+        ]
+    }
+}

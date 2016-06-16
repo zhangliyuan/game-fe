@@ -1,0 +1,44 @@
+<#if ( totalPage > 1 ) {#>
+	<div class="pager">
+		
+		<#if (prevPage < 1){#>
+			<span class="prev">&lt;</span>
+		<#} else {#>
+			<a class="prev">&lt;</a>
+		<#}#>
+
+		<#if ( currPage >= showNum - 1 ) {#>
+			<a data-pn="1">1</a>
+			<span class="omission">...</span>
+	    <#}#>
+
+		<#for(var i = centerNum; i <= endNum; i++){#>
+
+			
+			<#if (i <= 0 || i > totalPage) {#>
+	            <#continue#>
+	        <#} else if (i === currPage) {#>
+
+	            <span class="cur"><#=i#></span>
+	        <#} else {#>
+
+	          	<a data-pn="<#=i#>"><#=i#></a>
+	        <#}#>
+
+
+		<#}#>
+
+		<#if ( (currPage + c + 1) <= totalPage ) {#>
+	    	<span class="omission">...</span>
+	    	<a data-pn="<#=totalPage#>"><#=totalPage#></a>
+	    <#}#>
+
+	    <#if (nextPage > totalPage) {#>
+	    	<span class="next">&gt;</span>
+	    <#} else {#>
+	    	<a class="next">&gt;</a>
+	    <#}#>
+		<input type="text" class="jump" placeholder="跳转到" />
+		<a class="goto">GO</a>
+	</div>
+<#}#>

@@ -1,0 +1,40 @@
+{
+    "code": 0,
+    "msg": "",
+    "data": {
+        "id": "887",
+        "name": "向量评测",
+        "type": "2",
+        "question_count": "20",
+        "student_count": "50",
+        "total_page": "2",
+        "question_report_list": [
+            {
+                "id": "3",
+                "type": "4",
+                "parentquestion_id": "0",
+                "submited_count": "30",
+                "report_rouds": [
+                    {
+                        "type": "6",
+                        "type_count": "8",
+                        "percent": "10"
+                    }
+                ]
+            },
+            {
+                "id": "4",
+                "type": "3",
+                "parentquestion_id": "0",
+                "submited_count": "20",
+                "report_rouds": [
+                    {
+                        "type": "6",
+                        "type_count": "8",
+                        "percent": "15"
+                    }
+                ]
+            }
+        ]
+    }
+}

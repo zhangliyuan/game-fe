@@ -1,0 +1,32 @@
+[
+{
+"field": null,
+"value": null,
+"operatorId": null,
+"id": 10,
+"seq": 10,
+"name": "高一",
+"stageId": 2,
+"fullName": "高一"
+},
+{
+"field": null,
+"value": null,
+"operatorId": null,
+"id": 11,
+"seq": 11,
+"name": "高二",
+"stageId": 2,
+"fullName": "高二"
+},
+{
+"field": null,
+"value": null,
+"operatorId": null,
+"id": 12,
+"seq": 12,
+"name": "高三",
+"stageId": 2,
+"fullName": "高三"
+}
+]

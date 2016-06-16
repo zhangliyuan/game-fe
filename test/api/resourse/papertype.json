@@ -1,0 +1,102 @@
+[
+{
+"field": null,
+"value": null,
+"operatorId": null,
+"id": 1,
+"seq": 1,
+"name": "中考真题",
+"stageId": 1,
+"fullName": null
+},
+{
+"field": null,
+"value": null,
+"operatorId": null,
+"id": 2,
+"seq": 2,
+"name": "中考模拟",
+"stageId": 1,
+"fullName": null
+},
+{
+"field": null,
+"value": null,
+"operatorId": null,
+"id": 3,
+"seq": 3,
+"name": "期中考试",
+"stageId": 1,
+"fullName": null
+},
+{
+"field": null,
+"value": null,
+"operatorId": null,
+"id": 4,
+"seq": 4,
+"name": "期末考试",
+"stageId": 1,
+"fullName": null
+},
+{
+"field": null,
+"value": null,
+"operatorId": null,
+"id": 5,
+"seq": 5,
+"name": "会考卷（学业水平考试）",
+"stageId": 1,
+"fullName": null
+},
+{
+"field": null,
+"value": null,
+"operatorId": null,
+"id": 6,
+"seq": 6,
+"name": "月考卷",
+"stageId": 1,
+"fullName": null
+},
+{
+"field": null,
+"value": null,
+"operatorId": null,
+"id": 7,
+"seq": 7,
+"name": "同步测试",
+"stageId": 1,
+"fullName": null
+},
+{
+"field": null,
+"value": null,
+"operatorId": null,
+"id": 8,
+"seq": 8,
+"name": "单元测试",
+"stageId": 1,
+"fullName": null
+},
+{
+"field": null,
+"value": null,
+"operatorId": null,
+"id": 9,
+"seq": 9,
+"name": "竞赛题",
+"stageId": 1,
+"fullName": null
+},
+{
+"field": null,
+"value": null,
+"operatorId": null,
+"id": 27,
+"seq": 10,
+"name": "其他",
+"stageId": 1,
+"fullName": null
+}
+]

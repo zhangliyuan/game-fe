@@ -1,0 +1,161 @@
+/**
+ * @fileOverview font[文字]
+ * @author y.g.q
+ * @date   2014.9.23
+ * @mail   yinguoqing@kingsoft.com
+ */
+
+/*
+ * 正文文字
+ */
+body {
+    font: 14px/24px "Microsoft YaHei", "\u5b8b\u4f53", arial, helvetica, sans-serif, tahoma;
+    color: #1a1a1a;
+} 
+/*
+ * 第一层文字,字号16;
+ */
+
+h1, .h1 {
+	font: bold 16px/26px "Microsoft YaHei", "\u5b8b\u4f53", arial, helvetica;
+}
+/*
+ * 第二层文字,字号15;
+ */
+h2, .h2 {
+	font: bold 15px/24px "Microsoft YaHei", "\u5b8b\u4f53", arial, helvetica;
+}
+/*
+ * 第三层文字,字号14    
+ */    
+h3, .h3 {      
+	font: bold 14px/24px "Microsoft YaHei", "\u5b8b\u4f53", arial, helvetica;
+}
+/* 
+ * 第四层文字,字号12
+ */
+h4, .h4 {
+	font: bold 12px "Microsoft YaHei", "\u5b8b\u4f53", arial, helvetica;
+}
+
+/*
+ * 链接相关
+ */
+a:link, a:visited {
+    color: #2f99d8; 
+	text-decoration: none;
+}
+/*
+a:hover {
+	text-decoration: underline;
+}
+*/
+a:focus {
+	outline: 0;
+}
+
+     
+/* 特殊文字，灰色的竖线 */
+.f-pipe {
+	color: #808080;
+	margin: 0 10px;
+}
+/* 14px的灰色，一般用于辅助信息 */
+.f-info, a.f-info {
+	font-size: 14px;
+	color: #808080;
+}
+/* 浅灰色辅助性文字 */
+.f-aid, a.f-aid {
+	font-size: 12px;
+	color: #cbcbcb;
+}
+
+/* 加粗文字 */
+.f-bold, a.f-bold {
+	font-weight: bold;
+}
+/* 普通粗细文字 */
+.f-normal, a.f-normal {
+	font-weight: normal;
+}
+/* 灰色文字 */
+.f-gray, a.f-gray {
+	color: #cbcbcb;
+}
+
+/* 黑色文字 */
+.f-black, a.f-black {
+	color: #000;
+}
+/* 深灰色文字 */
+.f-default, a.f-default {
+	color: #b3b3b3;
+}
+/* 红色文字 */
+.f-red, a.f-red {
+	color: #D55111;
+	font-size: 12px;
+}
+/* 橙色文字 */
+.f-orange, a.f-orange{
+	color: #ff591f;
+}
+
+/* 蓝色文字, 给与链接色相同的地方使用 */
+.f-blue, a.f-blue {
+	color: #2f99d8;
+	cursor: pointer;
+}
+
+/* 
+	$description: 文字大小 
+	$className: f-12, a.f-12, f-14, a.f-14, f-16, a.f-16, f-18, a.f-18, f-20, a.f-20
+*/
+@for $i from 0 through 4{
+	$num : 12+$i*2;
+	.f-#{$num}, a.f-#{$num}{
+		font-size:#{$num}px;
+	}
+}
+
+/**
+ * 文本不折行
+ */
+.f-nowrap {
+	white-space: nowrap; 
+}
+
+/* 内容文字, 强制换行, 处理全英文代码等不换行问题 */
+.f-wrap {
+	//white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+/* 文本一行限高居中 */
+.v-align {
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* 文本多行限高居中 */
+.v-mult {
+    margin: 0 auto;
+    overflow: hidden;
+    .empty {
+        height: 100%;
+    }
+    .empty, .text {
+        display: inline-block;
+        *display: inline;
+        *zoom: 1;
+        vertical-align: middle;
+    }
+}
+
+/* 文本多行不限高居中 */
+.v-auto-out {
+    display: flex;
+    align-items:center;
+    justify-content:center;
+}

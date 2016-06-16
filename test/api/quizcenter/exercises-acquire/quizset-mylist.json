@@ -1,0 +1,35 @@
+{
+    "code": 0,
+    "msg": "",
+    "data": {
+        "total_count": "10",
+        "current_page": "2",
+        "total_page": "5",
+        "list": [
+            {
+                "id": "1008",
+                "name": "题集3",
+                "date": "1451372057250",
+                "type": "3",
+                "question_count": "20",
+                "question_ids": ["10051","10053","1004"]
+            },
+            {
+                "id": "1006",
+                "name": "题集2",
+                "date": "1451372057250",
+                "type": "2",
+                "question_count": "20",
+                "question_ids": ["10051","10053","1004"]
+            },
+            {
+                "id": "1008",
+                "name": "题集3",
+                "date": "1451372057250",
+                "type": "2",
+                "question_count": "20",
+                "question_ids": ["10051","10053","1004"]
+            }
+        ]
+    }
+}
