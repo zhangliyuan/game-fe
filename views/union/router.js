@@ -7,7 +7,8 @@ var ec = require('components/common/event/event.js');
 
 
 var WINDOW_TPL={
-    LAYOUT:__inline('/views/layout/layout.html')
+    LAYOUT:__inline('/views/union/layout/layout.tmpl'),
+    LEFT_NAV:__inline('/views/union/layout/nav.tmpl')
 };
 
 // 页面信息
@@ -19,7 +20,15 @@ var app_name="tester";
  */
 var View={
     winLayout:function(){
-        $('body').html(WINDOW_TPL.LAYOUT);
+
+        $('body').html(WINDOW_TPL.LAYOUT(
+            {
+                leftNav:View.winLeftNav({})
+            }
+        ));
+    },
+    winLeftNav: function(data){
+        return WINDOW_TPL.LEFT_NAV(data);
     }
 };
 
