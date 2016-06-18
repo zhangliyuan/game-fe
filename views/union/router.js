@@ -55,7 +55,7 @@ module.exports=function(){
     .addRoute('#/index', function(req, next){
         console.log('111');
         // 组件初始化参数
-        require.async(['components/page/union-list/union.js'],function(Union){
+        require.async(['components/page/union-list/union-list.js'],function(Union){
             // 组件初始化参数
             var page = new Union({
                 container:'.admin-content'
@@ -67,7 +67,7 @@ module.exports=function(){
 
         console.log('union/list');
         // 组件初始化参数
-        require.async(['components/page/union-list/union.js'],function(Union){
+        require.async(['components/page/union-list/union-list.js'],function(Union){
             // 组件初始化参数
             var page = new Union({
                 container:'.admin-content'

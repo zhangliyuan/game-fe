@@ -1,5 +1,21 @@
 .game-theme{
+  a{
+    cursor: pointer;
+  }
   .box{
     border-top:0;
   }
+
+  .btn {
+    &.btn-primary,
+    .btn-primary:link,
+    .btn-primary:visited{
+      color:#fff;
+    }
+  }
+
+  .collapse{
+    display: none;
+  }
+
 }
