@@ -60,7 +60,7 @@ module.exports=function(){
             var page = new Union({
                 container:'.admin-content'
             });
-            page.init();
+            //page.init();
         });
     })
     .addRoute('#/union/list', function(req, next){

@@ -5,6 +5,7 @@
 var $=require('/components/common/base/base.js');
 var Class=require('/components/common/class/class.js');
 var Dialog = require('/components/common/dialog/dialog.js');
+var Filter = require('/components/widget/filter/filter.js');
 var Tab = require('/components/common/tab/tab.js');
 
 var UNION_LIST_PAGE ={
@@ -53,6 +54,13 @@ var Union = Class(function(opts){
         me.container = $(me.opts.container);
 
         me.container.append(UNION_LIST_PAGE.LAYOUT({}));
+
+        // render filter module
+        me.filter = new Filter({
+            container:'#filter-wrap'
+        });
+        //me.filter.init();
+
 
         me.getUnionList();
 

@@ -541,3 +541,10 @@ var wbr = function (source) {
 };
 
 string.wbr = wbr;
+
+
+var uuid = function () {
+    return +(new Date()) + Math.random(1,999).toString().slice(3,12);
+};
+
+string.uuid = uuid;

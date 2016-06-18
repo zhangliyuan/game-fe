@@ -1,0 +1,26 @@
+<div class="form-group">
+    <label>{{label}}：</label>
+    {{#eq type "text"}}
+        <input type="text" class="form-control data-item"  data-name="{{name}}"  data-validate="{{validator}}" placeholder="{{placeholder}}" />
+    {{else eq type "select"}}
+
+        <select class="form-control data-item"  data-name="{{name}}" >
+            {{#each options}}
+                <option value="{{this.value}}">{{this.text}}</option>
+            {{/each}}
+        </select>
+
+    {{else eq type "date-single"}}
+        <div  class="date-single">
+            <li class="form-control laydate-icon data-item" id="date_single" data-name="{{name}}"></li>
+        </div>
+
+    {{else eq type "date-combo"}}
+        <div class="date-combo">
+            <li class="form-control laydate-icon data-item start" id="start"  data-name="{{name.start}}" ></li>
+            <span>-</span>
+            <li class="form-control laydate-icon data-item end" id="end"  data-name="{{name.end}}" ></li>
+        </div>
+
+    {{/eq}}
+</div>

@@ -1,0 +1,30 @@
+.filter-wrap{
+  .form-group{
+
+    width:50%;
+    display: inline-block;
+
+
+    label,.form-control{
+      display: inline-block;
+    }
+
+    label{
+      width: 90px;
+      text-align: right;
+    }
+    .form-control{
+      width: calc( 100% - 100px )
+    }
+
+    .date-single,.date-combo{
+      display: inline-block;
+
+      .laydate-icon{
+        width: 130px;
+        display: inline-block;
+      }
+    }
+  }
+
+}
