@@ -4,12 +4,12 @@
  */
 
 
-var $     	  = require('teacher:components/common/base/base.js'),
-	ec        = require('teacher:components/common/event/event.js'),
-	uiClass   = require('teacher:components/common/class/class.js');
-require('teacher:components/lib/jquery.ui/dialog.js');
-require('teacher:components/lib/jquery.ui/effect-fade.js');
-require('teacher:components/lib/jquery.ui/effect-drop.js');
+var $     	  = require('/components/common/base/base.js'),
+	ec        = require('/components/common/event/event.js'),
+	uiClass   = require('/components/common/class/class.js');
+require('/components/lib/jquery.ui/dialog.js');
+require('/components/lib/jquery.ui/effect-fade.js');
+require('/components/lib/jquery.ui/effect-drop.js');
 
 
 

@@ -1,6 +1,6 @@
-var $ = require('teacher:components/common/base/base.js'),
-	uiClass = require('teacher:components/common/class/class.js'),
-	PopTip = require('teacher:components/common/pop-tip/pop-tip.js');
+var $ = require('/components/common/base/base.js'),
+	uiClass = require('/components/common/class/class.js'),
+	PopTip = require('/components/common/pop-tip/pop-tip.js');
 
 
 var Pager = uiClass(function(options) {

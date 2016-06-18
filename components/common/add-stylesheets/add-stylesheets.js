@@ -1,4 +1,4 @@
-var $ = require('teacher:components/common/base/base.js');
+var $ = require('/components/common/base/base.js');
 
 /**
  * @DESCRIPTION: Add style sheet to the document.

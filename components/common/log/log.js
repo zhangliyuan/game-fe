@@ -6,7 +6,7 @@
 
 'use strict';
 
-var $ = require('teacher:components/lib/jquery/jquery.js');
+var $ = require('/components/lib/jquery/jquery.js');
 
 
 

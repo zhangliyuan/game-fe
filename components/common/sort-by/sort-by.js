@@ -3,7 +3,7 @@
  * @time 20160105
  * @description 排序;
  */
-var $ = require('teacher:components/common/base/base.js');
+var $ = require('/components/common/base/base.js');
 
 function parseProp ( obj, prop ) {
 	prop = $.isArray(prop) ? prop : prop.split( '.' );

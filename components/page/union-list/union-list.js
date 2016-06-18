@@ -4,6 +4,7 @@
 
 var $=require('/components/common/base/base.js');
 var Class=require('/components/common/class/class.js');
+var Ajax=require('/components/common/ajax/ajax.js');
 var Dialog = require('/components/common/dialog/dialog.js');
 var Filter = require('/components/widget/filter/filter.js');
 var Tab = require('/components/common/tab/tab.js');
@@ -74,9 +75,14 @@ var Union = Class(function(opts){
 
     },
 
-    getUnionList: function(){
+    getUnionList: function(params){
         var me = this;
-
+        var params = params ||　{
+                code: 12
+            };
+        Ajax.get('/front/index_smsCheck', params, function (data) {
+            console.log(data);
+        });
 
         me.renderUnionList();
     },
@@ -101,6 +107,37 @@ var Union = Class(function(opts){
 
         $('#unionList', me.container).on('click', '.showDetail', me.showDetail);
 
+
+        $('.ico-collapse', me.container).on('click', function () {
+
+            me.showFilter.call(me, this);
+
+        });
+
+    },
+
+    getFilterData: function () {
+      var me = this;
+
+        var filterData = me.filter.getFilterData();
+
+        me.getUnionList(filterData);
+    },
+
+    showFilter: function (obj) {
+        var me = this;
+        var _spanElem = $(obj).find('span');
+        var _iElem = $(obj).find('i.fa');
+
+        if(_iElem.hasClass('fa-caret-up')){
+            $(obj).siblings().hide();
+            _iElem.removeClass('fa-caret-up').addClass('fa-caret-down');
+            _spanElem.text('展开');
+        } else{
+            $(obj).siblings().show();
+            _iElem.removeClass('fa-caret-down').addClass('fa-caret-up');
+            _spanElem.text('收起');
+        }
     },
 
     showDetail: function(){

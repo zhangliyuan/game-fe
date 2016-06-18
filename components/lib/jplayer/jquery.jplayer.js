@@ -35,7 +35,7 @@
  }(this, function ($, undefined) {*/
 
 
-var $ = require('teacher:components/lib/jquery/jquery.js');
+var $ = require('/components/lib/jquery/jquery.js');
 
 
 	// Adapted from jquery.ui.widget.js (1.8.7): $.widget.bridge - Tweaked $.data(this,XYZ) to $(this).data(XYZ) for Zepto

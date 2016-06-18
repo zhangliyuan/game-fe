@@ -3,7 +3,7 @@
  * @time 20130816
  */
 
-var $ = require('teacher:components/common/base/base.js');
+var $ = require('/components/common/base/base.js');
 
 
 

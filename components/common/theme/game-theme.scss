@@ -1,9 +1,19 @@
 .game-theme{
-  a{
+  a,
+  .fa{
     cursor: pointer;
+  }
+
+  .fa{
+    margin-left:10px;
+  }
+
+  .content{
+    background: #fff;
   }
   .box{
     border-top:0;
+    padding: 20px;
   }
 
   .btn {
@@ -14,8 +24,9 @@
     }
   }
 
-  .collapse{
-    display: none;
+  .ico-collapse{
+    cursor: pointer;
+    width: 100%;
   }
 
 }

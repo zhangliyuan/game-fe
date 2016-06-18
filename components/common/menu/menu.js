@@ -43,8 +43,8 @@
  *		});
  */
 
-var $ = require('teacher:components/common/base/base.js');
-var uiClass = require('teacher:components/common/class/class.js');
+var $ = require('/components/common/base/base.js');
+var uiClass = require('/components/common/class/class.js');
 
 var createElement = function(tagName) {
 	return $('<' + tagName + '>');

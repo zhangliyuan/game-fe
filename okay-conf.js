@@ -4,7 +4,7 @@
  */
 
 
-fis.set('namespace', fis.get('okay.namespace') || 'teacher');
+fis.set('namespace', fis.get('okay.namespace') || 'game');
 fis.set('charset', 'utf-8');
 
 // default;

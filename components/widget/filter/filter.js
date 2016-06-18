@@ -57,15 +57,7 @@ var Filter = Class(function (opts) {
     this.opts = $.extend({
         container:'body',
         filterData:{},
-        renderData:null,
-        buttons:[
-            {
-                'text': '搜索',
-                'click': function() {
-                    $.isFunction(opts.onFilter) && opts.onFilter.apply(this, arguments);
-                }
-            }
-        ]
+        renderData:null
     },opts);
 }).extend({
     init: function () {
@@ -75,6 +67,8 @@ var Filter = Class(function (opts) {
         me.container.addClass('filter-wrap');
 
         me.render();
+
+        me.initEvents();
     },
 
     render: function () {
@@ -91,17 +85,30 @@ var Filter = Class(function (opts) {
             return;
         }
 
-        // render button and collapse
-        var _btnHtml = '';
-        $.each(me.opts.buttons, function (i, v) {
-            _btnHtml += '<button class="btn btn-default">' + v.text + '</button>';
-        });
 
-        _btnHtml += '<div class="col-lg-12 col-md-12"> <div class="collapse text-center"><i class="fa fa-angle-double-up"></i></div> </div>';
-
-        me.container.empty().append(_html + _btnHtml);
+        me.container.empty().append(_html);
 
         me.initDate();
+    },
+
+    initEvents: function () {
+        var me = this;
+
+        me.container.on('change', '.data-item[type="text"], select.data-item', function (event) {
+            me.onChangeHandler(event);
+        });
+    },
+
+
+    onChangeHandler: function (event) {
+        
+      var me = this;
+        var obj = event.target;
+        var _name = $(obj).data('name');
+        var _value = $.trim($(obj).val());
+
+        me.setFilterData(_name, _value);
+
     },
 
     initDate: function () {

@@ -1,4 +1,4 @@
-var jQuery = require('teacher:components/lib/jquery/jquery.js');
+var jQuery = require('/components/lib/jquery/jquery.js');
 
 
 /*
