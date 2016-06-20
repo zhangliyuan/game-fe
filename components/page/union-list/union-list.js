@@ -8,11 +8,22 @@ var Ajax=require('/components/common/ajax/ajax.js');
 var Dialog = require('/components/common/dialog/dialog.js');
 var Filter = require('/components/widget/filter/filter.js');
 var Tab = require('/components/common/tab/tab.js');
+var Page       = require('/components/common/pager/pager.js');
 
 var UNION_LIST_PAGE ={
     LAYOUT: __inline('union-list.tmpl'),
     UNION_LIST_ITEM:__inline('union-item.tmpl'),
     UNION_LIST_DETAIL:__inline('union-detail.tmpl')
+};
+
+var UNION_DETAIL_TAB = {
+    GAME:           __inline('detail-game.tmpl'),
+    TEAM:           __inline('detail-team.tmpl'),
+    PACKAGE:        __inline('detail-package.tmpl'),
+    RULES:          __inline('detail-rules.tmpl'),
+    NOTICE:         __inline('detail-notice.tmpl'),
+    MEETING_ROOM:   __inline('detail-meeting-room.tmpl'),
+    REGISTER_INFO:  __inline('detail-register-info.tmpl')
 };
 
 var demoData = [
@@ -105,7 +116,9 @@ var Union = Class(function(opts){
     initEvents: function(){
         var me = this;
 
-        $('#unionList', me.container).on('click', '.showDetail', me.showDetail);
+        $('#unionList', me.container).on('click', '.showDetail', function(){
+            me.showDetail.call(me,this);
+        });
 
 
         $('.ico-collapse', me.container).on('click', function () {
@@ -140,9 +153,9 @@ var Union = Class(function(opts){
         }
     },
 
-    showDetail: function(){
-
-        var obj = $(this);
+    showDetail: function(obj){
+        var me = this;
+        var obj = $(obj);
 
         var content = UNION_LIST_PAGE.UNION_LIST_DETAIL({});
 
@@ -165,9 +178,13 @@ var Union = Class(function(opts){
             },
             'open':function () {
                 var _tab = new Tab({
-                    container: '.confirm-dialog .union-detail'
+                    caller:me,
+                    container: '.confirm-dialog .union-detail',
+                    beforeClick: me.detailTabClick,
+                    selected:'#game'
                 });
-                _tab.init();
+
+
             },
             'buttons': [{
                 'text': '使用',
@@ -193,8 +210,63 @@ var Union = Class(function(opts){
 
                     $(this).dialog('close');
                 }
-            }],
+            }]
         });
+
+    },
+
+    detailTabClick:function(obj){
+        var me = this;
+        var targetId = $(obj).data('target');
+        var tabContent = $(targetId, me.container);
+
+        if(tabContent.data('status') !== 'loaded'){
+            me.getDetailTab({
+                url:$(obj).data('url'),
+                type: targetId.replace("#", ''),
+                container:targetId,
+                data:{}
+            });
+        }
+    },
+
+
+    getDetailTab: function(params){
+
+        var me = this;
+
+        Ajax.get(params.url, params.data, function(data){
+
+            // TODO test data
+            data.total_count = 234;
+            data.current_page = 4;
+
+            me.renderTabData($.extend(params,{response:data}));
+
+
+            new Page({
+                target: '#game-table-page-wrap',
+                type: 'ajax',
+                pageCount: Number(data.total_count),
+                pageSize: 10,
+                callback: function(page){
+                    me.getDetailTab(params);
+                },
+                pn: Number(data.current_page)
+            });
+
+        });
+    },
+
+    renderTabData: function(data){
+        var me = this;
+        var data = data || demoTabData;
+
+        var _tpl = UNION_DETAIL_TAB[data.type.toUpperCase()];
+
+        var _html = _tpl(data.response);
+
+        $(data.container).empty().append(_html).data('status','loaded');
 
     },
 

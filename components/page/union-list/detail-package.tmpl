@@ -1,0 +1,31 @@
+<div class="team-table">
+    <table class="table table-responsive">
+        <thead>
+        <tr>
+            <td>游戏名称</td>
+            <td>礼包名称</td>
+            <td>礼包类容及使用说明</td>
+            <td>领取条件</td>
+            <td>库存</td>
+            <td>数量</td>
+            <td>有效期</td>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each list}}
+        <tr>
+            <td>{{this.name}}</td>
+            <td>{{this.zone}}</td>
+            <td>{{this.channel}}</td>
+            <td>{{this.director}}</td>
+            <td>{{this.peopleCount}}</td>
+            <td>{{this.peopleCount}}</td>
+            <td>{{this.joinTime}}</td>
+        </tr>
+        {{/each}}
+
+
+        </tbody>
+    </table>
+    <div id="packeage-table-page-wrap" class="page-wrap"></div>
+</div>

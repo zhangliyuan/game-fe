@@ -7,7 +7,8 @@ var Class=require('/components/common/class/class.js');
 
 var Tab = Class(function (opts) {
     this.opts = $.extend({
-        container:'body'
+        container:'body',
+        selected:''
 
     },opts);
 
@@ -24,6 +25,10 @@ var Tab = Class(function (opts) {
             me.showTabPane(that);
 
         });
+
+        if(me.opts.selected != ''){
+            $('[data-target="'+me.opts.selected+'"]', $(me.opts.container)).trigger('click');
+        }
     },
 
     showTabPane: function (obj) {
@@ -38,7 +43,7 @@ var Tab = Class(function (opts) {
     },
 
     execCallback:function (callback, params) {
-        callback.call(this.opts.caller || this );
+        callback.call(this.opts.caller || this, params );
     },
 
     destroy: function () {

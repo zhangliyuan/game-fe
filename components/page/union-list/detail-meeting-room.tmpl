@@ -1,0 +1,26 @@
+<div class="team-table">
+    <table class="table table-responsive">
+        <thead>
+        <tr>
+            <td>频道名称</td>
+            <td>在线人数</td>
+            <td>状态</td>
+            <td>操作</td>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each list}}
+            <tr>
+                <td>{{this.name}}</td>
+                <td>{{this.zone}}</td>
+                <td>{{this.channel}}</td>
+                <td>{{this.director}}</td>
+                <td>{{this.joinTime}}</td>
+            </tr>
+        {{/each}}
+
+
+        </tbody>
+    </table>
+
+</div>

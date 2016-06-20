@@ -1,0 +1,29 @@
+<div class="game-table">
+    <table class="table table-responsive">
+        <thead>
+        <tr>
+            <td>游戏名称</td>
+            <td>服务区</td>
+            <td>服/频道</td>
+            <td>负责人</td>
+            <td>入住人数</td>
+            <td>入住时间</td>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each list}}
+        <tr>
+            <td>{{this.name}}</td>
+            <td>{{this.zone}}</td>
+            <td>{{this.channel}}</td>
+            <td>{{this.director}}</td>
+            <td>{{this.peopleCount}}</td>
+            <td>{{this.joinTime}}</td>
+        </tr>
+        {{/each}}
+
+
+        </tbody>
+    </table>
+    <div id="game-table-page-wrap" class="page-wrap"></div>
+</div>
