@@ -103,14 +103,14 @@ fis.util.map([{
 				domain: static_domain,
 				deploy: fis.plugin('http-push', {
 					receiver: static_path,
-					to: '/xdfapp/server/static-service/assets'
+					to: '/server/static-service/assets'
 				})
 			})
 			.match('/views/(**.{vm,jsp})', {
 				release: '$1',
 				deploy: fis.plugin('http-push', {
 					receiver: vm_path,
-					to: '/xdfapp/teacher-web/webapps/ROOT/WEB-INF/pages/vm'
+					to: '/webapps/ROOT/WEB-INF/pages/vm'
 				})
 			});
 
