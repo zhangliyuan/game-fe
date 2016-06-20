@@ -9,6 +9,7 @@ var Dialog = require('/components/common/dialog/dialog.js');
 var Filter = require('/components/widget/filter/filter.js');
 var Tab = require('/components/common/tab/tab.js');
 var Page       = require('/components/common/pager/pager.js');
+var PopTip = require('/components/common/pop-tip/pop-tip.js');
 
 var UNION_LIST_PAGE ={
     LAYOUT: __inline('union-list.tmpl'),
@@ -26,30 +27,69 @@ var UNION_DETAIL_TAB = {
     REGISTER_INFO:  __inline('detail-register-info.tmpl')
 };
 
-var demoData = [
+var FILTER_OPTIONS = [
     {
-        unionNo:'123456799',
-        name:'众神殿游戏公会',
-        peopleCount:2411,
-        unionPresident:'隔壁王吴老二让人',
-        status:'normal',
-        createTime:'2014-12-23 12:34:45',
-        rank:564,
-        recharge:2345,
-        totalRecharge:23452
+        label:'公会编号',
+        name:'unionNo',
+        type:'text',
+        placeholder:'',
+        validate: null
     },
     {
-        unionNo:'123456794',
-        name:'众神殿游戏公会',
-        peopleCount:2411,
-        unionPresident:'隔壁王吴老二让人',
-        status:'normal',
-        createTime:'2014-12-23 12:34:45',
-        rank:564,
-        recharge:2345,
-        totalRecharge:23452
+        label:'会长手机',
+        name:'directorPhone',
+        type:'text',
+        placeholder:'',
+        validate: null
+    },
+    {
+        label:'公会名称',
+        name:'unionName',
+        type:'text',
+        placeholder:'',
+        validate: null
+    },
+    {
+        label:'身份证号',
+        name:'PID',
+        type:'text',
+        placeholder:'',
+        validate: null
+    },
+    {
+        label:'游戏名称',
+        name:'gameName',
+        type:'text',
+        placeholder:'',
+        validate: null
+    },
+    {
+        label:'公会状态',
+        name:'status',
+        type:'select',
+        options:[
+            {text:'全部', value:'0'},
+            {text:'正常', value:'1'},
+            {text:'异常', value:'2'},
+            {text:'封停', value:'3'}
+        ],
+        placeholder:'',
+        validate: null
+    },
+    {
+        label:'会长名称',
+        name:'directorName',
+        type:'text',
+        placeholder:'',
+        validate: null
     }
 ];
+
+var UNION_STATUS = {
+    'normal': '正常',
+    'blocked': '封停',
+    'error': '异常'
+};
 
 
 var Union = Class(function(opts){
@@ -69,7 +109,8 @@ var Union = Class(function(opts){
 
         // render filter module
         me.filter = new Filter({
-            container:'#filter-wrap'
+            container:'#filter-wrap',
+            renderData:FILTER_OPTIONS
         });
         //me.filter.init();
 
@@ -88,13 +129,25 @@ var Union = Class(function(opts){
 
     getUnionList: function(params){
         var me = this;
-        var params = params ||　{
-                code: 12
-            };
+
+        if(!params){
+            params = me.getFilterData();
+        }
 
         Ajax.get('/admin/union/list', params, function (data) {
 
             me.renderUnionList(data.list);
+
+            new Page({
+                target: '#union-list-page-wrap',
+                type: 'ajax',
+                pageCount: Number(data.total_count),
+                pageSize: 10,
+                callback: function(page){
+                    me.getUnionList();
+                },
+                pn: Number(data.current_page)
+            });
         });
 
     },
@@ -105,7 +158,7 @@ var Union = Class(function(opts){
 
         var _html = '';
         if($.isArray(data) && data.length > 0){
-            _html += UNION_LIST_PAGE.UNION_LIST_ITEM({list:data});
+            _html += UNION_LIST_PAGE.UNION_LIST_ITEM({list:data, mStatus:UNION_STATUS});
         } else {
             _html = '<p>没有任何数据</p>'
         }
@@ -122,11 +175,18 @@ var Union = Class(function(opts){
         });
 
 
+        $("#exec-search-btn", me.container).on('click', function () {
+           me.getUnionList();
+        });
+
+
         $('.ico-collapse', me.container).on('click', function () {
 
             me.showFilter.call(me, this);
 
         });
+
+
 
     },
 
@@ -135,7 +195,7 @@ var Union = Class(function(opts){
 
         var filterData = me.filter.getFilterData();
 
-        me.getUnionList(filterData);
+        return filterData;
     },
 
     showFilter: function (obj) {
@@ -157,6 +217,8 @@ var Union = Class(function(opts){
     showDetail: function(obj){
         var me = this;
         var obj = $(obj);
+
+        me.cUnionId = obj.closest('tr').data('id');
 
         var content = UNION_LIST_PAGE.UNION_LIST_DETAIL({});
 
@@ -185,10 +247,25 @@ var Union = Class(function(opts){
                     selected:'#game'
                 });
 
+                $('.union-detail').on('click', ".unblock-wrap input[name='unblock']", function () {
+                    var obj = $(this);
+                    
+                    var operation = obj.val();
+                    
+                    Ajax.get('/admin/union/block', {
+                        type:operation,
+                        id: me.cUnionId
+                    }, function(data){
+                        PopTip("操作成功！！");
+                    }, function (data) {
+                        PopTip(data.msg || '操作失败~~');
+                    });
+                });
+
 
             },
             'buttons': [{
-                'text': '使用',
+                'text': '确定',
                 'className': 'btn btn-primary',
                 'click': function(e) {
                     e.preventDefault();
@@ -196,10 +273,6 @@ var Union = Class(function(opts){
                     e.stopPropagation();
 
                     $(this).dialog('close');
-                    me.model.changeStuCtrl(rid, function() {
-                        me.view.changeCtrl($t);
-                        me.fire('ctrled',rid);  // 改变了某个题集的作答状态
-                    });
                 }
             }, {
                 'className': 'btn btn-default',
@@ -261,7 +334,7 @@ var Union = Class(function(opts){
 
         var _tpl = UNION_DETAIL_TAB[data.type.toUpperCase()];
 
-        var _html = _tpl(data.response);
+        var _html = _tpl($.extend({mStatus: UNION_STATUS},data.response));
 
         $(data.container).empty().append(_html).data('status','loaded');
 

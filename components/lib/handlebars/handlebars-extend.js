@@ -121,4 +121,9 @@
             return options.inverse(this);
         }
     });
+
+    // 注册字符串转换
+    Handlebars.registerHelper("convert",function(key,object,options){
+        return (object[key] || key);
+    });
 })(Handlebars);

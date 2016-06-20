@@ -13,7 +13,7 @@
             <tr>
                 <td>{{this.name}}</td>
                 <td>{{this.online_count}}</td>
-                <td>{{this.status}}</td>
+                <td>{{convert status ../mStatus}}</td>
                 <td>{{this.operation}}</td>
             </tr>
         {{/each}}
@@ -21,5 +21,20 @@
 
         </tbody>
     </table>
+
+    <div class="unblock-wrap">
+        <div class="form-group">
+            <div class=" radio-inline">
+                <label>
+                    全部封停<input type="radio" name="unblock" value="block" />
+                </label>
+            </div>
+            <div class=" radio-inline">
+                <label>
+                    全部解封<input type="radio" name="unblock" value="unblock" />
+                </label>
+            </div>
+        </div>
+    </div>
 
 </div>
