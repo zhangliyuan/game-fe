@@ -1,0 +1,19 @@
+{
+  "code": 0,
+  "msg": "success",
+  "data":{
+    "name":23,
+    "PID":345,
+    "email":345,
+    "type":345,
+    "games":["game1","game_sdf23","game234"],
+    "phoneNo":1321232321,
+    "images":{
+      "img3":"ttp://placehold.it/150x50",
+      "img1":"ttp://placehold.it/150x50",
+      "img2":"ttp://placehold.it/150x50",
+      "img4":"ttp://placehold.it/150x50"
+    }
+
+  }
+}

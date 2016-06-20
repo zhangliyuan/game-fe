@@ -1,0 +1,56 @@
+{
+  "code": 0,
+  "msg": "success",
+  "data":{
+    "current_page":23,
+    "total_page":345,
+    "total_count":3450,
+    "list":[
+      {
+        "game_id":"123456799",
+        "name":"某手world",
+        "zone":"亚洲3区",
+        "channel":"烽火连体",
+        "director":"王小五",
+        "count":"33",
+        "joinTime":"2014-12-23 12:34:45"
+      },
+      {
+        "game_id":"123456799",
+        "name":"历娜康",
+        "zone":"亚洲5区",
+        "channel":"bujidao",
+        "director":"王小五",
+        "count":"33",
+        "joinTime":"2014-12-23 12:34:45"
+      },
+      {
+        "game_id":"123456729",
+        "name":"历史的缇娜康",
+        "zone":"亚洲5区",
+        "channel":"bujidao",
+        "director":"张小五",
+        "count":"33",
+        "joinTime":"2015-12-23 12:34:45"
+      },
+      {
+        "game_id":"123456789",
+        "name":"大水果",
+        "zone":"亚洲1区",
+        "channel":"我也不知道",
+        "director":"王小六",
+        "count":"33",
+        "joinTime":"2014-12-23 12:34:25"
+      },
+      {
+        "game_id":"123456719",
+        "name":"大小水果",
+        "zone":"亚洲5区",
+        "channel":"谁知道",
+        "director":"赵四",
+        "count":"33",
+        "joinTime":"2013-12-23 12:34:45"
+      }
+    ]
+  }
+}

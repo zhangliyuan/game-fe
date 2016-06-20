@@ -1,0 +1,33 @@
+{
+  "code": 0,
+  "msg": "success",
+  "data":{
+    "current_page":23,
+    "total_page":345,
+    "total_count":3450,
+    "list":[
+      {
+        "unionNo":"123456799",
+        "name":"众神殿游戏公会",
+        "peopleCount":2911,
+        "unionPresident":"隔壁王吴老二让人",
+        "status":"normal",
+        "createTime":"2014-12-23 12:34:45",
+        "rank":564,
+        "recharge":2315,
+        "totalRecharge":23452
+      },
+      {
+        "unionNo":"123456794",
+        "name":"众神殿游戏公会2",
+        "peopleCount":2411,
+        "unionPresident":"隔壁2王吴老二让人",
+        "status":"normal",
+        "createTime":"2014-12ds-23 12:34:45",
+        "rank":524,
+        "recharge":345,
+        "totalRecharge":234112
+      }
+    ]
+  }
+}

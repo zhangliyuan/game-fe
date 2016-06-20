@@ -91,11 +91,12 @@ var Union = Class(function(opts){
         var params = params ||　{
                 code: 12
             };
-        Ajax.get('/front/index_smsCheck', params, function (data) {
-            console.log(data);
+
+        Ajax.get('/admin/union/list', params, function (data) {
+
+            me.renderUnionList(data.list);
         });
 
-        me.renderUnionList();
     },
 
     renderUnionList: function(data){
@@ -236,10 +237,6 @@ var Union = Class(function(opts){
         var me = this;
 
         Ajax.get(params.url, params.data, function(data){
-
-            // TODO test data
-            data.total_count = 234;
-            data.current_page = 4;
 
             me.renderTabData($.extend(params,{response:data}));
 

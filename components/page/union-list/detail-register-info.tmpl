@@ -1,27 +1,52 @@
-<div class="team-table">
-    <table class="table table-responsive">
-        <thead>
-        <tr>
-            <td>团队成员</td>
-            <td>职务</td>
-            <td>负责内容</td>
-            <td>手机号</td>
-            <td>任职时间</td>
-        </tr>
-        </thead>
-        <tbody>
-        {{#each list}}
-            <tr>
-                <td>{{this.name}}</td>
-                <td>{{this.zone}}</td>
-                <td>{{this.channel}}</td>
-                <td>{{this.director}}</td>
-                <td>{{this.joinTime}}</td>
-            </tr>
-        {{/each}}
+<div class="register-table">
+    <div class="col-lg-4 col-md-4">
+        <div class="item">
+            <span class="label">负责人姓名:</span>
+            <span class="text" >{{name}}</span>
+        </div>
+        <div class="item">
+            <span class="label">身份证号码:</span>
+            <span class="text" >{{PID}}</span>
+        </div>
+        <div class="item">
+            <span class="label">联系电话:</span>
+            <span class="text" >{{phoneNo}}</span>
+        </div>
+        <div class="item">
+            <span class="label">常用邮箱:</span>
+            <span class="text" >{{email}}</span>
+        </div>
+        <div class="item">
+            <span class="label">公会类型:</span>
+            <span class="text" >{{type}}</span>
+        </div>
+        <div class="item">
+            <span class="label">入住游戏:</span>
+            <span class="text" >{{games}}</span>
+        </div>
 
 
-        </tbody>
-    </table>
+    </div>
+
+    <div class="col-lg-8 col-md-8">
+        <div>
+            <span>身份资料审核</span>
+        </div>
+        <div>
+            <div class="register-check-info">
+                <img src="http://placehold.it/150x50">
+            </div>
+            <div class="register-check-info">
+                <img src="http://placehold.it/150x50">
+            </div>
+            <div class="register-check-info">
+                <img src="http://placehold.it/150x50">
+            </div>
+            <div class="register-check-info">
+                <img src="http://placehold.it/150x50">
+            </div>
+
+        </div>
+    </div>
 
 </div>
