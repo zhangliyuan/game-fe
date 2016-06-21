@@ -163,14 +163,14 @@ var Union = Class(function(opts){
             _html = '<p>没有任何数据</p>'
         }
 
-        $("#unionList").empty().append(_html);
+        $("#union-list").empty().append(_html);
 
     },
 
     initEvents: function(){
         var me = this;
 
-        $('#unionList', me.container).on('click', '.showDetail', function(){
+        $('#union-list', me.container).on('click', '.showDetail', function(){
             me.showDetail.call(me,this);
         });
 
