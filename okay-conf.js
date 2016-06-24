@@ -43,20 +43,16 @@ fis
 
 
 
-// 部署配置;
+// 部署配置;(暂时保留)
 fis.util.map([{
-	name: '112',
-	host: 'http://10.60.0.112',
-	port: '7999'
-}, {
-	name: '62',
-	host: 'http://10.60.0.62',
-	port: '7999'
+	name: 'game',
+	host: 'http://115.28.167.5',
+	port: '8999'
 }], function (index, item) {
 
-	var static_domain   = 'http://10.60.0.'+parseInt(item.name)+':12345',
-		static_path     = 'http://10.60.0.'+parseInt(item.name)+':7999/okay-upload',
-		vm_path       = item.host + ':' + item.port + '/okay-upload';
+	var static_domain   = item.host+':12345',
+		static_path     = item.host+':'+item.port+'/receiver',
+		vm_path       = item.host + ':' + item.port + '/receiver';
 
 
 	fis.util.map(['', 'm'], function (_index, _val) {
@@ -103,14 +99,14 @@ fis.util.map([{
 				domain: static_domain,
 				deploy: fis.plugin('http-push', {
 					receiver: static_path,
-					to: '/server/static-service/assets'
+					to: '/home/zhly/webapp'
 				})
 			})
 			.match('/views/(**.{vm,jsp})', {
 				release: '$1',
 				deploy: fis.plugin('http-push', {
 					receiver: vm_path,
-					to: '/webapps/ROOT/WEB-INF/pages/vm'
+					to: '/home/zhly/webapp/vm'
 				})
 			});
 
@@ -128,7 +124,6 @@ fis.util.map([{
 	});
 
 });
-
 
 
 
