@@ -46,7 +46,7 @@ fis
 // 部署配置;(暂时保留)
 fis.util.map([{
 	name: 'game',
-	host: 'http://domain',
+	host: 'http://domain123.com',
 	port: '8999'
 }], function (index, item) {
 
