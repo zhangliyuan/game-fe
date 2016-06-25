@@ -60,7 +60,7 @@ var UnionRebate = Class(function(opts){
 
         me.container = $(me.opts.container);
 
-        me.container.append(UNION_CHECK_PAGE.LAYOUT({}));
+        me.container.append(UNION_REBATE_PAGE.LAYOUT({}));
 
         // render filter module
         me.filter = new Filter({
@@ -99,7 +99,7 @@ var UnionRebate = Class(function(opts){
 
         var _html = '';
         if($.isArray(data) && data.length > 0){
-            _html += UNION_CHECK_PAGE.UNION_CHECK_ITEM({list:data});
+            _html += UNION_REBATE_PAGE.UNION_REBATE_ITEM({list:data});
         } else {
             _html = '<p>没有任何数据</p>'
         }
@@ -142,7 +142,7 @@ var UnionRebate = Class(function(opts){
         var me = this;
         var obj = $(obj);
 
-        var content = UNION_CHECK_PAGE.UNION_CHECK_DETAIL({});
+        var content = UNION_REBATE_PAGE.UNION_CHECK_DETAIL({});
 
         Dialog.confirm(content, {
             'width': '800px',
