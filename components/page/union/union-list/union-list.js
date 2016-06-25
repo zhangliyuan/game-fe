@@ -199,7 +199,7 @@ var Union = Class(function(opts){
     },
 
     showFilter: function (obj) {
-        var me = this;
+        
         var _spanElem = $(obj).find('span');
         var _iElem = $(obj).find('i.fa');
 
