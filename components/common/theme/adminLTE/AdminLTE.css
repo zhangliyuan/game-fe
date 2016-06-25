@@ -59,6 +59,7 @@ body > .header {
 .right-side {
   background-color: #f9f9f9;
   margin-left: 220px;
+  max-width: 1400px;
 }
 /*left side - contains sidebar*/
 .left-side {
