@@ -46,13 +46,14 @@ fis
 // 部署配置;(暂时保留)
 fis.util.map([{
 	name: 'game',
-	host: 'http://domain123.com',
+	host: 'http://115.28.167.5',
 	port: '8999'
 }], function (index, item) {
 
-	var static_domain   = item.host+':12345',
+	var static_domain   = item.host+':8080',
 		static_path     = item.host+':'+item.port+'/receiver',
-		vm_path       = item.host + ':' + item.port + '/receiver';
+		vm_path       = item.host + ':' + item.port + '/receiver',
+		release_path = '/usr/local/tomcat/server/webapps/ROOT';
 
 
 	fis.util.map(['', 'm'], function (_index, _val) {
@@ -99,14 +100,14 @@ fis.util.map([{
 				domain: static_domain,
 				deploy: fis.plugin('http-push', {
 					receiver: static_path,
-					to: '/home/zhly/webapp'
+					to: release_path
 				})
 			})
 			.match('/views/(**.{vm,jsp})', {
 				release: '$1',
 				deploy: fis.plugin('http-push', {
 					receiver: vm_path,
-					to: '/home/zhly/webapp/vm'
+					to: release_path
 				})
 			});
 

@@ -3,10 +3,20 @@
   "msg": "success",
   "data":{
 
-        "id":"123456799",
-        "title":"某手world",
-        "createTime":"2014-11-21",
-        "content":"《骏网一卡通》充值业务暂停通告，请全体知悉。《骏网一卡通》充值业务暂停通告，请全体知悉看来是觉得烦了"
-
+    "id":"123456799",
+    "orderNo":"123456799",
+    "productName":"魔兽世界点卡3000点",
+    "productThumbnail":"http://placehold.it/36x36",
+    "price":"20",
+    "count":"5",
+    "buyer":"王五",
+    "status":"success",
+    "totalCost":100,
+    "remark":"我是备注，通》充值业务某手world暂停通告，请全体知悉",
+    "chargeAccount":"电信一区/安德鲁/335423651@qq.com",
+    "payType":"weChat",
+    "payTime":"2013-05-25",
+    "type":"game",
+    "createTime":"2014-11-21"
   }
 }

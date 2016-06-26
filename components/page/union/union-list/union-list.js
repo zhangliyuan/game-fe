@@ -132,6 +132,8 @@ var Union = Class(function(opts){
 
         if(!params){
             params = me.getFilterData();
+        }else{
+            params = $.extend({},me.getFilterData(),params);
         }
 
         Ajax.get('/admin/union/list', params, function (data) {
@@ -144,7 +146,7 @@ var Union = Class(function(opts){
                 pageCount: Number(data.total_count),
                 pageSize: 10,
                 callback: function(page){
-                    me.getUnionList();
+                    me.getUnionList({pageNo:page});
                 },
                 pn: Number(data.current_page)
             });
@@ -199,7 +201,7 @@ var Union = Class(function(opts){
     },
 
     showFilter: function (obj) {
-        
+
         var _spanElem = $(obj).find('span');
         var _iElem = $(obj).find('i.fa');
 
@@ -320,7 +322,7 @@ var Union = Class(function(opts){
                 pageCount: Number(data.total_count),
                 pageSize: 10,
                 callback: function(page){
-                    me.getDetailTab(params);
+                    me.getDetailTab($.extend(params.data,{pageNo:page}));
                 },
                 pn: Number(data.current_page)
             });

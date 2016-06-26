@@ -38,6 +38,10 @@ var IndexPage = Class(function (opts) {
 
     initEvents: function () {
       var me = this;
+
+        me.container.off('click'); // 解除之前該容器內的所有事件委託
+
+        // -------重新綁定事件-------------
         me.container.on('click', '#add-notice-btn', function () {
             me.showAddNotice();
         });
@@ -88,9 +92,10 @@ var IndexPage = Class(function (opts) {
         
     },
     
-    getNoticeList:function () {
+    getNoticeList:function (params) {
         var me = this;
-        Ajax.get('/admin/notice/list', {}, function (data) {
+        params = $.extend({},params);
+        Ajax.get('/admin/notice/list', params, function (data) {
 
             $('#notice-list', me.container).empty().html(INDEX_PAGE.NOTICE_ITEM(data));
 
@@ -100,7 +105,7 @@ var IndexPage = Class(function (opts) {
                 pageCount: Number(data.total_count),
                 pageSize: 10,
                 callback: function(page){
-                    me.getNoticeList();
+                    me.getNoticeList({pageNo:page});
                 },
                 pn: Number(data.current_page)
             });

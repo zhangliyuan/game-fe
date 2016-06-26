@@ -15,7 +15,8 @@ var CollapseFilter = require('/components/widget/showFilter/collapse-filter.js')
 
 var ORDER_LIST = {
     LAYOUT:__inline('list.tmpl'),
-    ORDER_ITEM: __inline('order-item.tmpl')
+    ORDER_ITEM: __inline('order-item.tmpl'),
+    ORDER_DETAIL: __inline('order-detail.tmpl')
 };
 
 var FILTER_OPTIONS = [
@@ -113,6 +114,8 @@ var OrderList = Class(function (opts) {
 
         if(!params){
             params = me.getFilterData();
+        }else{
+            params = $.extend(me.getFilterData(),params);
         }
 
         Ajax.get('/admin/order/list', params, function (data) {
@@ -126,7 +129,7 @@ var OrderList = Class(function (opts) {
                 pageCount: Number(data.total_count),
                 pageSize: 10,
                 callback: function(page){
-                    me.getOrderList();
+                    me.getOrderList({pageNo:page});
                 },
                 pn: Number(data.current_page)
             });
@@ -155,7 +158,91 @@ var OrderList = Class(function (opts) {
         new CollapseFilter({
             container:'.ico-collapse'
         });
-    }
+
+        me.container.off('click');
+        me.container.on('click','#exec-search-btn', function () {
+            me.getOrderList();
+        });
+
+        me.container.on('click', '.common-filter li', function () {
+            var obj = $(this);
+            var _name = obj.data('name');
+            var _value = obj.data('value');
+            var params = {};
+            params[_name] = _value;
+            me.getOrderList(params);
+
+        });
+
+        me.container.on('click', '#order-list .operation', function () {
+           var obj = $(this);
+
+            var _operation = obj.data('oper');
+            var id = obj.closest('tr').data('id');
+            switch (_operation){
+                case 'detail':
+                    me.showOrderDetail(id);break;
+                case 'cancel':
+                    me.changeOrderStatus(id,'cancel');break;
+                case 'block':
+                    me.changeOrderStatus(id,'block');break;
+                case 'refund':
+                    me.changeOrderStatus(id,'refund');break;
+                default:
+                    console.log('do nothing');
+
+            }
+        });
+    },
+    
+    showOrderDetail: function (id) {
+        var me = this;
+
+        
+        Ajax.get('/admin/order/detail',{id:id},function (data) {
+            var content = ORDER_LIST.ORDER_DETAIL(data);
+
+            Dialog.confirm(content, {
+                'width': '800px',
+                'height': 'auto',
+                'minHeight': 0,
+                'dialogClass': 'confirm-dialog',
+                'draggable': false,
+                'show': {
+                    'effect': 'drop',
+                    'mode': 'show',
+                    'direction': 'down',
+                    'duration': 100
+                },
+                'hide': {
+                    'effect': 'drop',
+                    'direction': 'down',
+                    'duration': 200
+                },
+
+                'buttons': [{
+                    'text': '确定',
+                    'className': 'btn btn-primary',
+                    'click': function(e) {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                        e.stopPropagation();
+
+                        $(this).dialog('close');
+                    }
+                }]
+            });
+
+        });
+    },
+
+    changeOrderStatus:function (id,status) {
+        Ajax.post('/admin/order/update',{id:id, status:status}, function (data) {
+           PopTip('操作成功！！');
+        });
+    },
+    
+    destroy:null
 });
 
 module.exports=OrderList;

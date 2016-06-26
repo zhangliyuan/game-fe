@@ -7,8 +7,8 @@ var ec = require('components/common/event/event.js');
 
 
 var WINDOW_TPL={
-    LAYOUT:__inline('/components/page/layout/layout.tmpl'),
-    LEFT_NAV:__inline('/components/page/nav/nav.tmpl')
+    LAYOUT:__inline('./layout/layout.tmpl'),
+    LEFT_NAV:__inline('./nav/nav.tmpl')
 };
 
 // 页面信息
@@ -21,7 +21,7 @@ var app_name="tester";
 var View={
     winLayout:function(){
 
-        require('/components/page/nav/nav.js');
+        require('./nav/nav.js');
         $('body').html(WINDOW_TPL.LAYOUT(
             {
                 leftNav:View.winLeftNav({})
