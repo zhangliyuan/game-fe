@@ -247,7 +247,7 @@ module.exports=function(){
 
     // 默认跳转
     if(!location.hash){
-        router.redirect('#/union/list');
+        router.redirect('#/index');
     }else{
         router._onHashChange();
     }

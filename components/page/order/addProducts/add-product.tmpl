@@ -1,0 +1,215 @@
+<!--添加商品-->
+<!--訂單詳情-->
+
+<div class="add-product">
+
+    <div class="box-body">
+        <div class="form-group">
+            <label> 商品分类:</label>
+            <select class="form-control" name="class">
+                <option value="1">虚拟类</option>
+                <option value="2">实体类</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label> 商品类型:</label>
+            <select class="form-control" name="type">
+                <option value="1">话费充值</option>
+                <option value="2">游戏充值</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label> 属性:</label>
+            <select class="form-control" name="attribute">
+                <option value="1">游戏点券</option>
+                <option value="2">游戏时长</option>
+                <option value="3">月卡</option>
+                <option value="4">季卡</option>
+                <option value="5">年卡</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label> 商品名称:</label>
+            <input type="text" class="form-control" id="name" placeholder="" />
+        </div>
+
+        <div class="form-group">
+            <label> 供应商:</label>
+            <select class="form-control" name="supplier">
+                <option value="1" title="title">xxx公司1</option>
+                <option value="2" title="title">xxx公司2</option>
+                <option value="3" title="title">xxx公司3</option>
+                <option value="4" title="title">xxx公司4</option>
+                <option value="5" title="title">xxx公司5</option>
+            </select>
+        </div>
+        <div class="value-group">
+            <div class="label-wrap" style="width: 100px;display: inline-block;">
+                <label> 面值:</label>
+                <label> 进货价格:</label>
+                <label> 销售价格:</label>
+                <label> 商品数量:</label>
+            </div>
+            <div class="value-item-wrap" style="">
+                <div class="value-item" style="">
+                    <div class="item">
+                        <select class="form-control select-form" name="banknote "  data-banknote="20" >
+                            <option value="1" title="title">10元</option>
+                            <option value="2" title="title">20元</option>
+                            <option value="3" title="title">50元</option>
+                            <option value="4" title="title">100元</option>
+                            <option value="5" title="title">1000元</option>
+                        </select>
+                        <i class="fa fa-1x fa-plus-circle"></i>
+                    </div>
+                    <div class="item"> <label class="value-label"  data-banknote="20" > 20.1元</label></div>
+                    <div class="item"> <input type="text" class="form-control" name="price"  data-banknote="20" />元</div>
+                    <div class="item"> <input type="text" class="form-control" name="price"  data-banknote="20" />元</div>
+
+                </div>
+                <div class="value-item" >
+                    <div class="item">
+                        <select class="form-control select-form" name="banknote "  data-banknote="20" >
+                            <option value="1" title="title">10元</option>
+                            <option value="2" title="title">20元</option>
+                            <option value="3" title="title">50元</option>
+                            <option value="4" title="title">100元</option>
+                            <option value="5" title="title">1000元</option>
+                        </select>
+                        <i class="fa fa-1x fa-plus-circle"></i>
+                    </div>
+                    <div class="item"> <label class="value-label"  data-banknote="20" > 20.1元</label></div>
+                    <div class="item"> <input type="text" class="form-control" name="price"  data-banknote="20" />元</div>
+                    <div class="item"> <input type="text" class="form-control" name="price"  data-banknote="20" />元</div>
+
+
+                </div>
+                <div class="value-item" >
+                    <div class="item">
+                        <select class="form-control select-form" name="banknote "  data-banknote="20" >
+                            <option value="1" title="title">10元</option>
+                            <option value="2" title="title">20元</option>
+                            <option value="3" title="title">50元</option>
+                            <option value="4" title="title">100元</option>
+                            <option value="5" title="title">1000元</option>
+                        </select>
+                        <i class="fa fa-1x fa-plus-circle"></i>
+                    </div>
+                    <div class="item"> <label class="value-label"  data-banknote="20" > 20.1元</label></div>
+                    <div class="item"> <input type="text" class="form-control" name="price"  data-banknote="20" />元</div>
+                    <div class="item"> <input type="text" class="form-control" name="price"  data-banknote="20" />元</div>
+
+
+                </div>
+                <div class="value-item" >
+                    <div class="item">
+                        <select class="form-control select-form" name="banknote "  data-banknote="20" >
+                            <option value="1" title="title">10元</option>
+                            <option value="2" title="title">20元</option>
+                            <option value="3" title="title">50元</option>
+                            <option value="4" title="title">100元</option>
+                            <option value="5" title="title">1000元</option>
+                        </select>
+                        <i class="fa fa-1x fa-plus-circle"></i>
+                    </div>
+                    <div class="item"> <label class="value-label"  data-banknote="20" > 20.1元</label></div>
+                    <div class="item"> <input type="text" class="form-control" name="price"  data-banknote="20" />元</div>
+                    <div class="item"> <input type="text" class="form-control" name="price"  data-banknote="20" />元</div>
+
+
+                </div>
+
+            </div>
+             <!--<div class="form-group">
+                 <label> 面值:</label>
+                 <div class="value-item-wrap" data-type="banknote">
+                     <div class="value-item"><select class="form-control select-form" name="banknote "  data-banknote="20" >
+                         <option value="1" title="title">10元</option>
+                         <option value="2" title="title">20元</option>
+                         <option value="3" title="title">50元</option>
+                         <option value="4" title="title">100元</option>
+                         <option value="5" title="title">1000元</option>
+                     </select>
+                         <i class="fa fa-1x fa-plus-circle"></i>
+                     </div>
+                     <div class="value-item"><select class="form-control select-form" name="banknote "  data-banknote="20" >
+                         <option value="1" title="title">10元</option>
+                         <option value="2" title="title">20元</option>
+                         <option value="3" title="title">50元</option>
+                         <option value="4" title="title">100元</option>
+                         <option value="5" title="title">1000元</option>
+                     </select>
+                         <i class="fa fa-1x fa-minus-circle"></i>
+                     </div>
+                 </div>
+
+             </div>
+
+                <div class="form-group">
+                    <label> 进货价格:</label>
+                    <div class="value-item-wrap" data-type="inner-price">
+                        <div class="value-item"><label class="value-label"  data-banknote="20" > 20.1元</label></div>
+                        <div class="value-item"><label class="value-label"  data-banknote="20" > 20.1元</label></div>
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+                    <label> 销售价格:</label>
+                    <div class="value-item-wrap" data-type="price">
+                        <div class="value-item"><input type="text" class="form-control" name="price"  data-banknote="20" />元</div>
+                        <div class="value-item"><input type="text" class="form-control" name="price"  data-banknote="20" />元</div>
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+                    <label> 商品数量:</label>
+                    <div class="value-item-wrap" data-type="count">
+                        <div class="value-item"><input type="text" class="form-control" name="count" data-banknote="20" />元</div>
+                        <div class="value-item"><input type="text" class="form-control" name="count" data-banknote="20" />元</div>
+                    </div>
+
+                </div>-->
+
+        </div>
+
+
+        <div class="form-group">
+            <label> 商品图片:</label>
+            <input type="hidden"  class="form-control" name="image" id="product-thumbnail" value=""/>
+            <input type="file" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>详情说明:</label>
+            <textarea  id="remark" name="remark" class="form-control" rows="5" placeholder="这里是文字编辑器，只支持文字限制最多1000字">
+
+            </textarea>
+        </div>
+
+        <div class="form-group">
+            <label> 开始时间:</label>
+            <select class="form-control online-time-select" name="online-time">
+                <option value="1">立即上线</option>
+                <option value="2">设定时间</option>
+                <option value="3">放入仓库</option>
+            </select>
+            <div  class="date-single none">
+                <li class="form-control laydate-icon data-item" id="set-online-time"></li>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="box-footer">
+        <button type="submit" class="btn btn-primary">添加</button>
+    </div>
+
+
+</div>

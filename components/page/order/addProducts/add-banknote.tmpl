@@ -1,0 +1,13 @@
+<div class="value-item" data-banknote="{{banknote}}" data-id="{{uuid}}">
+    <div class="item">
+        <select class="form-control select-form" name="banknote" value="{{banknote}}"  data-banknote="{{banknote}}" >
+            {{#each banknotes}}
+            <option value="{{value}}" data-inner-price="{{innerPrice}}" title="text">{{text}}</option>
+            {{/each}}
+        </select>
+        <i class="fa fa-1x fa-minus-circle"></i>
+    </div>
+    <div class="item"> <label class="value-label"  data-banknote="20" > {{innerPrice}}元</label></div>
+    <div class="item">  <input type="text" class="form-control" name="price" max="{{innerPrice}}" data-banknote="{{banknote}}" />元</div>
+    <div class="item"> <input type="text" class="form-control" name="count" value="1000" data-banknote="{{banknote}}" />件</div>
+</div>
