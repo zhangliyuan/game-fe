@@ -128,6 +128,7 @@ var AddProducts = Class(function (opts) {
             var value = obj.val();
             var innerPrice = obj.find('option[value="'+value+'"]').data('inner-price');
             obj.closest('.value-item').find('.value-label').text(innerPrice + '元');
+            obj.closest('.value-item').find('.form-control[name="price"]').val(innerPrice);
         });
 
         $('.online-time-select',me.container).off('change');
@@ -153,7 +154,7 @@ var AddProducts = Class(function (opts) {
                 productData[name] = value;
             });
 
-            productData['banknotes'] = me.getBanknoteData();
+            productData['banknotes'] = $.json.stringify(me.getBanknoteData());
             me.addProductData(productData);
         });
     },
