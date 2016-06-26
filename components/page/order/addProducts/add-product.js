@@ -34,7 +34,6 @@ var AddProducts = Class(function (opts) {
 
         me.render();
 
-        me.initOnlineTime();
         me.initEvent();
     
 
@@ -49,6 +48,9 @@ var AddProducts = Class(function (opts) {
         }else{
             me.initSelectForm();
         }
+
+        me.initOnlineTime();
+
     },
     
     getBaseInfo: function () {
@@ -131,8 +133,8 @@ var AddProducts = Class(function (opts) {
             obj.closest('.value-item').find('.form-control[name="price"]').val(innerPrice);
         });
 
-        $('.online-time-select',me.container).off('change');
-        $('.online-time-select',me.container).on('change',function () {
+        me.container.off('change');
+        me.container.on('change','.online-time-select',function () {
             var obj = $(this);
             var value = obj.val();
 
@@ -154,7 +156,11 @@ var AddProducts = Class(function (opts) {
                 productData[name] = value;
             });
 
+            if(productData['online-time'] ==2 ){
+                productData['onlineTime'] = $('#set-online-time').text();
+            }
             productData['banknotes'] = $.json.stringify(me.getBanknoteData());
+
             me.addProductData(productData);
         });
     },
