@@ -3,7 +3,7 @@
 
 <div class="add-product">
 
-    <div class="box-body">
+    <div class="box-body ">
         <div class="form-group">
             <label> 商品分类:</label>
             <select class="form-control" name="class">
@@ -33,7 +33,7 @@
 
         <div class="form-group">
             <label> 商品名称:</label>
-            <input type="text" class="form-control" id="name" placeholder="" />
+            <input type="text" class="form-control" id="name" name="name" placeholder="" />
         </div>
 
         <div class="form-group">
@@ -123,59 +123,7 @@
                 </div>
 
             </div>
-             <!--<div class="form-group">
-                 <label> 面值:</label>
-                 <div class="value-item-wrap" data-type="banknote">
-                     <div class="value-item"><select class="form-control select-form" name="banknote "  data-banknote="20" >
-                         <option value="1" title="title">10元</option>
-                         <option value="2" title="title">20元</option>
-                         <option value="3" title="title">50元</option>
-                         <option value="4" title="title">100元</option>
-                         <option value="5" title="title">1000元</option>
-                     </select>
-                         <i class="fa fa-1x fa-plus-circle"></i>
-                     </div>
-                     <div class="value-item"><select class="form-control select-form" name="banknote "  data-banknote="20" >
-                         <option value="1" title="title">10元</option>
-                         <option value="2" title="title">20元</option>
-                         <option value="3" title="title">50元</option>
-                         <option value="4" title="title">100元</option>
-                         <option value="5" title="title">1000元</option>
-                     </select>
-                         <i class="fa fa-1x fa-minus-circle"></i>
-                     </div>
-                 </div>
 
-             </div>
-
-                <div class="form-group">
-                    <label> 进货价格:</label>
-                    <div class="value-item-wrap" data-type="inner-price">
-                        <div class="value-item"><label class="value-label"  data-banknote="20" > 20.1元</label></div>
-                        <div class="value-item"><label class="value-label"  data-banknote="20" > 20.1元</label></div>
-                    </div>
-
-                </div>
-
-
-                <div class="form-group">
-                    <label> 销售价格:</label>
-                    <div class="value-item-wrap" data-type="price">
-                        <div class="value-item"><input type="text" class="form-control" name="price"  data-banknote="20" />元</div>
-                        <div class="value-item"><input type="text" class="form-control" name="price"  data-banknote="20" />元</div>
-                    </div>
-
-                </div>
-
-
-                <div class="form-group">
-                    <label> 商品数量:</label>
-                    <div class="value-item-wrap" data-type="count">
-                        <div class="value-item"><input type="text" class="form-control" name="count" data-banknote="20" />元</div>
-                        <div class="value-item"><input type="text" class="form-control" name="count" data-banknote="20" />元</div>
-                    </div>
-
-                </div>-->
 
         </div>
 
@@ -188,9 +136,7 @@
 
         <div class="form-group">
             <label>详情说明:</label>
-            <textarea  id="remark" name="remark" class="form-control" rows="5" placeholder="这里是文字编辑器，只支持文字限制最多1000字">
-
-            </textarea>
+            <textarea  id="remark" name="remark" class="form-control" rows="5" placeholder="这里是文字编辑器，只支持文字限制最多1000字"></textarea>
         </div>
 
         <div class="form-group">
@@ -208,7 +154,7 @@
 
     </div>
     <div class="box-footer">
-        <button type="submit" class="btn btn-primary">添加</button>
+        <button type="submit" id="confirm-add-btn" class="btn btn-primary">添加</button>
     </div>
 
 

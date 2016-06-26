@@ -44,34 +44,48 @@ var AddProducts = Class(function (opts) {
         var me = this;
         var _html = ADD_PRODUCTS.LAYOUT({});
         me.container.empty().html(_html);
-        me.getBaseInfo();
+        if(!me.addBaseData){
+            me.getBaseInfo();
+        }else{
+            me.initSelectForm();
+        }
     },
     
     getBaseInfo: function () {
         var me = this;
         Ajax.get('/admin/product/add_info',{},function (data) {
-            var supplier = me.container.find('.form-control[name="supplier"]');
+            me.addBaseData = data;
+            me.initSelectForm(data);
 
-            if(data.suppliers){
-                supplier.empty();
-                $.each(data.suppliers,function (i,v) {
-                    supplier.append('<option value="'+v.value+'" title="'+v.text+'">'+v.text+'</option>');
-                });
-            }else{
-                PopTip('供应商信息为空');
-                return;
-            }
-            
-            var banknotes = me.container.find('.value-item-wrap');
-            if(data.banknotes){
-                me.banknotes = [].concat(data.banknotes);
-                banknotes.empty();
-                me.addBanknote(data.banknotes[0]);
-
-                var _banknoteWrap = me.container.find('.value-item-wrap');
-                _banknoteWrap.find('.fa-minus-circle').addClass('fa-plus-circle').removeClass('fa-minus-circle');
-            }
         });
+    },
+
+    initSelectForm:function (data) {
+        var me = this;
+        var supplier = me.container.find('.form-control[name="supplier"]');
+        if(!data){
+            data = me.addBaseData;
+        }
+
+        if(data.suppliers){
+            supplier.empty();
+            $.each(data.suppliers,function (i,v) {
+                supplier.append('<option value="'+v.value+'" title="'+v.text+'">'+v.text+'</option>');
+            });
+        }else{
+            PopTip('供应商信息为空');
+            return;
+        }
+
+        var banknotes = me.container.find('.value-item-wrap');
+        if(data.banknotes){
+            me.banknotes = [].concat(data.banknotes);
+            banknotes.empty();
+            me.addBanknote(data.banknotes[0]);
+
+            var _banknoteWrap = me.container.find('.value-item-wrap');
+            _banknoteWrap.find('.fa-minus-circle').addClass('fa-plus-circle').removeClass('fa-minus-circle');
+        }
     },
 
     addBanknote: function (item) {
@@ -114,7 +128,7 @@ var AddProducts = Class(function (opts) {
             var value = obj.val();
             var innerPrice = obj.find('option[value="'+value+'"]').data('inner-price');
             obj.closest('.value-item').find('.value-label').text(innerPrice + '元');
-        }),
+        });
 
         $('.online-time-select',me.container).off('change');
         $('.online-time-select',me.container).on('change',function () {
@@ -126,6 +140,50 @@ var AddProducts = Class(function (opts) {
             }else{
                 obj.next().addClass('none');
             }
+        });
+
+
+        me.container.on('click','#confirm-add-btn', function () {
+            var productData = {};
+            me.container.find('.box-body > .form-group').each(function () {
+                var obj = $(this);
+                var item = obj.find('.form-control');
+                var name = item.attr('name');
+                var value = item.val();
+                productData[name] = value;
+            });
+
+            productData['banknotes'] = me.getBanknoteData();
+            me.addProductData(productData);
+        });
+    },
+
+    getBanknoteData: function () {
+        var me = this;
+        var banknoteData = [];
+        var dataItems = me.container.find('.value-item-wrap .value-item');
+
+        dataItems.each(function (i,v) {
+            var _data = {};
+            $(v).find('.form-control').each(function () {
+                var name = $(this).attr('name');
+                var value = $(this).val();
+
+                _data[name] = value;
+            });
+
+            banknoteData.push(_data);
+        });
+
+        return banknoteData;
+    },
+
+    addProductData: function (params) {
+      var me = this;
+
+        Ajax.post('/admin/product/add',params, function (data) {
+           PopTip('添加成功！！');
+            me.render();
         });
     },
 
