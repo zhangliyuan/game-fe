@@ -1,0 +1,18 @@
+{
+  "code": 0,
+  "msg": "success",
+  "data":{
+    "id":"123456799",
+    "gameName":"魔兽世界点卡3000点",
+    "packageName":"翼新年礼包",
+    "packageCDK":"KJHJR3HB6BGSK45HN",
+    "status":"success",
+    "phoneNo":"13212345678",
+    "nickname":"体知悉",
+    "receiveTime":"2014-11-21",
+    "createTime":"2013-05-25",
+    "packageNo":"15816666",
+    "supplier":"隔壁吴老二",
+    "usedAbleTime":"2014-11-21至2014-11-21"
+  }
+}
