@@ -26,10 +26,16 @@
 	--lib (第三方库)
 --doc (markdown)
 --output (编译产出)
+--test
+    --api
+        --game // 接口测试数据（对应server.conf）
 --views (页面入口)
-	--union
-		index.vm
-		router.js  // 页面路由
+	--layout
+		layout.tmpl
+	--nav
+	    nav.tmpl  // 导航
+	--index.html // 入口html
+	--router.js  // 页面路由
 okay-conf.js
-router.conf (api及模板变量路由)
+server.conf (api及模板变量路由)
 ```
