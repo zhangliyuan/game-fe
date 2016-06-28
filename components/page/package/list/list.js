@@ -160,7 +160,15 @@ var PackageList = Class(function (opts) {
                 case 'upload':
                     me.changePackageStatus(id,status);break;
                 case 'delete':
-                    me.deletePackage(id);break;
+                    Dialog.confirm('确定要删除该礼包？',{
+                        onaccept:function () {
+                            me.deletePackage(id);
+                            $(this).dialog('close');
+                        }
+                    });
+                    break;
+
+
                 default:
                     console.log('do nothing');
 
@@ -173,6 +181,8 @@ var PackageList = Class(function (opts) {
 
 
         Ajax.get('/admin/package/detail',{id:id},function (data) {
+
+            data.distributeType = ['沃曲磊','天啊噜','历史的天看房'][data.distributeType];
             var content = PACKAGE_LIST.PACKAGE_DETAIL(data);
 
             Dialog.confirm(content, {

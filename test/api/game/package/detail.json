@@ -4,19 +4,24 @@
   "data":{
 
     "id":"123456799",
-    "orderNo":"123456799",
-    "productName":"魔兽世界点卡3000点",
-    "productThumbnail":"http://placehold.it/36x36",
-    "price":"20",
-    "count":"5",
-    "buyer":"王五",
-    "status":"success",
-    "totalCost":100,
-    "remark":"我是备注，通》充值业务某手world暂停通告，请全体知悉",
-    "chargeAccount":"电信一区/安德鲁/335423651@qq.com",
-    "payType":"weChat",
-    "payTime":"2013-05-25",
-    "type":"game",
-    "createTime":"2014-11-21"
+    "gameName":"魔兽世界点卡3000点",
+    "packageName":"翼新年礼包",
+    "packageCDK":"KJHJR3HB6BGSK45HN",
+    "status":"start",
+    "phoneNo":"13212345678",
+    "nickname":"体知悉",
+    "receiveTime":"2014-11-21",
+    "createTime":"2013-05-25",
+    "onShelfTime":"2013-05-25",
+    "packageNo":"15816666",
+    "supplier":"隔壁吴老二",
+    "type":"端午礼包",
+    "count":235423,
+    "distributeCount":2343,
+    "distributeType":"2",
+    "packageContent":["lsjdfl","守护石粉末x5","洪门神功快速挑战符x5","圣诞筒袜4","守护石粉末5","高级宝玉神物5"],
+    "activeMethod":"http://bns.qq.com/web201506/exchange.shtml",
+    "startTime":"2014-01-12",
+    "endTime":"2014-11-12"
   }
 }

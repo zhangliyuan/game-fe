@@ -1,1 +1,109 @@
-添加礼包
+<!--添加礼包-->
+
+<div class="add-page add-package">
+
+    <div class="box-body ">
+        <div class="form-group">
+            <label> 礼包分类:</label>
+            <select class="form-control" name="class">
+                <option value="1">虚拟类</option>
+                <option value="2">实体类</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label> 游戏名称:</label>
+            <!--<ul class="form-control select-form" data-name="type">
+                <li data-value="1">暗黑破坏神</li>
+                <li data-value="2">坦克世界</li>
+                <li data-value="3"><i class="fa fa-plus"></i>新增游戏</li>
+            </ul>-->
+            <select class="form-control" name="gameName">
+                <option value="1">暗黑破坏神</option>
+                <option value="2">坦克世界</option>
+                <option value="2">洛克王国</option>
+            </select>
+            <a class="btn btn-primary" id="add_game"><i class="fa fa-plus"></i> 新增游戏</a>
+        </div>
+        <div class="form-group">
+            <label> 礼包名称:</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="" />
+        </div>
+        <div class="form-group">
+            <label> 礼包数量:</label>
+            <input type="text" class="form-control" id="count" name="count" placeholder="" />
+        </div>
+
+        <div class="form-group">
+            <label> 人员限制:</label>
+            <select class="form-control" name="attribute">
+                <option value="1">游戏点券</option>
+                <option value="2">游戏时长</option>
+                <option value="3">月卡</option>
+                <option value="4">季卡</option>
+                <option value="5">年卡</option>
+            </select>
+        </div>
+
+
+
+        <div class="form-group">
+            <label> 发放规则:</label>
+            <select class="form-control" name="supplier">
+                <option value="1" title="title">xxx公司1</option>
+                <option value="2" title="title">xxx公司2</option>
+                <option value="3" title="title">xxx公司3</option>
+                <option value="4" title="title">xxx公司4</option>
+                <option value="5" title="title">xxx公司5</option>
+            </select>
+        </div>
+
+
+
+        <div class="form-group">
+            <label> 礼包图片:</label>
+            <input type="hidden"  class="form-control" name="image" id="product-thumbnail" value=""/>
+            <input type="file" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label>礼包内容:</label>
+            <textarea  id="remark" name="remark" class="form-control" rows="5" placeholder="这里是文字编辑器，只支持文字限制最多1000字"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>使用方法:</label>
+            <textarea  id="usedMethod" name="usedMethod" class="form-control" rows="5" placeholder="这里是文字编辑器，只支持文字限制最多1000字"></textarea>
+        </div>
+        <div class="form-group">
+            <label> 游戏官网:</label>
+            <input type="text" class="form-control" id="213" name="count" placeholder="" />
+        </div>
+        <div class="form-group">
+            <label> 注册地址:</label>
+            <input type="text" class="form-control" id="43" name="count" placeholder="" />
+        </div>
+        <div class="form-group">
+            <label> 下载地址:</label>
+            <input type="text" class="form-control" id="5345" name="count" placeholder="" />
+        </div>
+        <div class="form-group">
+            <label> 开始时间:</label>
+            <select class="form-control online-time-select" name="online-time">
+                <option value="1">立即上线</option>
+                <option value="2">设定时间</option>
+                <option value="3">放入仓库</option>
+            </select>
+            <div  class="date-single none">
+                <li class="form-control laydate-icon data-item" id="set-online-time"></li>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="box-footer">
+        <button type="submit" id="confirm-add-btn" class="btn btn-primary">添加</button>
+    </div>
+
+
+</div>
