@@ -1,0 +1,19 @@
+{{#each list}}
+
+<tr data-id="{{id}}" class="order-item">
+    <td>{{orderNo}}</td>
+    <td><img src="{{productThumbnail}}" class="union-item-img" />{{productName}}</td>
+    <td>{{price}}</td>
+    <td>{{count}}</td>
+    <td>{{buyer}}</td>
+    <td>{{status}}</td>
+    <td>{{totalCost}}</td>
+    <td>{{createTime}}</td>
+    <td>
+        <a class="operation " data-oper="detail">更多</a>
+        <a class="operation " data-oper="cancel">取消订单</a>
+        <a class="operation " data-oper="block">锁定订单</a>
+        <a class="operation " data-oper="refund">退款</a>
+    </td>
+</tr>
+{{/each}}

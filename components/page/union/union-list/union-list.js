@@ -136,7 +136,7 @@ var Union = Class(function(opts){
             params = $.extend({},me.getFilterData(),params);
         }
 
-        Ajax.get('/admin/union/list', params, function (data) {
+        Ajax.get('/admin/union_list', params, function (data) {
 
             me.renderUnionList(data.list);
 
@@ -254,7 +254,7 @@ var Union = Class(function(opts){
                     
                     var operation = obj.val();
                     
-                    Ajax.get('/admin/union/block', {
+                    Ajax.get('/admin/union_block', {
                         type:operation,
                         id: me.cUnionId
                     }, function(data){

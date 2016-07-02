@@ -50,10 +50,10 @@ fis.util.map([{
 	port: '8999'
 }], function (index, item) {
 
-	var static_domain   = item.host+':8080',
+	var static_domain   = item.host+':8080/game',
 		static_path     = item.host+':'+item.port+'/receiver',
 		vm_path       = item.host + ':' + item.port + '/receiver',
-		release_path = '/usr/local/tomcat/server/webapps/ROOT';
+		release_path = '/usr/local/tomcat/apache-tomcat-7.0.70/webapps/game';
 
 
 	fis.util.map(['', 'm'], function (_index, _val) {

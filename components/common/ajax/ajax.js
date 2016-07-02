@@ -30,7 +30,7 @@ var Base={
 		return $.hashCode.value( Base.getUUID() ) & 0x7fffffff;
 	},
 	getRequestURL:function(url){
-		return url;
+		return '/game' + url;
 	},
 	/**
 	 * 是否当前请求接口锁定

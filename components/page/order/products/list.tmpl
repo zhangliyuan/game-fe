@@ -1,0 +1,63 @@
+<!--订单列表-->
+<div class="order-list">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box" style="max-width: 800px;">
+                <div  id="filter-wrap"></div>
+
+                <div class="operation-btn-wrap">
+                    <button id="exec-search-btn" class="btn btn-default">搜索订单</button>
+                    <button id="export-table-data" class="btn btn-default">批量导出</button>
+                </div>
+
+                <div class="text-center ico-collapse" data-toggle="collapse" ><span>收起</span><i class="fa fa-lg fa-caret-up"></i></div>
+
+            </div>
+
+            <div class="box" style="border-top:0;">
+                <!--<div class="box-header">
+                    <h3 class="box-title">Data Table With Full Features</h3>
+                </div>--><!-- /.box-header -->
+                <div class="box-body table-responsive">
+
+                    <div>
+                        <div class="box-body no-padding">
+                            <div class="common-filter">
+                                <ul class="list-unstyled  list-inline">
+                                    <li data-name="status" data-value="value">等待用户付款</li>
+                                    <li data-name="status" data-value="value">等待发货</li>
+                                    <li data-name="status" data-value="value">已发货</li>
+                                    <li data-name="status" data-value="value">退款订单</li>
+                                    <li data-name="status" data-value="value">成功订单</li>
+                                    <li data-name="status" data-value="value">取消订单</li>
+                                </ul>
+                            </div>
+                            <table class="table table-striped">
+                                <thead><tr>
+                                    <th style="width: 10px">订单编号</th>
+                                    <th>商品名称</th>
+                                    <th>单价</th>
+                                    <th>数量</th>
+                                    <th>用户</th>
+                                    <th>状态</th>
+                                    <th>总金额</th>
+                                    <th>下单时间</th>
+                                    <th></th>
+                                </tr></thead>
+                                <tbody id="order-list">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="order-list-page-wrap" class="page-wrap">
+
+                    </div>
+                </div>
+
+
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
+    </div>
+</div>

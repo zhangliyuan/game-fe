@@ -66,7 +66,7 @@ module.exports=function(){
         .addRoute('#/order/list', function(req, next){
             console.log(req);
             // 组件初始化参数
-            require.async(['components/page/order/list/list.js'],function(Page){
+            require.async(['components/page/order/order-list/list.js'],function(Page){
                 // 组件初始化参数
                 var page = new Page({
                     container:'.admin-content'
