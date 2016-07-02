@@ -86,7 +86,7 @@ var UnionRebate = Class(function(opts){
         var me = this;
         var params = params ||　me.getFilterData();
 
-        Ajax.get('/admin/union/rebate_list', params, function (data) {
+        Ajax.get('/admin/union_rebateList', params, function (data) {
 
             me.renderUnionRebateList(data.list);
         });

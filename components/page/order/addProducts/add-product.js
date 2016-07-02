@@ -55,7 +55,7 @@ var AddProducts = Class(function (opts) {
     
     getBaseInfo: function () {
         var me = this;
-        Ajax.get('/admin/product/add_info',{},function (data) {
+        Ajax.get('/admin/product_addInfo',{},function (data) {
             me.addBaseData = data;
             me.initSelectForm(data);
 
@@ -188,7 +188,7 @@ var AddProducts = Class(function (opts) {
     addProductData: function (params) {
       var me = this;
 
-        Ajax.post('/admin/product/add',params, function (data) {
+        Ajax.post('/admin/product_add',params, function (data) {
            PopTip('添加成功！！');
             me.render();
         });

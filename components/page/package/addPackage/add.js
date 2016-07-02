@@ -45,7 +45,7 @@ var AddPackage = Class(function (opts) {
 
     getBaseInfo: function () {
         var me = this;
-        Ajax.get('/admin/product/add_info',{},function (data) {
+        Ajax.get('/admin/product_addInfo',{},function (data) {
             me.addBaseData = data;
             me.initSelectForm(data);
 
@@ -105,7 +105,7 @@ var AddPackage = Class(function (opts) {
                onaccept:function () {
                    var dialog = $(this);
                    var name = $('#game_name').val();
-                   Ajax.post('/admin/package/add',{name:name}, function (data) {
+                   Ajax.post('/admin/package_add',{name:name}, function (data) {
                        obj.siblings('select').append('<option value="'+data.value+'">'+data.name+'</option>').val(data.value);
 
                         dialog.dialog('close');
@@ -120,7 +120,7 @@ var AddPackage = Class(function (opts) {
     addProductData: function (params) {
         var me = this;
 
-        Ajax.post('/admin/product/add',params, function (data) {
+        Ajax.post('/admin/product_add',params, function (data) {
             PopTip('添加成功！！');
             me.render();
         });

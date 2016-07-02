@@ -113,7 +113,7 @@ var PackageList = Class(function (opts) {
             params = $.extend(me.getFilterData(),params);
         }
 
-        Ajax.get('/admin/package/list', params, function (data) {
+        Ajax.get('/admin/package_list', params, function (data) {
 
             //me.renderOrderList(data);
             $('#package-list', me.container).empty().append(PACKAGE_LIST.PACKAGE_ITEM(data));
@@ -180,7 +180,7 @@ var PackageList = Class(function (opts) {
         var me = this;
 
 
-        Ajax.get('/admin/package/detail',{id:id},function (data) {
+        Ajax.get('/admin/package_detail',{id:id},function (data) {
 
             data.distributeType = ['沃曲磊','天啊噜','历史的天看房'][data.distributeType];
             var content = PACKAGE_LIST.PACKAGE_DETAIL(data);
@@ -226,13 +226,13 @@ var PackageList = Class(function (opts) {
         return filterData;
     },
     changePackageStatus:function (id,status) {
-        Ajax.post('/admin/package/update',{id:id, status:status}, function (data) {
+        Ajax.post('/admin/package_update',{id:id, status:status}, function (data) {
             PopTip('操作成功！！');
         });
     },
     deletePackage:function (id) {
         // TODO 添加确认弹框
-        Ajax.post('/admin/package/delete',{id:id}, function (data) {
+        Ajax.post('/admin/package_delete',{id:id}, function (data) {
             PopTip('操作成功！！');
         });
     }

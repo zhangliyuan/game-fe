@@ -118,7 +118,7 @@ var OrderList = Class(function (opts) {
             params = $.extend(me.getFilterData(),params);
         }
 
-        Ajax.get('/admin/order/list', params, function (data) {
+        Ajax.get('/admin/order_list', params, function (data) {
 
             //me.renderOrderList(data);
             $('#order-list', me.container).empty().append(ORDER_LIST.ORDER_ITEM(data));
@@ -199,7 +199,7 @@ var OrderList = Class(function (opts) {
         var me = this;
 
         
-        Ajax.get('/admin/order/detail',{id:id},function (data) {
+        Ajax.get('/admin/order_detail',{id:id},function (data) {
             var content = ORDER_LIST.ORDER_DETAIL(data);
 
             Dialog.confirm(content, {
@@ -237,7 +237,7 @@ var OrderList = Class(function (opts) {
     },
 
     changeOrderStatus:function (id,status) {
-        Ajax.post('/admin/order/update',{id:id, status:status}, function (data) {
+        Ajax.post('/admin/order_update',{id:id, status:status}, function (data) {
            PopTip('操作成功！！');
         });
     },

@@ -112,7 +112,7 @@ var PackageRecords = Class(function (opts) {
             params = $.extend(me.getFilterData(),params);
         }
 
-        Ajax.get('/admin/package_record/list', {params: $.json.stringify(params)}, function (data) {
+        Ajax.get('/admin/packageRecord_list', {params: $.json.stringify(params)}, function (data) {
 
             //me.renderOrderList(data);
             $('#package-record-list', me.container).empty().append(PACKAGE_RECORDS.PACKAGE_RECORD_ITEM(data));
@@ -163,7 +163,7 @@ var PackageRecords = Class(function (opts) {
         var me = this;
 
 
-        Ajax.get('/admin/package_record/detail',{id:id},function (data) {
+        Ajax.get('/admin/packageRecord_detail',{id:id},function (data) {
             var content = PACKAGE_RECORDS.PACKAGE_RECORD_DETAIL(data);
 
             Dialog.confirm(content, {

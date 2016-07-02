@@ -53,7 +53,7 @@ var IndexPage = Class(function (opts) {
     
     showNoticeDetail: function (obj) {
         var id = $(obj).data('id');
-        Ajax.get('/admin/notice/detail', {id:id}, function (data) {
+        Ajax.get('/admin/notice_detail', {id:id}, function (data) {
 
 
                 var content = INDEX_PAGE.NOTICE_DETAIL(data);
@@ -95,7 +95,7 @@ var IndexPage = Class(function (opts) {
     getNoticeList:function (params) {
         var me = this;
         params = $.extend({},params);
-        Ajax.get('/admin/notice/list', params, function (data) {
+        Ajax.get('/admin/notice_list', params, function (data) {
 
             $('#notice-list', me.container).empty().html(INDEX_PAGE.NOTICE_ITEM(data));
 
@@ -140,7 +140,7 @@ var IndexPage = Class(function (opts) {
                     var title = $('#notice-title').val();
                     var content = $('#notice-content').val();
 
-                    Ajax.get('/admin/notice/add', {
+                    Ajax.get('/admin/notice_add', {
                         title:title,
                         content: content
                     }, function(data){
@@ -166,7 +166,7 @@ var IndexPage = Class(function (opts) {
 
                     var _dialog = this;
 
-                    Ajax.get('/admin/notice/add', {
+                    Ajax.get('/admin/notice_add', {
                         title:title,
                         content: content
                     }, function(data){
