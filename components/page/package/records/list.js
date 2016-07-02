@@ -62,7 +62,7 @@ var FILTER_OPTIONS = [
         name:'status',
         type:'select',
         options:[
-            {text:'全部', value:'0'},
+            {text:'全部', value:''},
             {text:'已淘号', value:'1'},
             {text:'未淘号', value:'2'}
         ],
@@ -112,7 +112,7 @@ var PackageRecords = Class(function (opts) {
             params = $.extend(me.getFilterData(),params);
         }
 
-        Ajax.get('/admin/package_record/list', params, function (data) {
+        Ajax.get('/admin/package_record/list', {params: $.json.stringify(params)}, function (data) {
 
             //me.renderOrderList(data);
             $('#package-record-list', me.container).empty().append(PACKAGE_RECORDS.PACKAGE_RECORD_ITEM(data));

@@ -60,7 +60,7 @@ var FILTER_OPTIONS = [
         name:'status',
         type:'select',
         options:[
-            {text:'全部', value:'0'},
+            {text:'全部', value:''},
             {text:'正常', value:'1'},
             {text:'异常', value:'2'},
             {text:'封停', value:'3'}
@@ -80,9 +80,9 @@ var FILTER_OPTIONS = [
         name:'type',
         type:'select',
         options:[
-            {text:'全部', value:'0'},
-            {text:'公司/组织', value:'1'},
-            {text:'个人', value:'2'}
+            {text:'全部', value:''},
+            {text:'公司/组织', value:'2'},
+            {text:'个人', value:'1'}
         ],
         placeholder:'',
         validate: null

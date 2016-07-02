@@ -50,7 +50,7 @@ var FILTER_OPTIONS = [
         name:'status',
         type:'select',
         options:[
-            {text:'全部', value:'0'},
+            {text:'全部', value:''},
             {text:'交易成功', value:'1'},
             {text:'等待发货', value:'2'},
             {text:'已退款', value:'3'},
@@ -74,7 +74,7 @@ var FILTER_OPTIONS = [
         name:'type',
         type:'select',
         options:[
-            {text:'全部', value:'0'},
+            {text:'全部', value:''},
             {text:'游戏充值', value:'1'},
             {text:'话费充值', value:'2'}
         ],

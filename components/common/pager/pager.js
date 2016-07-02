@@ -26,6 +26,7 @@ var Pager = uiClass(function(options) {
 	render: function() {
 		this.check();
 		if ( isNaN(this.totalPage) || this.totalPage <= 1 ) {
+			$(this.target).empty();
 			return;
 		}
 		var showNum = 9,

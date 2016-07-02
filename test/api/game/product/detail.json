@@ -1,0 +1,22 @@
+{
+  "code": 0,
+  "msg": "success",
+  "data":{
+
+    "id":"123456799",
+    "productNo":"123456799",
+    "productName":"魔兽世界点卡3000点",
+    "productThumbnail":"http://placehold.it/36x36",
+    "banknote":"20",
+    "type":"1",
+    "innerPrice":"17",
+    "price":"25",
+    "stock":"123",
+    "totalCount":"234234",
+    "status":"2",
+    "class":"1",
+    "description":"本商品是直接充值到您的战网账户，请充值完毕到战网",
+    "onlineAddress":"http://book.half.com",
+    "supplier":"禄游戏充值游戏公司"
+  }
+}

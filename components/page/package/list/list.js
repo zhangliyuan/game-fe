@@ -31,7 +31,7 @@ var FILTER_OPTIONS = [
         name:'type',
         type:'select',
         options:[
-            {text:'全部', value:'0'},
+            {text:'全部', value:''},
             {text:'端游礼包', value:'1'},
             {text:'手游礼包', value:'2'}
         ],
@@ -50,7 +50,7 @@ var FILTER_OPTIONS = [
         name:'distribute-type',
         type:'select',
         options:[
-            {text:'全部', value:'0'},
+            {text:'全部', value:''},
             {text:'限制发放', value:'1'},
             {text:'无限制发放', value:'2'}
         ],
@@ -69,7 +69,7 @@ var FILTER_OPTIONS = [
         name:'status',
         type:'select',
         options:[
-            {text:'全部', value:'0'},
+            {text:'全部', value:''},
             {text:'正在发放', value:'1'},
             {text:'停止发放', value:'2'}
         ],

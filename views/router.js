@@ -53,7 +53,6 @@ module.exports=function(){
         // 作业按学生批改作业
         // 按学生查看修改为按学生批改2016-03-21
         .addRoute('#/index', function(req, next){
-            console.log(req);
             // 组件初始化参数
             require.async(['components/page/index/index.js'],function(Page){
                 // 组件初始化参数
@@ -64,7 +63,6 @@ module.exports=function(){
             });
         })
         .addRoute('#/order/list', function(req, next){
-            console.log(req);
             // 组件初始化参数
             require.async(['components/page/order/order-list/list.js'],function(Page){
                 // 组件初始化参数
@@ -74,8 +72,17 @@ module.exports=function(){
                 //page.init();
             });
         })
-        .addRoute('#/order/addProducts', function(req, next){
-            console.log(req);
+        .addRoute('#/product/list', function(req, next){
+            // 组件初始化参数
+            require.async(['components/page/order/products/list.js'],function(Page){
+                // 组件初始化参数
+                var page = new Page({
+                    container:'.admin-content'
+                });
+                //page.init();
+            });
+        })
+        .addRoute('#/product/addProducts', function(req, next){
             // 组件初始化参数
             require.async(['components/page/order/addProducts/add-product.js'],function(Page){
                 // 组件初始化参数
@@ -86,7 +93,6 @@ module.exports=function(){
             });
         })
         .addRoute('#/package/records', function(req, next){
-            console.log(req);
             // 组件初始化参数
             require.async(['components/page/package/records/list.js'],function(Page){
                 // 组件初始化参数
@@ -97,7 +103,6 @@ module.exports=function(){
             });
         })
         .addRoute('#/package/list', function(req, next){
-            console.log(req);
             // 组件初始化参数
             require.async(['components/page/package/list/list.js'],function(Page){
                 // 组件初始化参数
@@ -108,7 +113,6 @@ module.exports=function(){
             });
         })
         .addRoute('#/package/add', function(req, next){
-            console.log(req);
             // 组件初始化参数
             require.async(['components/page/package/addPackage/add.js'],function(Page){
                 // 组件初始化参数
@@ -119,7 +123,6 @@ module.exports=function(){
             });
         })
         .addRoute('#/union/list', function(req, next){
-            console.log(req);
             // 组件初始化参数
             require.async(['components/page/union/union-list/union-list.js'],function(Union){
                 // 组件初始化参数
@@ -130,7 +133,6 @@ module.exports=function(){
             });
         })
         .addRoute('#/union/check', function(req, next){
-            console.log(req);
             // 组件初始化参数
             require.async(['components/page/union/union-check/union-check.js'],function(UnionCheck){
                 // 组件初始化参数
@@ -141,7 +143,6 @@ module.exports=function(){
             });
         })
         .addRoute('#/union/rebat', function(req, next){
-            console.log(req);
             // 组件初始化参数
             require.async(['components/page/union/union-rebate/union-rebate.js'],function(UnionRebate){
                 // 组件初始化参数
@@ -152,7 +153,6 @@ module.exports=function(){
             });
         })
         .addRoute('#/customer/list', function(req, next){
-            console.log(req);
             // 组件初始化参数
             require.async(['components/page/customer/list/list.js'],function(Page){
                 // 组件初始化参数
@@ -163,7 +163,6 @@ module.exports=function(){
             });
         })
         .addRoute('#/customer_service/list', function(req, next){
-            console.log(req);
             // 组件初始化参数
             require.async(['components/page/customer-service/list/list.js'],function(Page){
                 // 组件初始化参数
@@ -174,7 +173,6 @@ module.exports=function(){
             });
         })
         .addRoute('#/customer_service/add', function(req, next){
-            console.log(req);
             // 组件初始化参数
             require.async(['components/page/customer-service/add/add.js'],function(Page){
                 // 组件初始化参数
@@ -185,7 +183,6 @@ module.exports=function(){
             });
         })
         .addRoute('#/index_video/list', function(req, next){
-            console.log(req);
             // 组件初始化参数
             require.async(['components/page/booth/list.js'],function(Page){
                 // 组件初始化参数
@@ -196,7 +193,6 @@ module.exports=function(){
             });
         })
         .addRoute('#/tools/email', function(req, next){
-            console.log(req);
             // 组件初始化参数
             require.async(['components/page/tools/email/add.js'],function(Page){
                 // 组件初始化参数
@@ -207,7 +203,6 @@ module.exports=function(){
             });
         })
         .addRoute('#/tools/sms', function(req, next){
-            console.log(req);
             // 组件初始化参数
             require.async(['components/page/tools/sms/add.js'],function(Page){
                 // 组件初始化参数
@@ -218,7 +213,6 @@ module.exports=function(){
             });
         })
         .addRoute('#/setting/logs', function(req, next){
-            console.log(req);
             // 组件初始化参数
             require.async(['components/page/settings/logs/list.js'],function(Page){
                 // 组件初始化参数
@@ -229,7 +223,6 @@ module.exports=function(){
             });
         })
         .addRoute('#/setting/account', function(req, next){
-            console.log(req);
             // 组件初始化参数
             require.async(['components/page/settings/account/list.js'],function(Page){
                 // 组件初始化参数

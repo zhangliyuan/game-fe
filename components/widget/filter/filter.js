@@ -105,7 +105,7 @@ var Filter = Class(function (opts) {
       var me = this;
         var obj = event.target;
         var _name = $(obj).data('name');
-        var _value = $.trim($(obj).val());
+        var _value = encodeURI($.trim($(obj).val()));
 
         me.setFilterData(_name, _value);
 
@@ -203,7 +203,7 @@ var Filter = Class(function (opts) {
 
          });
       }  else {
-          me.opts.filterData[name] = value;
+          me.opts.filterData[name] = encodeURI(value);
       }
     },
 

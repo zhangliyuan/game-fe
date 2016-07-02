@@ -30,32 +30,43 @@ var UNION_DETAIL_TAB = {
 var FILTER_OPTIONS = [
     {
         label:'公会编号',
-        name:'unionNo',
+        name:'guildId',
         type:'text',
         placeholder:'',
         validate: null
     },
     {
         label:'会长手机',
-        name:'directorPhone',
+        name:'umobile',
         type:'text',
         placeholder:'',
         validate: null
     },
     {
         label:'公会名称',
-        name:'unionName',
+        name:'guildName',
         type:'text',
         placeholder:'',
         validate: null
     },
     {
-        label:'身份证号',
-        name:'PID',
-        type:'text',
+        label:'创建时间',
+        name:{
+            start:'beginCreateTime',
+            end:'endCreateTime'
+        },
+        type:'date-combo',
+
         placeholder:'',
         validate: null
     },
+    /*{
+        label:'身份证号',
+        name:'uidcard',
+        type:'text',
+        placeholder:'',
+        validate: null
+    },*/
     {
         label:'游戏名称',
         name:'gameName',
@@ -68,7 +79,7 @@ var FILTER_OPTIONS = [
         name:'status',
         type:'select',
         options:[
-            {text:'全部', value:'0'},
+            {text:'全部', value:''},
             {text:'正常', value:'1'},
             {text:'异常', value:'2'},
             {text:'封停', value:'3'}
@@ -78,7 +89,7 @@ var FILTER_OPTIONS = [
     },
     {
         label:'会长名称',
-        name:'directorName',
+        name:'uname',
         type:'text',
         placeholder:'',
         validate: null
@@ -136,7 +147,8 @@ var Union = Class(function(opts){
             params = $.extend({},me.getFilterData(),params);
         }
 
-        Ajax.get('/admin/union_list', params, function (data) {
+
+        Ajax.get('/admin/union_list', {params: $.json.stringify(params)}, function (data) {
 
             me.renderUnionList(data.list);
 
@@ -146,10 +158,15 @@ var Union = Class(function(opts){
                 pageCount: Number(data.total_count),
                 pageSize: 10,
                 callback: function(page){
-                    me.getUnionList({pageNo:page});
+                    me.getUnionList({page:page});
                 },
                 pn: Number(data.current_page)
             });
+
+            if(!data.list || data.list.length == 0){
+                $("#union-list").empty().append('<p>没有任何数据</p>');
+
+            }
         });
 
     },
@@ -164,8 +181,9 @@ var Union = Class(function(opts){
         } else {
             _html = '<p>没有任何数据</p>'
         }
-
         $("#union-list").empty().append(_html);
+
+
 
     },
 

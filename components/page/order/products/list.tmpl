@@ -6,7 +6,7 @@
                 <div  id="filter-wrap"></div>
 
                 <div class="operation-btn-wrap">
-                    <button id="exec-search-btn" class="btn btn-default">搜索订单</button>
+                    <button id="exec-search-btn" class="btn btn-default">搜索商品</button>
                     <button id="export-table-data" class="btn btn-default">批量导出</button>
                 </div>
 
@@ -24,34 +24,32 @@
                         <div class="box-body no-padding">
                             <div class="common-filter">
                                 <ul class="list-unstyled  list-inline">
-                                    <li data-name="status" data-value="value">等待用户付款</li>
-                                    <li data-name="status" data-value="value">等待发货</li>
-                                    <li data-name="status" data-value="value">已发货</li>
-                                    <li data-name="status" data-value="value">退款订单</li>
-                                    <li data-name="status" data-value="value">成功订单</li>
-                                    <li data-name="status" data-value="value">取消订单</li>
+                                    <li data-name="status" data-value="value">全部商品</li>
+                                    <li data-name="status" data-value="value">负毛利商品</li>
+                                    <li data-name="status" data-value="value">库存低于20</li>
                                 </ul>
                             </div>
                             <table class="table table-striped">
                                 <thead><tr>
-                                    <th style="width: 10px">订单编号</th>
+                                    <th style="width: 10px"></th>
                                     <th>商品名称</th>
-                                    <th>单价</th>
-                                    <th>数量</th>
-                                    <th>用户</th>
-                                    <th>状态</th>
-                                    <th>总金额</th>
-                                    <th>下单时间</th>
+                                    <th>面值</th>
+                                    <th>类型</th>
+                                    <th>进价</th>
+                                    <th>售价</th>
+                                    <th>库存</th>
+                                    <th>总销量</th>
+                                    <th>在售状态</th>
                                     <th></th>
                                 </tr></thead>
-                                <tbody id="order-list">
+                                <tbody id="product-list">
 
                                 </tbody>
                             </table>
                         </div>
                     </div>
 
-                    <div id="order-list-page-wrap" class="page-wrap">
+                    <div id="product-list-page-wrap" class="page-wrap">
 
                     </div>
                 </div>

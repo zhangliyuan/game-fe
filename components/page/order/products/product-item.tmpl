@@ -1,0 +1,21 @@
+{{#each list}}
+
+<tr data-id="{{id}}" class="order-item">
+    <td><input type="checkbox" class=""/></td>
+    <td>{{productNo}}</td>
+    <td><img src="{{productThumbnail}}" class="union-item-img" />{{productName}}</td>
+    <td>{{banknote}}</td>
+    <td>{{type}}</td>
+    <td>{{innerPrice}}</td>
+    <td>{{price}}</td>
+    <td>{{stock}}</td>
+    <td>{{totalCount}}</td>
+    <td>{{status}}</td>
+    <td>
+        <a class="operation " data-oper="detail">更多</a>
+        <a class="operation " data-oper="offShelf">下架</a>
+        <a class="operation " data-oper="edit">修改</a>
+        <a class="operation copyLink" data-oper="copyLink" id="copyLink_{{productNo}}" data-init="false" data-clipboard-text="{{onlineAddress}}">复制链接</a>
+    </td>
+</tr>
+{{/each}}

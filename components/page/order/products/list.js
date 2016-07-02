@@ -13,55 +13,13 @@ var Page       = require('/components/common/pager/pager.js');
 var PopTip = require('/components/common/pop-tip/pop-tip.js');
 var CollapseFilter = require('/components/widget/showFilter/collapse-filter.js');
 
-var ORDER_LIST = {
+var PRODUCT_LIST = {
     LAYOUT:__inline('list.tmpl'),
-    ORDER_ITEM: __inline('order-item.tmpl'),
-    ORDER_DETAIL: __inline('order-detail.tmpl')
+    PRODUCT_ITEM: __inline('product-item.tmpl'),
+    PRODUCT_DETAIL: __inline('product-detail.tmpl')
 };
 
 var FILTER_OPTIONS = [
-    {
-        label:'订单编号',
-        name:'orderNo',
-        type:'text',
-        placeholder:'',
-        validate: null
-    },
-    {
-        label:'下单时间',
-        name:{
-            start:'startDate',
-            end:'endDate'
-        },
-        type:'date-combo',
-
-        placeholder:'',
-        validate: null
-    },
-    {
-        label:'用户账号',
-        name:'userAccount',
-        type:'text',
-        placeholder:'',
-        validate: null
-    },
-    {
-        label:'订单状态',
-        name:'status',
-        type:'select',
-        options:[
-            {text:'全部', value:'0'},
-            {text:'交易成功', value:'1'},
-            {text:'等待发货', value:'2'},
-            {text:'已退款', value:'3'},
-            {text:'用户取消', value:'4'},
-            {text:'订单关闭', value:'5'},
-            {text:'超时关闭', value:'6'},
-            {text:'订单锁定', value:'7'}
-        ],
-        placeholder:'',
-        validate: null
-    },
     {
         label:'商品名称',
         name:'productName',
@@ -70,27 +28,65 @@ var FILTER_OPTIONS = [
         validate: null
     },
     {
-        label:'订单类型',
+        label:'商品类型',
         name:'type',
         type:'select',
         options:[
-            {text:'全部', value:'0'},
-            {text:'游戏充值', value:'1'},
-            {text:'话费充值', value:'2'}
+            {text:'全部', value:''},
+            {text:'话费充值', value:'1'},
+            {text:'游戏充值', value:'2'}
+        ],
+        placeholder:'',
+        validate: null
+    },
+    {
+        label:'商品编号',
+        name:'productNo',
+        type:'text',
+        placeholder:'',
+        validate: null
+    },
+    {
+        label:'商品分类',
+        name:'class',
+        type:'select',
+        options:[
+            {text:'全部', value:''},
+            {text:'虚拟类', value:'1'},
+            {text:'实体类', value:'2'}
+        ],
+        placeholder:'',
+        validate: null
+    },
+    {
+        label:'商品面值',
+        name:'banknote',
+        type:'text',
+        placeholder:'',
+        validate: null
+    },
+    {
+        label:'发布状态',
+        name:'type',
+        type:'select',
+        options:[
+            {text:'全部', value:''},
+            {text:'售卖中', value:'1'},
+            {text:'为售卖', value:'2'}
         ],
         placeholder:'',
         validate: null
     }
 ];
 
-var UNION_STATUS = {
+var PRODUCT_STATUS = {
     'normal': '正常',
     'blocked': '封停',
     'error': '异常'
 };
 
 
-var OrderList = Class(function (opts) {
+var ProductList = Class(function (opts) {
     this.opts = $.extend({
         container:'.admin-content'
     },opts);
@@ -104,12 +100,12 @@ var OrderList = Class(function (opts) {
             container:'#filter-wrap',
             renderData:FILTER_OPTIONS
         });
-        me.getOrderList();
+        me.getProductList();
 
         me.initEvents();
     },
 
-    getOrderList: function (params) {
+    getProductList: function (params) {
         var me = this;
 
         if(!params){
@@ -118,18 +114,20 @@ var OrderList = Class(function (opts) {
             params = $.extend(me.getFilterData(),params);
         }
 
-        Ajax.get('/admin/order/list', params, function (data) {
+        Ajax.get('/admin/product_list', params, function (data) {
 
-            //me.renderOrderList(data);
-            $('#order-list', me.container).empty().append(ORDER_LIST.ORDER_ITEM(data));
+            //me.renderProductList(data);
+            $('#product-list', me.container).empty().append(PRODUCT_LIST.PRODUCT_ITEM(data));
+
+
 
             new Page({
-                target: '#order-list-page-wrap',
+                target: '#product-list-page-wrap',
                 type: 'ajax',
                 pageCount: Number(data.total_count),
                 pageSize: 10,
                 callback: function(page){
-                    me.getOrderList({pageNo:page});
+                    me.getProductList({pageNo:page});
                 },
                 pn: Number(data.current_page)
             });
@@ -138,7 +136,7 @@ var OrderList = Class(function (opts) {
 
     render: function () {
         var me = this;
-        var _html = ORDER_LIST.LAYOUT({});
+        var _html = PRODUCT_LIST.LAYOUT({});
         me.container.empty().html(_html);
         
 
@@ -161,7 +159,7 @@ var OrderList = Class(function (opts) {
 
         me.container.off('click');
         me.container.on('click','#exec-search-btn', function () {
-            me.getOrderList();
+            me.getProductList();
         });
 
         me.container.on('click', '.common-filter li', function () {
@@ -170,24 +168,24 @@ var OrderList = Class(function (opts) {
             var _value = obj.data('value');
             var params = {};
             params[_name] = _value;
-            me.getOrderList(params);
+            me.getProductList(params);
 
         });
 
-        me.container.on('click', '#order-list .operation', function () {
+        me.container.on('click', '#product-list .operation', function () {
            var obj = $(this);
 
             var _operation = obj.data('oper');
             var id = obj.closest('tr').data('id');
             switch (_operation){
                 case 'detail':
-                    me.showOrderDetail(id);break;
+                    me.showProductDetail(id);break;
                 case 'cancel':
-                    me.changeOrderStatus(id,'cancel');break;
+                    me.changeProductStatus(id,'cancel');break;
                 case 'block':
-                    me.changeOrderStatus(id,'block');break;
-                case 'refund':
-                    me.changeOrderStatus(id,'refund');break;
+                    me.changeProductStatus(id,'block');break;
+                case 'copyLink':
+                    me.copyLink(obj,'copyLink');break;
                 default:
                     console.log('do nothing');
 
@@ -195,12 +193,12 @@ var OrderList = Class(function (opts) {
         });
     },
     
-    showOrderDetail: function (id) {
+    showProductDetail: function (id) {
         var me = this;
 
         
-        Ajax.get('/admin/order/detail',{id:id},function (data) {
-            var content = ORDER_LIST.ORDER_DETAIL(data);
+        Ajax.get('/admin/product_detail',{id:id},function (data) {
+            var content = PRODUCT_LIST.PRODUCT_DETAIL(data);
 
             Dialog.confirm(content, {
                 'width': '800px',
@@ -236,13 +234,34 @@ var OrderList = Class(function (opts) {
         });
     },
 
-    changeOrderStatus:function (id,status) {
-        Ajax.post('/admin/order/update',{id:id, status:status}, function (data) {
+    changeProductStatus:function (id,status) {
+        Ajax.post('/admin/product_update',{id:id, status:status}, function (data) {
            PopTip('操作成功！！');
         });
     },
-    
+
+    copyLink:function (obj,operation) {
+            var id = obj.attr('id');
+           if(!obj.data('init')){
+
+               obj.data('init', true);
+               var clipboard = new Clipboard("#" + id);
+
+               clipboard.off('success').on('success', function(e) {
+                   alert('复制成功！');
+
+                   e.clearSelection();
+               });
+
+               clipboard.on('error', function(e) {
+                   console.error('copy error:', e);
+               });
+           }
+
+
+    },
+
     destroy:null
 });
 
-module.exports=OrderList;
+module.exports=ProductList;
