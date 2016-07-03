@@ -148,7 +148,7 @@ var Union = Class(function(opts){
         }
 
 
-        Ajax.get('/admin/union_list', {params: $.json.stringify(params)}, function (data) {
+        Ajax.get('/admin/union_list', params, function (data) {
 
             me.renderUnionList(data.list);
 
@@ -189,6 +189,8 @@ var Union = Class(function(opts){
 
     initEvents: function(){
         var me = this;
+
+        me.container.off('click');
 
         $('#union-list', me.container).on('click', '.showDetail', function(){
             me.showDetail.call(me,this);
@@ -319,7 +321,9 @@ var Union = Class(function(opts){
                 url:$(obj).data('url'),
                 type: targetId.replace("#", ''),
                 container:targetId,
-                data:{}
+                data:{
+                    guildId:me.cUnionId
+                }
             });
         }
     },

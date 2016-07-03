@@ -87,6 +87,10 @@ var Base={
 			}
 			Base.lock(opt.url);
 		}
+
+		if(!opt.noparams){
+			opt.data = {params: $.json.stringify(opt.data) };
+		}
 		// 数据提交
 		var ajaxObj=$.ajax({
 			url: Base.getRequestURL(opt.url), //配置URL
@@ -114,10 +118,10 @@ var Base={
 						//默认行为
 						result.msg && tip(result.msg);
 					}
-				}else if(result.code==3995){
+				}else if(result.code==403){
 					tip(result.msg||'请重新登陆');
 					// 登陆失效后 重新刷新当前页面
-					window.location.reload();
+					window.location.reload('/views/login.html');
 				}else{
 					if(typeof(opt.error)=='function'){
 						var _rt=opt.error(result.msg,result.code,opt.custom);

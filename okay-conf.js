@@ -45,15 +45,15 @@ fis
 
 // 部署配置;(暂时保留)
 fis.util.map([{
-	name: 'game',
+	name: '115',
 	host: 'http://115.28.167.5',
 	port: '8999'
 }], function (index, item) {
 
-	var static_domain   = item.host+':8080/game',
+	var static_domain   = item.host+':8080/fe-admin',
 		static_path     = item.host+':'+item.port+'/receiver',
 		vm_path       = item.host + ':' + item.port + '/receiver',
-		release_path = '/usr/local/tomcat/apache-tomcat-7.0.70/webapps/game';
+		release_path = '/usr/local/tomcat/apache-tomcat-7.0.70/webapps/fe-admin';
 
 
 	fis.util.map(['', 'm'], function (_index, _val) {

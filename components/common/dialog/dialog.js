@@ -8,8 +8,8 @@ var $     	  = require('/components/common/base/base.js'),
 	ec        = require('/components/common/event/event.js'),
 	uiClass   = require('/components/common/class/class.js');
 require('/components/lib/jquery.ui/dialog.js');
-require('/components/lib/jquery.ui/effect-fade.js');
-require('/components/lib/jquery.ui/effect-drop.js');
+/*require('/components/lib/jquery.ui/effect-fade.js');
+require('/components/lib/jquery.ui/effect-drop.js');*/
 
 
 

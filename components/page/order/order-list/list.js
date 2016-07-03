@@ -118,7 +118,8 @@ var OrderList = Class(function (opts) {
             params = $.extend(me.getFilterData(),params);
         }
 
-        Ajax.get('/admin/order_list', params, function (data) {
+        Ajax.post('/admin/order_list', params, function (data) {
+        //Ajax.post('/getOrderInfo.action', params, function (data) {
 
             //me.renderOrderList(data);
             $('#order-list', me.container).empty().append(ORDER_LIST.ORDER_ITEM(data));

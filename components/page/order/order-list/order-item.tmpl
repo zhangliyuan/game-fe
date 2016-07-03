@@ -1,13 +1,13 @@
 {{#each list}}
 
 <tr data-id="{{id}}" class="order-item">
-    <td>{{orderNo}}</td>
-    <td><img src="{{productThumbnail}}" class="union-item-img" />{{productName}}</td>
-    <td>{{price}}</td>
+    <td>{{order_id}}</td>
+    <td><img src="{{productThumbnail}}" class="union-item-img" />{{good_num}}</td>
+    <td>{{unit_price}}</td>
     <td>{{count}}</td>
     <td>{{buyer}}</td>
-    <td>{{status}}</td>
-    <td>{{totalCost}}</td>
+    <td>{{order_status}}</td>
+    <td>{{total_price}}</td>
     <td>{{createTime}}</td>
     <td>
         <a class="operation " data-oper="detail">更多</a>

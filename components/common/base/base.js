@@ -7,7 +7,7 @@ var $ = require('components/lib/jquery/jquery.js');
 
 
 //TODO: BROWSER;
-$.browser = require('./browser.js');
+//$.browser = require('./browser.js');
 
 //TODO: URL;
 $.url = require('./url.js');
