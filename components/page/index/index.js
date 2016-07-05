@@ -31,9 +31,12 @@ var IndexPage = Class(function (opts) {
 
     render: function () {
         var me = this;
-        var _html = INDEX_PAGE.LAYOUT({});
-        me.container.empty().html(_html);
-        me.getNoticeList()
+        Ajax.get('/admin/index', {}, function (data) {
+            var _html = INDEX_PAGE.LAYOUT(data);
+            me.container.empty().html(_html);
+            me.getNoticeList()
+        });
+
     },
 
     initEvents: function () {

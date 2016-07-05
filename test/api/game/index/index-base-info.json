@@ -1,0 +1,52 @@
+{
+  "code": 0,
+  "msg": "success",
+  "data":{
+
+    "userInfo":{
+      "newAdd":123,
+      "totalUser":23456,
+      "inactive":257,
+      "unRegister":87
+    },
+    "waitResolved":{
+      "delivery":123,
+      "waitResolvedQ":23456,
+      "overTime":257,
+      "unionCheck":87
+    },
+    "realTimeInfo":{
+      "order":{
+        "successOrder":8754,
+        "cancelOrder":23,
+        "totalPrice":345345
+      },
+      "package":{
+        "receive":435,
+        "addtionalRequest":543543,
+        "receiveUV":23434432423
+      },
+      "union":{
+        "count":435,
+        "member":543543,
+        "newAdd":43
+      },
+      "game":{
+        "picture":435,
+        "video":24,
+        "gameCircle":324
+      },
+      "site":{
+        "PV":23,
+        "UV":234,
+        "stayTime":23433
+      },
+      "question":{
+        "resolved":435,
+        "waitResolve":12,
+        "userQuestion":234
+      }
+    }
+
+  }
+}

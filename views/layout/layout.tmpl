@@ -1,9 +1,58 @@
 <!-- header logo: style can be found in header.less -->
+
 <header class="header">
     <a href="#/index" class="logo">
         <!-- Add the class icon to your logo image or logo icon to add the margining -->
-        后台系统LOGO
+       <span class="logo">
+           <img src="/components/common/theme/img/logo.jpg" />
+       </span>
     </a>
+
+    <div class="navbar-right">
+        <ul class="nav navbar-nav">
+            <!-- Messages: style can be found in dropdown.less-->
+
+            <li class="dropdown user user-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
+                    <span> 您好！老王 <i class="caret"></i></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <!-- User image -->
+                    <li class="user-header bg-light-blue">
+                        <img src="../../img/avatar3.png" class="img-circle" alt="User Image">
+                        <p>
+                            Jane Doe - Web Developer
+                            <small>Member since Nov. 2012</small>
+                        </p>
+                    </li>
+                    <!-- Menu Body -->
+                    <li class="user-body">
+                        <div class="col-xs-4 text-center">
+                            <a href="#">Followers</a>
+                        </div>
+                        <div class="col-xs-4 text-center">
+                            <a href="#">Sales</a>
+                        </div>
+                        <div class="col-xs-4 text-center">
+                            <a href="#">Friends</a>
+                        </div>
+                    </li>
+                    <!-- Menu Footer-->
+                    <li class="user-footer">
+                        <div class="pull-left">
+                            <a href="#" class="btn btn-default btn-flat">Profile</a>
+                        </div>
+                        <div class="pull-right">
+                            <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+
+
+        </ul>
+    </div>
 </header>
 <div class="wrapper row-offcanvas row-offcanvas-left" style="min-height: 723px;">
     <!-- Left side column. contains the logo and sidebar -->

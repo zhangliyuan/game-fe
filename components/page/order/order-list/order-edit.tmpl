@@ -1,0 +1,78 @@
+<!--訂單詳情-->
+
+<div class="order-edit" id="order-edit">
+
+    <div class="box-body">
+        <div class="form-group">
+            <label> 订单编号:</label>
+            <label > {{orderNo}}</label>
+        </div>
+        <div class="form-group">
+            <label> 商品名称:</label>
+            <label > {{productName}}</label>
+        </div>
+        <div class="form-group">
+            <label> 单价:</label>
+            <input type="text" class="form-control" id="order-price"  name="price" value="{{price}}">
+        </div>
+        <div class="form-group">
+            <label> 数量:</label>
+            <input type="text" class="form-control" id="order-count" name="count" value="{{count}}">
+        </div>
+        <div class="form-group">
+            <label> 用户:</label>
+            <label > {{buyer}}</label>
+        </div>
+        <div class="form-group">
+            <label> 状态:</label>
+            <select class="form-control data-item" name="status" data-name="status">
+                <option value="">全部</option>
+                <option value="1">交易成功</option>
+                <option value="2">等待发货</option>
+                <option value="3">已退款</option>
+                <option value="4">用户取消</option>
+                <option value="5">订单关闭</option>
+                <option value="6">超时关闭</option>
+                <option value="7">订单锁定</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label> 总金额:</label>
+            <input type="text" class="form-control" id="order-totalCost" name="totalCost"  value="{{totalCost}}" />
+        </div>
+        <div class="form-group">
+            <label> 下单时间:</label>
+            <label > {{totalCost}}</label>
+        </div>
+        <div class="form-group">
+            <label> 充值账号:</label>
+            <input type="text" class="form-control" id="order-chargeAccount"  name="chargeAccount" value="{{chargeAccount}}"/>
+        </div>
+        <div class="form-group">
+            <label> 支付方式:</label>
+            <select class="form-control data-item"  name="payType" data-name="payType">
+                <option value="1">weChat</option>
+                <option value="2">aliPay</option>
+                <option value="3">bank</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>支付时间:</label>
+            <input type="text" class="form-control" id="order-payTime"  name="payTime" value="{{payTime}}"/>
+        </div>
+        <div class="form-group">
+            <label>订单类型:</label>
+            <select class="form-control data-item"  name="type" data-name="type">
+                <option value="1">交易成功</option>
+                <option value="2">等待发货</option>
+                <option value="3">已退款</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>备注:</label>
+            <textarea  id="notice-content" class="form-control"  name="remark" rows="5" >{{remark}}</textarea>
+        </div>
+
+    </div>
+
+</div>

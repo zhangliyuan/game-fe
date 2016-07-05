@@ -16,6 +16,7 @@ var CollapseFilter = require('/components/widget/showFilter/collapse-filter.js')
 var ORDER_LIST = {
     LAYOUT:__inline('list.tmpl'),
     ORDER_ITEM: __inline('order-item.tmpl'),
+    ORDER_EDIT: __inline('order-edit.tmpl'),
     ORDER_DETAIL: __inline('order-detail.tmpl')
 };
 
@@ -83,7 +84,7 @@ var FILTER_OPTIONS = [
     }
 ];
 
-var UNION_STATUS = {
+var ORDER_STATUS = {
     'normal': '正常',
     'blocked': '封停',
     'error': '异常'
@@ -122,7 +123,7 @@ var OrderList = Class(function (opts) {
         //Ajax.post('/getOrderInfo.action', params, function (data) {
 
             //me.renderOrderList(data);
-            $('#order-list', me.container).empty().append(ORDER_LIST.ORDER_ITEM(data));
+            $('#order-list', me.container).empty().append(ORDER_LIST.ORDER_ITEM($.extend({statusMap:ORDER_STATUS},data)));
 
             new Page({
                 target: '#order-list-page-wrap',
@@ -134,6 +135,23 @@ var OrderList = Class(function (opts) {
                 },
                 pn: Number(data.current_page)
             });
+        });
+    },
+
+    exportTable: function (params) {
+        var me = this;
+
+        if(!params){
+            params = me.getFilterData();
+        }else{
+            params = $.extend(me.getFilterData(),params);
+        }
+
+        Ajax.post('/admin/order_export', params, function (data) {
+        //Ajax.post('/getOrderInfo.action', params, function (data) {
+
+            //me.renderOrderList(data);
+            window.open(data.url, '_blank');
         });
     },
 
@@ -164,6 +182,9 @@ var OrderList = Class(function (opts) {
         me.container.on('click','#exec-search-btn', function () {
             me.getOrderList();
         });
+        me.container.on('click','#export-table-data', function () {
+            me.exportTable();
+        });
 
         me.container.on('click', '.common-filter li', function () {
             var obj = $(this);
@@ -180,9 +201,12 @@ var OrderList = Class(function (opts) {
 
             var _operation = obj.data('oper');
             var id = obj.closest('tr').data('id');
+            me.cOrderId = id;
             switch (_operation){
                 case 'detail':
                     me.showOrderDetail(id);break;
+                case 'edit':
+                    me.showOrderEdit(id);break;
                 case 'cancel':
                     me.changeOrderStatus(id,'cancel');break;
                 case 'block':
@@ -196,7 +220,7 @@ var OrderList = Class(function (opts) {
         });
     },
     
-    showOrderDetail: function (id) {
+    showOrderDetail: function (id,type) {
         var me = this;
 
         
@@ -234,6 +258,86 @@ var OrderList = Class(function (opts) {
                 }]
             });
 
+        });
+    },
+    showOrderEdit: function (id) {
+        var me = this;
+
+
+        Ajax.get('/admin/order_detail',{id:id},function (data) {
+            var content = ORDER_LIST.ORDER_EDIT(data);
+
+
+            Dialog.confirm(content, {
+                'width': '800px',
+                'height': 'auto',
+                'minHeight': 0,
+                'dialogClass': 'confirm-dialog',
+                'draggable': false,
+                'show': {
+                    'effect': 'drop',
+                    'mode': 'show',
+                    'direction': 'down',
+                    'duration': 100
+                },
+                'hide': {
+                    'effect': 'drop',
+                    'direction': 'down',
+                    'duration': 200
+                },
+
+                'buttons': [{
+                    'text': '确定',
+                    'className': 'btn btn-primary',
+                    'click': function(e) {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                        e.stopPropagation();
+
+                        me.editOrder(me.getEditData('#order-edit'));
+                    }
+                },{
+                    'text': '取消',
+                    'className': 'btn btn-default',
+                    'click': function(e) {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                        e.stopPropagation();
+
+                       $(this).dialog('close');
+                    }
+                }]
+            });
+
+        });
+    },
+
+    getEditData: function (container) {
+        var me = this;
+        if($.type(container) === 'string'){
+            container = $(container);
+        }
+
+        var forms = container.find('.form-control');
+        var data = {
+            id:me.cOrderId
+        };
+        $.each(forms, function (i, v) {
+            var name = $(v).attr('name');
+                var value = $(v).val();
+
+            data[name] = value;
+        });
+
+        return data;
+    },
+
+    editOrder: function (data) {
+
+        var me  =this;
+
+        Ajax.post('/admin/order_update',data, function (data) {
+           PopTip(data.msg || '编辑成功！');
         });
     },
 

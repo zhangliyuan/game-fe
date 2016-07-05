@@ -67,7 +67,7 @@ var FILTER_OPTIONS = [
     },
     {
         label:'发布状态',
-        name:'type',
+        name:'status',
         type:'select',
         options:[
             {text:'全部', value:''},

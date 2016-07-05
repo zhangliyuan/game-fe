@@ -35,6 +35,10 @@ fis
 		isMod: true
 	})
 
+	.match('/components/common/theme/img/logo.jpg', {
+		useHash: false
+	})
+
 	.match('{/README\.md,/doc/**}', {
 		release: false
 	});
@@ -66,6 +70,9 @@ fis.util.map([{
 			// 图片加md5;
 			.match(':image', {
 				useHash: true
+			})
+			.match('/components/common/theme/img/logo.jpg', {
+				useHash: false
 			})
 			.match('::package', {
 				// 图片合并

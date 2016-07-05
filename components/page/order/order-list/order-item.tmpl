@@ -6,11 +6,12 @@
     <td>{{unit_price}}</td>
     <td>{{count}}</td>
     <td>{{buyer}}</td>
-    <td>{{order_status}}</td>
+    <td>{{convert order_status ../statusMap}}</td>
     <td>{{total_price}}</td>
     <td>{{createTime}}</td>
     <td>
         <a class="operation " data-oper="detail">更多</a>
+        <a class="operation " data-oper="edit">编辑</a>
         <a class="operation " data-oper="cancel">取消订单</a>
         <a class="operation " data-oper="block">锁定订单</a>
         <a class="operation " data-oper="refund">退款</a>
