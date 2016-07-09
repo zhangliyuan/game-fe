@@ -1,1 +1,26 @@
-发送邮件
+<!--发送邮件-->
+
+<div class="add-email" id="add-email">
+    <div class="box-body">
+        <div class="form-group">
+            <label> 收件人邮箱:</label>
+            <input type="text" class="form-control" name="address" id="email-address" placeholder="收件人邮箱" />
+
+        </div>
+        <div class="form-group">
+            <label> 标题:</label>
+            <input type="text" class="form-control" name="title" id="email-title" placeholder="请输入邮件标题" />
+        </div>
+
+        <div class="form-group">
+            <label>邮件正文:</label>
+            <textarea  id="content" class="form-control"  name="content" rows="5" />
+
+        </div>
+
+    </div>
+
+    <div class="box-footer">
+        <button type="submit" id="confirm-add-btn" class="btn btn-primary right-side">发送</button>
+    </div>
+</div>
