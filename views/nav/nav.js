@@ -17,6 +17,7 @@ var $ = jQuery = require('/components/common/base/base.js');
  */
 var left_side_width = 220; //Sidebar width in pixels
 
+
 $(function() {
     "use strict";
 
@@ -88,29 +89,49 @@ $(function() {
 
     /* Sidebar tree view */
     $(".sidebar .treeview").tree();
+
+
+
+    /*
+     * Make sure that the sidebar is streched full height
+     * ---------------------------------------------
+     * We are gonna assign a min-height value every time the
+     * wrapper gets resized and upon page load. We will use
+     * Ben Alman's method for detecting the resize event.
+     *
+     **/
+    function _fix() {
+        //Get window height and the wrapper height
+        var height = $(window).height() - $("body > .header").height();
+        $(".wrapper").css("min-height", height + "px");
+        var content = $(".wrapper").height();
+        //If the wrapper height is greater than the window
+        if (content > height)
+        //then set sidebar height to the wrapper
+            $(".left-side, html, body").css({
+                "overflow-y": "auto",
+                "min-height": content + "px"
+            });
+        else {
+            //Otherwise, set the sidebar to the height of the window
+            $(".left-side, html, body").css({
+                "overflow-y": "auto",
+                "min-height": height + "px"
+            });
+        }
+    }
+//Fire upon load
+    _fix();
+
+
+    $(".wrapper").resize(function() {
+        _fix();
+        //fix_sidebar();
+    });
     
     
 });
-function fix_sidebar() {
-    //Make sure the body tag has the .fixed class
-    if (!$("body").hasClass("fixed")) {
-        return;
-    }
 
-    //Add slimscroll
-    $(".sidebar").slimscroll({
-        height: ($(window).height() - $(".header").height()) + "px",
-        color: "rgba(0,0,0,0.2)"
-    });
-}
-function change_layout() {
-    $("body").toggleClass("fixed");
-    fix_sidebar();
-}
-function change_skin(cls) {
-    $("body").removeClass("skin-blue skin-black");
-    $("body").addClass(cls);
-}
 /*END DEMO*/
 $(window).load(function() {
     /*! pace 0.4.17 */

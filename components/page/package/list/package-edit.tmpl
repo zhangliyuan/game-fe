@@ -1,0 +1,72 @@
+<!--编辑礼包-->
+
+<div class="package-edit" id="package-edit">
+
+    <div class="box-body">
+        <div class="form-group">
+            <label> 礼包编号:</label>
+            <label  class="label-value"> {{packageNo}}</label>
+        </div>
+        <div class="form-group">
+            <label> 游戏名称:</label>
+            <input type="text" class="form-control" id="gameName" name="gameName" value="{{gameName}}" />
+        </div>
+        <div class="form-group">
+            <label> 礼包名称:</label>
+            <input type="text" class="form-control" id="packageName" name="packageName" value="{{packageName}}" />
+        </div>
+        <div class="form-group">
+            <label> 有效期:</label>
+            <input type="text" class="form-control" id="startTime" name="startTime" value="{{startTime}}" />-
+            <input type="text" class="form-control" id="endTime" name="endTime" value="{{endTime}}" />
+        </div>
+        <div class="form-group">
+            <label> 礼包状态:</label>
+            <select class="form-control data-item" name="status" data-name="status">
+                <option value="1">正在发放</option>
+                <option value="2">待发放</option>
+            </select>
+        </div>
+
+
+        <div class="form-group">
+            <label> 上架时间:</label>
+            <input type="text" class="form-control" id="onShelfTime" name="onShelfTime" value="{{onShelfTime}}" />
+        </div>
+        <div class="form-group">
+            <label> 类型:</label>
+            <select class="form-control data-item" name="type" data-name="type">
+                <option value="1">端游礼包%</option>
+                <option value="2">会员可领取</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label> 库存:</label>
+            <input type="text" class="form-control" id="count" name="count" value="{{count}}" />
+        </div>
+        <div class="form-group">
+            <label> 发放量:</label>
+            <input type="text" class="form-control" id="distributeCount" name="distributeCount" value="{{distributeCount}}" />
+        </div>
+        <div class="form-group">
+            <label> 发放方式:</label>
+            <select class="form-control data-item" name="distributeType" data-name="distributeType">
+                <option value="1">整点发放库存20%</option>
+                <option value="2">会员可领取</option>
+                <option value="2">无限制</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>礼包内容:</label>
+            <textarea  id="packageContent" class="form-control"  name="packageContent" rows="5" >{{packageContent}} </textarea>
+
+        </div>
+        <div class="form-group">
+            <label>激活方式:</label>
+            <textarea  id="activeMethod" class="form-control"  name="activeMethod" rows="5" >{{activeMethod}}</textarea>
+        </div>
+
+
+    </div>
+
+</div>

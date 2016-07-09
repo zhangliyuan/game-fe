@@ -129,7 +129,7 @@ var UnionCheck = Class(function(opts){
         var me = this;
         var params = params ||　me.getFilterData();
 
-        Ajax.get('/admin/union/check_list', params, function (data) {
+        Ajax.get('/admin/check_list', params, function (data) {
 
             me.renderUnionCheckList(data.list);
         });

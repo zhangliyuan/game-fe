@@ -16,6 +16,7 @@ var CollapseFilter = require('/components/widget/showFilter/collapse-filter.js')
 var PRODUCT_LIST = {
     LAYOUT:__inline('list.tmpl'),
     PRODUCT_ITEM: __inline('product-item.tmpl'),
+    PRODUCT_EDIT: __inline('product-edit.tmpl'),
     PRODUCT_DETAIL: __inline('product-detail.tmpl')
 };
 
@@ -180,8 +181,10 @@ var ProductList = Class(function (opts) {
             switch (_operation){
                 case 'detail':
                     me.showProductDetail(id);break;
-                case 'cancel':
-                    me.changeProductStatus(id,'cancel');break;
+                case 'edit':
+                    me.editProductDetail(id);break;
+                case 'offShelf':
+                    me.changeProductStatus(id,'offShelf');break;
                 case 'block':
                     me.changeProductStatus(id,'block');break;
                 case 'copyLink':
@@ -233,7 +236,85 @@ var ProductList = Class(function (opts) {
 
         });
     },
+    editProductDetail: function (id) {
+        var me = this;
 
+
+        Ajax.get('/admin/product_detail',{id:id},function (data) {
+            var content = PRODUCT_LIST.PRODUCT_EDIT(data);
+
+            Dialog.confirm(content, {
+                'width': '800px',
+                'height': 'auto',
+                'minHeight': 0,
+                'dialogClass': 'confirm-dialog',
+                'draggable': false,
+                'show': {
+                    'effect': 'drop',
+                    'mode': 'show',
+                    'direction': 'down',
+                    'duration': 100
+                },
+                'hide': {
+                    'effect': 'drop',
+                    'direction': 'down',
+                    'duration': 200
+                },
+
+                'buttons': [{
+                    'text': '确定',
+                    'className': 'btn btn-primary',
+                    'click': function(e) {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                        e.stopPropagation();
+
+                        me.editProduct(me.getEditData('#product-edit'));
+                    }
+                },{
+                    'text': '取消',
+                    'className': 'btn btn-default',
+                    'click': function(e) {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                        e.stopPropagation();
+
+                        $(this).dialog('close');
+                    }
+                }]
+            });
+
+        });
+    },
+
+    getEditData: function (container) {
+        var me = this;
+        if($.type(container) === 'string'){
+            container = $(container);
+        }
+
+        var forms = container.find('.form-control');
+        var data = {
+            id:me.cOrderId
+        };
+        $.each(forms, function (i, v) {
+            var name = $(v).attr('name');
+            var value = $(v).val();
+
+            data[name] = value;
+        });
+
+        return data;
+    },
+
+    editProduct: function (data) {
+
+        var me  =this;
+
+        Ajax.post('/admin/product_update',data, function (data) {
+            PopTip(data.msg || '编辑成功！');
+        });
+    },
     changeProductStatus:function (id,status) {
         Ajax.post('/admin/product_update',{id:id, status:status}, function (data) {
            PopTip('操作成功！！');

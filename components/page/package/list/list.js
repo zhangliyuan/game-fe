@@ -15,6 +15,7 @@ var CollapseFilter = require('/components/widget/showFilter/collapse-filter.js')
 var PACKAGE_LIST = {
     LAYOUT:__inline('list.tmpl'),
     PACKAGE_ITEM:__inline('package-item.tmpl'),
+    PACKAGE_EDIT:__inline('package-edit.tmpl'),
     PACKAGE_DETAIL:__inline('package-detail.tmpl')
 };
 
@@ -156,15 +157,36 @@ var PackageList = Class(function (opts) {
                 case 'offShelf':
                     me.changePackageStatus(id,'offShelf');break;
                 case 'edit':
-                    me.changePackageStatus(id,'edit');break;
+                    me.editPackageDetail(id,'edit');break;
                 case 'upload':
                     me.changePackageStatus(id,status);break;
                 case 'delete':
                     Dialog.confirm('确定要删除该礼包？',{
-                        onaccept:function () {
-                            me.deletePackage(id);
-                            $(this).dialog('close');
-                        }
+
+                        'buttons': [{
+                            'text': '确定',
+                            'className': 'btn btn-primary',
+                            'click': function(e) {
+                                e.preventDefault();
+                                e.stopImmediatePropagation();
+                                e.stopPropagation();
+                                var self = this;
+                                me.deletePackage(id,function () {
+                                    $(self).dialog('close');
+                                });
+
+                            }
+                        },{
+                            'text': '取消',
+                            'className': 'btn btn-default',
+                            'click': function(e) {
+                                e.preventDefault();
+                                e.stopImmediatePropagation();
+                                e.stopPropagation();
+
+                                $(this).dialog('close');
+                            }
+                        }]
                     });
                     break;
 
@@ -230,10 +252,91 @@ var PackageList = Class(function (opts) {
             PopTip('操作成功！！');
         });
     },
-    deletePackage:function (id) {
+
+    editPackageDetail: function (id) {
+        var me = this;
+
+
+        Ajax.get('/admin/package_detail',{id:id},function (data) {
+            var content = PACKAGE_LIST.PACKAGE_EDIT(data);
+
+            Dialog.confirm(content, {
+                'width': '800px',
+                'height': 'auto',
+                'minHeight': 0,
+                'dialogClass': 'confirm-dialog',
+                'draggable': false,
+                'show': {
+                    'effect': 'drop',
+                    'mode': 'show',
+                    'direction': 'down',
+                    'duration': 100
+                },
+                'hide': {
+                    'effect': 'drop',
+                    'direction': 'down',
+                    'duration': 200
+                },
+
+                'buttons': [{
+                    'text': '确定',
+                    'className': 'btn btn-primary',
+                    'click': function(e) {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                        e.stopPropagation();
+
+                        me.editPackage(me.getEditData('#package-edit'));
+                    }
+                },{
+                    'text': '取消',
+                    'className': 'btn btn-default',
+                    'click': function(e) {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                        e.stopPropagation();
+
+                        $(this).dialog('close');
+                    }
+                }]
+            });
+
+        });
+    },
+
+    getEditData: function (container) {
+        var me = this;
+        if($.type(container) === 'string'){
+            container = $(container);
+        }
+
+        var forms = container.find('.form-control');
+        var data = {
+            id:me.cOrderId
+        };
+        $.each(forms, function (i, v) {
+            var name = $(v).attr('name');
+            var value = $(v).val();
+
+            data[name] = value;
+        });
+
+        return data;
+    },
+
+    editPackage: function (data) {
+
+        var me  =this;
+
+        Ajax.post('/admin/package_update',data, function (data) {
+            PopTip(data.msg || '编辑成功！');
+        });
+    },
+    deletePackage:function (id,cb) {
         // TODO 添加确认弹框
         Ajax.post('/admin/package_delete',{id:id}, function (data) {
             PopTip('操作成功！！');
+            cb && cb();
         });
     }
 });
