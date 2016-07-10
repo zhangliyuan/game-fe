@@ -1,0 +1,17 @@
+{{#each list}}
+
+<tr data-id="{{id}}" class="account-item">
+    <td>{{jobNumber}}</td>
+    <td>{{name}}</td>
+    <td>{{phoneNo}}</td>
+    <td>{{department}}</td>
+    <!--<td>{{rank}}</td>-->
+    <td>{{position}}</td>
+    <td>{{account}}</td>
+    <td>{{permissions}}</td>
+    <td>
+        <a class="operation " data-oper="resetPwd">重置密码</a>
+        <!--<a class="operation " data-oper="edit">编辑</a>-->
+    </td>
+</tr>
+{{/each}}
