@@ -1,0 +1,101 @@
+{
+  "code": "0",
+  "msg": "success",
+  "data":{
+    "current_page":23,
+    "total_page":345,
+    "total_count":3450,
+    "list":[
+      {
+        "id":"123456799",
+        "unionNo":"123456799",
+        "name":"众神殿游戏公会",
+        "consumptionAmount":"2314234",
+        "rebateRate":2911,
+        "rebateAmount":"4354366",
+        "status":"error",
+        "createTime":"2014-12-23 12:34:45"
+      },
+      {
+        "id":"123456799",
+        "unionNo":"123456799",
+        "name":"众神殿游戏公会",
+        "consumptionAmount":"2314234",
+        "rebateRate":2911,
+        "rebateAmount":"4354366",
+        "status":"error",
+        "createTime":"2014-12-23 12:34:45"
+      },
+      {
+        "id":"123456799",
+        "unionNo":"123456799",
+        "name":"众神殿游戏公会",
+        "consumptionAmount":"2314234",
+        "rebateRate":2911,
+        "rebateAmount":"4354366",
+        "status":"error",
+        "createTime":"2014-12-23 12:34:45"
+      },
+      {
+        "id":"123456799",
+        "unionNo":"123456799",
+        "name":"众神殿游戏公会",
+        "consumptionAmount":"2314234",
+        "rebateRate":2911,
+        "rebateAmount":"4354366",
+        "status":"error",
+        "createTime":"2014-12-23 12:34:45"
+      },
+      {
+        "id":"123456799",
+        "unionNo":"123456799",
+        "name":"众神殿游戏公会",
+        "consumptionAmount":"2314234",
+        "rebateRate":2911,
+        "rebateAmount":"4354366",
+        "status":"error",
+        "createTime":"2014-12-23 12:34:45"
+      },
+      {
+        "id":"123456799",
+        "unionNo":"123456799",
+        "name":"众神殿游戏公会",
+        "consumptionAmount":"2314234",
+        "rebateRate":2911,
+        "rebateAmount":"4354366",
+        "status":"error",
+        "createTime":"2014-12-23 12:34:45"
+      },
+      {
+        "id":"123456799",
+        "unionNo":"123456799",
+        "name":"众神殿游戏公会",
+        "consumptionAmount":"2314234",
+        "rebateRate":2911,
+        "rebateAmount":"4354366",
+        "status":"error",
+        "createTime":"2014-12-23 12:34:45"
+      },
+      {
+        "id":"123456799",
+        "unionNo":"123456799",
+        "name":"众神殿游戏公会",
+        "consumptionAmount":"2314234",
+        "rebateRate":2911,
+        "rebateAmount":"4354366",
+        "status":"error",
+        "createTime":"2014-12-23 12:34:45"
+      },
+      {
+        "id":"123456794",
+        "unionNo":"123456794",
+        "name":"众神殿游戏公会2",
+        "consumptionAmount":"6767546",
+        "rebateRate":2411,
+        "rebateAmount":"234235",
+        "status":"normal",
+        "createTime":"2014-12ds-23 12:34:45"
+      }
+    ]
+  }
+}

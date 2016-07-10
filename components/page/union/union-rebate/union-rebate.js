@@ -14,6 +14,7 @@ var Page       = require('/components/common/pager/pager.js');
 
 var UNION_REBATE_PAGE ={
     LAYOUT: __inline('union-rebate.tmpl'),
+    UNION_REBATE_SETTLEMENT: __inline('union-rebate-settlement.tmpl'),
     UNION_REBATE_ITEM:__inline('union-rebate-item.tmpl')
 };
 
@@ -59,14 +60,10 @@ var UnionRebate = Class(function(opts){
         var me = this;
 
         me.container = $(me.opts.container);
+        me.filterData = {month:1};
 
         me.container.append(UNION_REBATE_PAGE.LAYOUT({}));
 
-        // render filter module
-        me.filter = new Filter({
-            container:'#filter-wrap',
-            renderData: FILTER_OPTIONS
-        });
         //me.filter.init();
 
 
@@ -84,11 +81,22 @@ var UnionRebate = Class(function(opts){
 
     getUnionRebateList: function(params){
         var me = this;
-        var params = params ||　me.getFilterData();
+        params = $.extend({},me.filterData, params);
+        Ajax.post('/admin/union_rebateList', params, function (data) {
 
-        Ajax.get('/admin/union_rebateList', params, function (data) {
+            me.renderUnionRebateList(data);
 
-            me.renderUnionRebateList(data.list);
+
+            new Page({
+                target: '#union-rebate-page-wrap',
+                type: 'ajax',
+                pageCount: Number(data.total_count),
+                pageSize: 10,
+                callback: function(page){
+                    me.getUnionRebateList({page:page});
+                },
+                pn: Number(data.current_page)
+            });
         });
 
     },
@@ -98,8 +106,8 @@ var UnionRebate = Class(function(opts){
         var data = data ? data : demoData;
 
         var _html = '';
-        if($.isArray(data) && data.length > 0){
-            _html += UNION_REBATE_PAGE.UNION_REBATE_ITEM({list:data});
+        if($.isArray(data.list) && data.list.length > 0){
+            _html += UNION_REBATE_PAGE.UNION_REBATE_ITEM(data);
         } else {
             _html = '<p>没有任何数据</p>'
         }
@@ -111,29 +119,54 @@ var UnionRebate = Class(function(opts){
     initEvents: function(){
         var me = this;
 
+        me.container.off('click');
+
         $('#union-rebate-list', me.container).on('click', '.showDetail', function(){
             me.showDetail.call(me,this);
         });
 
 
-        $('.ico-collapse', me.container).on('click', function () {
 
-            me.showFilter.call(me, this);
+        me.container.on('click', '.nav-tabs a.filter-item', function () {
+            var obj = this;
+            var month = $(obj).data('value');
+            me.filterData.month = month;
+            me.getUnionRebateList();
+
 
         });
 
-        $("#exec-search-btn", me.container).on('click', function () {
+        me.container.on('change', '.nav-tabs select.filter-item', function () {
+            var obj = this;
+            console.log($(obj));
+            var name = $(obj).data('name');
+            var value = $(obj).val();
+
+            me.filterData[name] = value;
+
             me.getUnionRebateList();
         });
 
-    },
+        me.container.on('click', '#union-rebate-list .operation', function () {
+            var obj = $(this);
 
-    getFilterData: function () {
-        var me = this;
+            var _operation = obj.data('oper');
+            var id = obj.closest('tr').data('id');
+            me.cAccountId = id;
+            switch (_operation){
+                case 'settlement':
+                    me.getSettlement(id);break;
 
-        return  me.filter.getFilterData() || {};
+                case 'detail':
+                    me.getDetail(id);break;
 
-        //me.getUnionRebateList(filterData);
+                default:
+                    console.log('do nothing');
+
+            }
+        });
+
+
     },
 
 
@@ -228,6 +261,65 @@ var UnionRebate = Class(function(opts){
         var _html = _tpl(data.response);
 
         $(data.container).empty().append(_html).data('status','loaded');
+
+    },
+
+    getSettlement: function(id){
+        var me = this;
+
+        Ajax.get('/admin/union_rebate_detail', {id:id}, function(data){
+            var _tpl = UNION_REBATE_PAGE.UNION_REBATE_SETTLEMENT;
+            var content=_tpl(data);
+
+            Dialog.confirm(content, {
+                'width': '800px',
+                'height': 'auto',
+                'minHeight': 0,
+                'dialogClass': 'confirm-dialog',
+                'title':'结算明细',
+                'draggable': false,
+                'show': {
+                    'effect': 'drop',
+                    'mode': 'show',
+                    'direction': 'down',
+                    'duration': 100
+                },
+                'hide': {
+                    'effect': 'drop',
+                    'direction': 'down',
+                    'duration': 200
+                },
+                'open':function () {
+
+
+
+                },
+                'buttons': [{
+                    'text': '确定',
+                    'className': 'btn btn-primary',
+                    'click': function(e) {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                        e.stopPropagation();
+
+                        $(this).dialog('close');
+
+                    }
+                }, {
+                    'className': 'btn btn-default',
+                    'text': '取消',
+                    'click': function(e) {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                        e.stopPropagation();
+
+                        $(this).dialog('close');
+                    }
+                }]
+            });
+
+        });
+
 
     },
 

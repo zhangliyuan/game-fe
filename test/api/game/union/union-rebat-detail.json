@@ -1,0 +1,22 @@
+{
+  "code": "0",
+  "msg": "success",
+  "data":{
+        "id":"123456799",
+        "unionNo":"123456799",
+        "name":"众神殿游戏公会",
+        "consumptionAmount":"2314234",
+        "rebateRate":2911,
+        "rebateAmount":"4354366",
+        "bank":"中国建设银行安定文支行",
+        "bankAccount":"2311234123133451134",
+        "bankUserName":"姜林城",
+        "unionChargePeople":"姜林城",
+        "phoneNo":"18906354180",
+        "email":"335423651@qq.com",
+        "ID":"1304351990101073419",
+        "remark":"",
+        "createTime":"2014-12-23 12:34:45"
+
+  }
+}
