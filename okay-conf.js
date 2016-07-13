@@ -95,7 +95,7 @@ fis.util.map([{
 				})
 			})
 			//TODO: 将已压缩的js排除, 会影响编译速度;
-			.match('{highcharts,jplayer.blue.monday.min,*.min}.{js,css,scss}', {
+			.match('{jplayer.blue.monday.min,*.min}.{js,css,scss}', {
 				optimizer: false
 			})
 

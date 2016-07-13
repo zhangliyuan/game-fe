@@ -1,0 +1,38 @@
+.union-rebate-detail{
+
+
+
+  position: relative;
+
+
+
+  .box-header{
+    background: #c0c0c0;
+  }
+
+  .chart-item{
+    display: inline-block;
+    /*position: absolute;*/
+
+    &.chart-left{
+      width: 60px;
+
+      ul{
+        list-style: none;
+        padding: 20px 0;
+        li{
+          margin: 15px 0;
+        }
+      }
+    }
+    &.chart-center{
+      width: 650px;
+    }
+    &.chart-right{
+      width: 100px;
+      position: absolute;
+    }
+
+  }
+
+}

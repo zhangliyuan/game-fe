@@ -164,3 +164,46 @@ section, header, nav, footer, article {
   height: 34px;
   width:360px;
 }
+
+/**
+ * 文本不折行
+ */
+.f-nowrap {
+	white-space: nowrap;
+}
+
+/* 内容文字, 强制换行, 处理全英文代码等不换行问题 */
+.f-wrap {
+	//white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+/* 文本一行限高居中 */
+.v-align {
+	margin: 0 auto;
+	text-align: center;
+}
+
+/* 文本多行限高居中 */
+.v-mult {
+	margin: 0 auto;
+	overflow: hidden;
+	.empty {
+		height: 100%;
+	}
+	.empty, .text {
+		display: inline-block;
+		*display: inline;
+		*zoom: 1;
+		vertical-align: middle;
+	}
+}
+
+.v-auto-out {
+	display: flex;
+	align-items:center;
+	justify-content:center;
+}
+
+
+@import url(./font.scss?__inline);

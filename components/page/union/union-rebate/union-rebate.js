@@ -8,13 +8,16 @@ var Ajax=require('/components/common/ajax/ajax.js');
 var Dialog = require('/components/common/dialog/dialog.js');
 var Filter = require('/components/widget/filter/filter.js');
 var Tab = require('/components/common/tab/tab.js');
+var ChartBar = require('/components/common/chart-bar/chart-bar.js');
 var PopTip = require('/components/common/pop-tip/pop-tip.js');
 var Page       = require('/components/common/pager/pager.js');
+ require('/components/lib/highcharts/highcharts.src.js');
 
 
 var UNION_REBATE_PAGE ={
     LAYOUT: __inline('union-rebate.tmpl'),
     UNION_REBATE_SETTLEMENT: __inline('union-rebate-settlement.tmpl'),
+    UNION_REBATE_DETAIL: __inline('union-rebate-detail.tmpl'),
     UNION_REBATE_ITEM:__inline('union-rebate-item.tmpl')
 };
 
@@ -47,6 +50,11 @@ var FILTER_OPTIONS = [
     }
 ];
 
+var  CATEGORIES = {
+    'day':['1时','2时','3时','4时','5时','6时','7时','8时','9时','10时','11时','12时','13时','14时','15时','16时'],
+    'month':['1日','2日','3日','4日','5日','6日','7日','8日','9日','10日','11日','12日'],
+    'year':['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+};
 
 var UnionRebate = Class(function(opts){
     // do nothing
@@ -129,6 +137,9 @@ var UnionRebate = Class(function(opts){
 
         me.container.on('click', '.nav-tabs a.filter-item', function () {
             var obj = this;
+            var _li = $(obj).closest('li');
+            _li.siblings().removeClass('active');
+            _li.addClass('active');
             var month = $(obj).data('value');
             me.filterData.month = month;
             me.getUnionRebateList();
@@ -152,13 +163,13 @@ var UnionRebate = Class(function(opts){
 
             var _operation = obj.data('oper');
             var id = obj.closest('tr').data('id');
-            me.cAccountId = id;
+            me.cRebateId = id;
             switch (_operation){
                 case 'settlement':
                     me.getSettlement(id);break;
 
                 case 'detail':
-                    me.getDetail(id);break;
+                    me.showDetail(id);break;
 
                 default:
                     console.log('do nothing');
@@ -171,82 +182,84 @@ var UnionRebate = Class(function(opts){
 
 
 
-    showDetail: function(obj){
+    showDetail: function(id){
         var me = this;
-        var obj = $(obj);
 
-        var content = UNION_REBATE_PAGE.UNION_CHECK_DETAIL({});
+        Ajax.get('/admin/union_rebate_detail', {id:id}, function(data) {
+            me.cRebateDetail = data;
 
-        Dialog.confirm(content, {
-            'width': '800px',
-            'height': 'auto',
-            'minHeight': 0,
-            'dialogClass': 'confirm-dialog',
-            'draggable': false,
-            'show': {
-                'effect': 'drop',
-                'mode': 'show',
-                'direction': 'down',
-                'duration': 100
-            },
-            'hide': {
-                'effect': 'drop',
-                'direction': 'down',
-                'duration': 200
-            },
-            'open':function () {
+            var content = UNION_REBATE_PAGE.UNION_REBATE_SETTLEMENT(data) +
+                UNION_REBATE_PAGE.UNION_REBATE_DETAIL(data);
 
-                Ajax.get('/admin/union/register_info', {}, function(data){
+            Dialog.confirm(content, {
+                'width': '1000px',
+                'height': 'auto',
+                'minHeight': 0,
+                'dialogClass': 'confirm-dialog',
+                'draggable': false,
+                'show': {
+                    'effect': 'drop',
+                    'mode': 'show',
+                    'direction': 'down',
+                    'duration': 100
+                },
+                'hide': {
+                    'effect': 'drop',
+                    'direction': 'down',
+                    'duration': 200
+                },
+                'open': function () {
 
-                    me.renderDetailData($.extend({container:'#register-info'},{response:data}));
+                    me.drawHighCharts("#bar-chart-wrap", {});
+                    me.drawHighCharts("#bar-chart-wrap2", {});
 
-                });
+                    $('.union-rebate-detail').off('click').on('click', '.chart-btn', function () {
+                        var _ul = $(this).closest('ul');
+                        var type = _ul.data('name');
+                        var byData = $(this).data('name');
 
-                $('.union-detail').on('click', ".operation-btn-wrap .operation", function () {
-                    var obj = $(this);
+                        var _data = me.cRebateDetail.charts[type][byData];
 
-                    var operation = obj.data('oper');
-                    var refuseMsg = '';
-                    if(operation == 'refuse'){
-                        refuseMsg = $('.union-detail #refuse-reason').val();
-                    }
+                        var chartBox = $(this).closest('.box').find('.chart-center');
+
+                        me.drawHighCharts(chartBox, {
+                            xData:{
+                                data:_data,
+                                name: type == 'rebate' ? '返点金额': '消费记录'
+                            },
+                            categories:CATEGORIES[byData]
+                        });
 
 
-                    Ajax.get('/admin/union/check', {
-                        type:operation,
-                        id: me.cUnionId,
-                        refuseMsg:refuseMsg
-                    }, function(data){
-                        PopTip("操作成功！！");
-                    }, function (data) {
-                        PopTip(data.msg || '操作失败~~');
+
                     });
-                });
 
 
-            },
-            'buttons': [{
-                'text': '同意',
-                'className': 'btn btn-primary',
-                'click': function(e) {
-                    e.preventDefault();
-                    e.stopImmediatePropagation();
-                    e.stopPropagation();
+                },
+                'buttons': [{
+                    'text': '确定',
+                    'className': 'btn btn-primary',
+                    'click': function (e) {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                        e.stopPropagation();
 
-                    $(this).dialog('close');
+                        $(this).dialog('close');
 
-                }
-            }, {
-                'className': 'btn btn-default',
-                'text': '取消',
-                'click': function(e) {
-                    e.preventDefault();
-                    e.stopImmediatePropagation();
-                    e.stopPropagation();
+                    }
+                }, {
+                    'className': 'btn btn-default',
+                    'text': '取消',
+                    'click': function (e) {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                        e.stopPropagation();
 
-                    $(this).dialog('close');
-                }
-            }]
+                        $(this).dialog('close');
+                    }
+                }]
+            });
+
         });
 
     },
@@ -292,7 +305,6 @@ var UnionRebate = Class(function(opts){
                 'open':function () {
 
 
-
                 },
                 'buttons': [{
                     'text': '确定',
@@ -322,6 +334,82 @@ var UnionRebate = Class(function(opts){
 
 
     },
+
+    drawHighCharts:function (elem, data) {
+
+        var options = $.extend({
+            title:'柱状图展示',
+            categories:[
+                '一月',
+                '二月',
+                '三月',
+                '四月',
+                '五月',
+                '六月',
+                '七月',
+                '八月',
+                '九月',
+                '十月',
+                '十一月',
+                '十二月'
+            ],
+            yAxis:{
+                min: 0,
+                title: {
+                    text: '金额 (￥)'
+                }
+            },
+            xData:{
+                name: '返点金额',
+                data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1],
+                dataLabels:{
+                    enabled:true
+                }
+
+            }
+        },data);
+
+        if($.type(elem) === 'string'){
+            elem = $(elem);
+        }
+        elem.highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: options.title
+            },
+            /*subtitle: {
+             text: 'Source: WorldClimate.com'
+             },*/
+            xAxis: {
+                categories: options.categories
+            },
+            yAxis: options.yAxis,
+            legend:{
+                enabled:false
+            },
+            credits:{
+                enabled:false
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: [ options.xData]
+        });
+    },
+
 
     destroy: function(){}
 });
