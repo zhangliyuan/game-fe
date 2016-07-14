@@ -83,9 +83,12 @@ var AccountList = Class(function (opts) {
     
     initEvents: function () {
       var me = this;
-        
-        me.container.off('click');
 
+        new CollapseFilter({
+            container:'.ico-collapse'
+        });
+
+        me.container.off('click');
         me.container.on('click','#exec-search-btn', function () {
             me.getAccountList();
         });
