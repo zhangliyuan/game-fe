@@ -1,0 +1,38 @@
+{
+  "code": 0,
+  "msg": "success",
+  "data":{
+
+    "id":"123456799",
+    "name":"隔壁吴老二",
+    "phoneNo":"18906354180",
+    "email":"绑定邮箱@111.com",
+    "rank":"平台等级20",
+    "union":"众神殿游戏公会（ID:231441）",
+    "unionId":"231441",
+    "unionRole":"会长",
+    "registerTime":"2014-12-21",
+    "orderNum":100,
+    "totalCost":21344,
+    "packages":12,
+    "address":"江苏常州",
+    "questions":3,
+    "gameCircle":102,
+    "watcher":23,
+    "fans":234,
+    "realName":"张小飞",
+    "ID":123446546546545634523,
+    "hasIDPic":true,
+    "QQ":232132444,
+    "location":"北京小营桥",
+    "status":"disabled",
+    "statusDetail":"刷礼包",
+    "IDPics":{
+      "img1":"http://placehold.it/100x30",
+      "img2":"http://placehold.it/100x30",
+      "img3":"http://placehold.it/100x30",
+      "img4":"http://placehold.it/100x30"
+    },
+    "remark":"此客户，有刷领礼包   提交2016-1-23 16:12:45  礼包部：赵丽丽"
+  }
+}

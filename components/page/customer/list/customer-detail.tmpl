@@ -1,0 +1,102 @@
+<div class="box-body table-responsive">
+    <table class="table table-bordered customer-info">
+        <tbody>
+
+        <tr>
+            <td>用户名</td>
+            <td>{{name}}</td>
+            <td> 手机号码</td>
+            <td>{{phoneNo}}</td>
+            <td>绑定邮箱</td>
+            <td>{{email}}</td>
+        </tr>
+        <tr>
+            <td>平台等级</td>
+            <td>{{rank}}</td>
+            <td> 所属公会</td>
+            <td>{{union}}(ID:{{unionId}})</td>
+            <td>公会职位</td>
+            <td>{{unionRole}}</td>
+        </tr>
+        <tr>
+            <td>注册时间</td>
+            <td>{{registerTime}}</td>
+            <td> 订单数量</td>
+            <td>{{orderNum}}</td>
+            <td>消费金额</td>
+            <td>{{totalCost}}</td>
+        </tr>
+        <tr>
+            <td>领取礼包</td>
+            <td>{{packages}}</td>
+            <td> 常用地址</td>
+            <td>{{address}}</td>
+            <td>问题反馈</td>
+            <td>{{questions}}</td>
+        </tr>
+        <tr>
+            <td>游戏圈发布</td>
+            <td>{{gameCircle}}</td>
+            <td> 关注</td>
+            <td>{{watcher}}</td>
+            <td>粉丝</td>
+            <td>{{fans}}</td>
+        </tr>
+        <tr>
+            <td>姓名</td>
+            <td>{{realName}}</td>
+            <td> 身份证号码</td>
+            <td>{{ID}}</td>
+            <td>证件照</td>
+            <td>{{hasIDPic}}</td>
+        </tr>
+        <tr>
+            <td>QQ</td>
+            <td>{{QQ}}</td>
+            <td> 所在地</td>
+            <td colspan="3">{{location}}</td>
+
+        </tr>
+        <tr>
+            <td>账号状态</td>
+            <td>{{status}}</td>
+            <td> 封停原因</td>
+            <td colspan="3">{{statusDetail}}</td>
+        </tr>
+
+
+        </tbody>
+    </table>
+
+    <div class="pic-wrap">
+        <div class="row">
+            <img src="{{IDPics.img1}}" />
+
+            <img src="{{IDPics.img2}}" />
+        </div>
+
+        <div class="row">
+            <img src="{{IDPics.img3}}" />
+            <img src="{{IDPics.img4}}" />
+        </div>
+
+    </div>
+    <div class="form-group">
+        <label>工作人员备注：</label>
+        <textarea class="form-control" rows="5">{{{remark}}}</textarea>
+    </div>
+    <div class="form-group">
+        <textarea class="form-control" rows="5" placeholder="添加记录的输入框"></textarea>
+    </div>
+    <div class="form-group">
+        <select class="form-control" style="width: 100px;">
+            <option value="0">无操作</option>
+            <option value="0">无操作</option>
+            <option value="0">无操作</option>
+        </select>
+    </div>
+
+</div>
+<div class="box-footer">
+<button class="btn btn-primary update-customer-btn">更新</button>
+</div>
