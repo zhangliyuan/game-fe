@@ -1,0 +1,17 @@
+{{#each list}}
+
+<tr data-id="{{id}}" class="log-item">
+    <td>{{questionNo}}</td>
+    <td>{{createTime}}</td>
+    <td>{{name}}</td>
+    <td>{{phoneNo}}</td>
+    <td>{{qType}}</td>
+    <td>{{qStatus}}</td>
+    <td>{{waitTime}}</td>
+    <td>{{questionDetail}}</td>
+    <td>
+        <a class="operation " data-oper="close">无效关闭</a>
+        <a class="operation " data-oper="reply">回复</a>
+    </td>
+</tr>
+        {{/each}}

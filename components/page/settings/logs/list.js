@@ -87,7 +87,7 @@ var LogList = Class(function (opts) {
                 pageCount: Number(data.total_count),
                 pageSize: 10,
                 callback: function(page){
-                    me.getAccountList({page:page});
+                    me.getLogList({page:page});
                 },
                 pn: Number(data.current_page)
             });

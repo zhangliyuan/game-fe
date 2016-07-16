@@ -40,6 +40,7 @@ var CustomerList = Class(function (opts) {
             var _html =CUSTOMER_LIST.CUSTOMER_DETAIL(data);
 
                 me.container.find('.customer-info-box').empty().append(_html);
+            me._fix();
         });
     },
 
@@ -55,6 +56,8 @@ var CustomerList = Class(function (opts) {
         me.container.on('click', ".update-customer-btn", function () {
             me.updateCustomer();
         });
+
+
     },
 
 
@@ -79,6 +82,27 @@ var CustomerList = Class(function (opts) {
         return data || {};
     },
 
+
+    _fix:function () {
+        //Get window height and the wrapper height
+        var height = $(window).height() - $("body > .header").height();
+        $(".wrapper").css("min-height", height + "px");
+        var content = $(".wrapper").height();
+        //If the wrapper height is greater than the window
+        if (content > height)
+        //then set sidebar height to the wrapper
+            $(".left-side, html, body").css({
+                "overflow-y": "auto",
+                "min-height": (content + 100) + "px"
+            });
+        else {
+            //Otherwise, set the sidebar to the height of the window
+            $(".left-side, html, body").css({
+                "overflow-y": "auto",
+                "min-height": (height + 100 ) + "px"
+            });
+        }
+    } ,
     destroy:function () {
         
     }
