@@ -18,13 +18,58 @@ var BoothList = Class(function (opts) {
         me.container = $(me.opts.container);
 
         me.render();
+        me.initEvents();
     },
 
     render: function () {
         var me = this;
         var _html = BOOTH_LIST.LAYOUT({});
         me.container.empty().html(_html);
+        me._fix();
+    },
+    
+    initEvents: function () {
+        var me = this;
+        
+        me.container.off('click');
+        
+        me.container.on('click', '.bottom-title .fa', function () {
+           $(this).closest('.game-item').remove();
+        });
+
+        me.container.on('change', '#game-select-box', function () {
+           me.container.find('.game-booth-list').append('<div class="game-item"> '+
+               '<img src="http://placehold.it/200x200">'+
+               ' <div class="bottom-title"> <span>DOTA2</span> '+
+               '<span class="fa-stack "> <i class="fa fa-circle fa-stack-2x f-red"></i> '+
+               '<i class="fa fa-close fa-stack-1x f-black"></i> </span> </div> </div>');
+
+            me._fix();
+        });
+    },
+
+    _fix:function () {
+        //Get window height and the wrapper height
+        var height = $(window).height() - $("body > .header").height();
+        $(".wrapper").css("min-height", height + "px");
+        var content = $(".wrapper").height();
+        //If the wrapper height is greater than the window
+        if (content > height)
+        //then set sidebar height to the wrapper
+            $(".left-side, html, body").css({
+                "overflow-y": "auto",
+                "min-height": (content + 100) + "px"
+            });
+        else {
+            //Otherwise, set the sidebar to the height of the window
+            $(".left-side, html, body").css({
+                "overflow-y": "auto",
+                "min-height": (height + 100 ) + "px"
+            });
+        }
     }
+
+    
 });
 
 module.exports=BoothList;

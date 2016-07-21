@@ -1,0 +1,31 @@
+.booth-wrap{
+
+  .game-booth-list{
+
+     .game-item{
+       display: inline-block;
+       width: 200px;
+       margin: 10px 20px 10px 0;
+       text-align: left;
+       position: relative;
+
+       .bottom-title{
+         display: inline-block;
+         width: 200px;
+         height: 32px;
+         line-height: 32px;
+         background: rgba(0,0,0,0.3);
+         text-align: center;
+         top: 168px;
+         position: absolute;
+         left: 0;
+
+         .fa-stack{
+           float: right;
+           margin-right: 14px;
+           margin-top: 3px;
+         }
+       }
+     }
+  }
+}
