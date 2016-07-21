@@ -52,12 +52,21 @@ fis.util.map([{
 	name: '115',
 	host: 'http://115.28.167.5',
 	port: '8999'
+},{
+	name: '116',
+	host: 'http://115.28.167.5',
+	port: '8999'
 }], function (index, item) {
 
 	var static_domain   = item.host+':8080/fe-admin',
 		static_path     = item.host+':'+item.port+'/receiver',
 		vm_path       = item.host + ':' + item.port + '/receiver',
 		release_path = '/usr/local/tomcat/apache-tomcat-7.0.70/webapps/fe-admin';
+
+	if(item.name == '116'){
+		release_path = '/var/www/html/fe-game';
+		static_domain = 'http://115.28.167.5/fe-game/';
+	}
 
 
 	fis.util.map(['', 'm'], function (_index, _val) {

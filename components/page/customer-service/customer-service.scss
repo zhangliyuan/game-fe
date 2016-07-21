@@ -3,3 +3,17 @@
     min-width: 110px;
   }
 }
+
+.add-incoming{
+  .form-group{
+    .radio{
+      display: inline-block;
+      width: 500px;
+
+      .form-control{
+        width: 120px;
+        padding: 3px 5px;
+      }
+    }
+  }
+}
