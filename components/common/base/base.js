@@ -25,7 +25,7 @@ $.json = require('./json.js');
 $.cookie = require('./cookie.js');
 
 //TODO: date;
-$.date = require('./date.js');
+//$.date = require('./date.js');
 
 //TODO: array;
 $.array = require('./array.js');

@@ -9,6 +9,8 @@ require("/components/common/laydate/laydate.js");
 var Ajax=require('/components/common/ajax/ajax.js');
 var PopTip = require('/components/common/pop-tip/pop-tip.js');
 var Dialog = require('/components/common/dialog/dialog.js');
+require('/components/lib/uploader/jquery.fileupload.js');
+
 
 var ADD_PACKAGE = {
     LAYOUT:__inline('add.tmpl')
@@ -25,6 +27,18 @@ var AddPackage = Class(function (opts) {
         me.render();
 
         me.initEvent();
+
+        $('#upFile', me.container).fileupload({
+        // Uncomment the following to send cross-domain cookies:
+        //xhrFields: {withCredentials: true},
+        url: '/game/common/upload_image',
+        done: function (e, data) {
+            console.log(arguments);
+            console.log(data);
+            $('#product-thumbnail').val(data.picUrl).attr('type','text');
+            $('#product-thumbnail').next('input').addClass('none');
+        }
+    });
 
 
     },
@@ -113,6 +127,7 @@ var AddPackage = Class(function (opts) {
                }
            });
         });
+
     },
 
 

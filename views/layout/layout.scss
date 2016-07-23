@@ -1,9 +1,14 @@
 .game-theme{
+	.left-side{
+	    border-right: 1px solid #ddd;
+	}
   .header{
-    .logo img{
+    .logo{
       display: inline-block;
       width: 197px;
       height: 60px;
+      background:url('/components/common/theme/img/logo.jpg') center;
+      background-size: contain;
     }
   }
 }

@@ -12,14 +12,14 @@
 
     {{else eq type "date-single"}}
         <div  class="date-single">
-            <li class="form-control laydate-icon data-item" id="date_single" data-name="{{name}}"></li>
+            <li class="form-control laydate-icon data-item" id="date_single" data-name="{{name}}">&nbsp;</li>
         </div>
 
     {{else eq type "date-combo"}}
         <div class="date-combo">
-            <li class="form-control laydate-icon data-item start" id="start"  data-name="{{name.start}}" ></li>
+            <li class="form-control laydate-icon data-item start" id="start"  data-name="{{name.start}}" >&nbsp;</li>
             <span>-</span>
-            <li class="form-control laydate-icon data-item end" id="end"  data-name="{{name.end}}" ></li>
+            <li class="form-control laydate-icon data-item end" id="end"  data-name="{{name.end}}" >&nbsp;</li>
         </div>
 
     {{/eq}}

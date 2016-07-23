@@ -342,7 +342,7 @@ var OrderList = Class(function (opts) {
     },
 
     changeOrderStatus:function (id,status) {
-        Ajax.post('/admin/order_update',{id:id, status:status}, function (data) {
+        Ajax.post('/admin/order_update_data',{id:id, value:status, name:'status'}, function (data) {
            PopTip('操作成功！！');
         });
     },

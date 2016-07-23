@@ -13,7 +13,7 @@ fis
 		isMod: true
 	})
 	//TODO: lib中使用umd引入, 请在此加入;
-	.match('/components/lib/{jquery,jquery.ui,slimscroll,highcharts,fabric,jplayer,snap.svg}/**.js', {
+	.match('/components/lib/{jquery,jquery.ui,slimscroll,highcharts,fabric,jplayer,snap.svg,uploader}/**.js', {
 		isMod: true
 	})
 	.match('/test/example/route/(**)', {

@@ -316,7 +316,7 @@ var ProductList = Class(function (opts) {
         });
     },
     changeProductStatus:function (id,status) {
-        Ajax.post('/admin/product_update',{id:id, status:status}, function (data) {
+        Ajax.post('/admin/product_update_data',{id:id, value:status, name:'status'}, function (data) {
            PopTip('操作成功！！');
         });
     },
