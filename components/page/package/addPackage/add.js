@@ -135,7 +135,7 @@ var AddPackage = Class(function (opts) {
     addProductData: function (params) {
         var me = this;
 
-        Ajax.post('/admin/product_add',params, function (data) {
+        Ajax.post('/admin/package_add',params, function (data) {
             PopTip('添加成功！！');
             me.render();
         });
