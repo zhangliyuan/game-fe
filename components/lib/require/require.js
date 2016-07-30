@@ -71,8 +71,8 @@ var require, define;
         }
 
         createScript(url, onerror && function () {
-            onerror(id);
-        });
+                    onerror(id);
+            });
     };
 
     define = function (id, factory) {
@@ -88,8 +88,11 @@ var require, define;
         }
     };
 
-    require = function (id) {
+    require = function (id, isStyle) {
 
+        if(isStyle){
+            return;
+        }
         // compatible with require([dep, dep2...]) syntax.
         if (id && id.splice) {
             return require.async.apply(this, arguments);
@@ -149,12 +152,20 @@ var require, define;
                 }
 
                 needMap[dep] = true;
-                needNum++;
-                loadScript(dep, updateNeed, onerror);
 
-                child = resMap[dep] || resMap[dep + '.js'];
-                if (child && 'deps' in child) {
-                    findNeed(child.deps);
+                var isLink = /\.(css|scss)$/i.test( dep );
+                if(isLink){
+                    console.log('--------------------------');
+                    require.loadCss(resMap[dep]);
+                }else{
+                    needNum++;
+
+                    loadScript(dep, updateNeed, onerror);
+
+                    child = resMap[dep] || resMap[dep + '.js'];
+                    if (child && 'deps' in child) {
+                        findNeed(child.deps);
+                    }
                 }
             }
         }
@@ -214,6 +225,12 @@ var require, define;
         else if (cfg.url) {
             var link = document.createElement('link');
             link.href = cfg.url;
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            head.appendChild(link);
+        }else if(cfg.uri){
+            var link = document.createElement('link');
+            link.href = cfg.uri;
             link.rel = 'stylesheet';
             link.type = 'text/css';
             head.appendChild(link);
