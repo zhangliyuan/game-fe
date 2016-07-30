@@ -5,9 +5,10 @@
   .header{
     .logo{
       display: inline-block;
-      width: 197px;
+      width: 220px;
       height: 60px;
-      background:url('/components/common/theme/img/logo.jpg') center;
+      padding: 0;
+      background:url('/components/common/theme/img/logo.png') center;
       background-size: contain;
     }
   }
