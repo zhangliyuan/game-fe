@@ -23,7 +23,7 @@ var ORDER_LIST = {
 var FILTER_OPTIONS = [
     {
         label:'订单编号',
-        name:'orderNo',
+        name:'orderId',
         type:'text',
         placeholder:'',
         validate: null
@@ -31,8 +31,8 @@ var FILTER_OPTIONS = [
     {
         label:'下单时间',
         name:{
-            start:'startDate',
-            end:'endDate'
+            start:'createTime',
+            end:'endTime'
         },
         type:'date-combo',
 
@@ -41,14 +41,14 @@ var FILTER_OPTIONS = [
     },
     {
         label:'用户账号',
-        name:'userAccount',
+        name:'uid',
         type:'text',
         placeholder:'',
         validate: null
     },
     {
         label:'订单状态',
-        name:'status',
+        name:'orderStatus',
         type:'select',
         options:[
             {text:'全部', value:''},
@@ -65,14 +65,14 @@ var FILTER_OPTIONS = [
     },
     {
         label:'商品名称',
-        name:'productName',
+        name:'goodName',
         type:'text',
         placeholder:'',
         validate: null
     },
     {
         label:'订单类型',
-        name:'type',
+        name:'orderType',
         type:'select',
         options:[
             {text:'全部', value:''},
@@ -342,7 +342,7 @@ var OrderList = Class(function (opts) {
     },
 
     changeOrderStatus:function (id,status) {
-        Ajax.post('/admin/order_update_data',{id:id, value:status, name:'status'}, function (data) {
+        Ajax.post('/admin/order_update_data',{id:id, orderStatus:status}, function (data) {
            PopTip('操作成功！！');
         });
     },

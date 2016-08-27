@@ -23,14 +23,14 @@ var PRODUCT_LIST = {
 var FILTER_OPTIONS = [
     {
         label:'商品名称',
-        name:'productName',
+        name:'goodName',
         type:'text',
         placeholder:'',
         validate: null
     },
     {
         label:'商品类型',
-        name:'type',
+        name:'goodType',
         type:'select',
         options:[
             {text:'全部', value:''},
@@ -42,14 +42,14 @@ var FILTER_OPTIONS = [
     },
     {
         label:'商品编号',
-        name:'productNo',
+        name:'goodNum',
         type:'text',
         placeholder:'',
         validate: null
     },
     {
         label:'商品分类',
-        name:'class',
+        name:'isOnline',
         type:'select',
         options:[
             {text:'全部', value:''},
@@ -61,14 +61,14 @@ var FILTER_OPTIONS = [
     },
     {
         label:'商品面值',
-        name:'banknote',
+        name:'goodSales',
         type:'text',
         placeholder:'',
         validate: null
     },
     {
         label:'发布状态',
-        name:'status',
+        name:'goodStatus',
         type:'select',
         options:[
             {text:'全部', value:''},

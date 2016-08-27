@@ -114,7 +114,7 @@ fis.util.map([{
 					to: '/game/static'
 				})
 			})
-			.match('/views/(**.{vm,jsp})', {
+			.match('/views/(**.{vm,jsp,html})', {
 				release: '$1',
 				deploy: fis.plugin('http-push', {
 					receiver: vm_path,

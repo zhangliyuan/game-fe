@@ -31,35 +31,35 @@ var FILTER_OPTIONS = [
     },
     {
         label:'手机号',
-        name:'phoneNo',
+        name:'phoneNumber',
         type:'text',
         placeholder:'',
         validate: null
     },
     {
         label:'礼包名称',
-        name:'packageName',
+        name:'giftName',
         type:'text',
         placeholder:'',
         validate: null
     },
     {
         label:'礼包编号',
-        name:'packageNo',
+        name:'giftCode',
         type:'text',
         placeholder:'',
         validate: null
     },
     {
         label:'礼包CDK',
-        name:'packageCDK',
+        name:'giftId',
         type:'text',
         placeholder:'',
         validate: null
     },
     {
         label:'CDK状态',
-        name:'status',
+        name:'recodeStatus',
         type:'select',
         options:[
             {text:'全部', value:''},

@@ -37,7 +37,7 @@ var FILTER_OPTIONS = [
     },
     {
         label:'会长手机',
-        name:'umobile',
+        name:'linkMobile ',
         type:'text',
         placeholder:'',
         validate: null
@@ -76,7 +76,7 @@ var FILTER_OPTIONS = [
     },
     {
         label:'公会状态',
-        name:'status',
+        name:'guildStatus',
         type:'select',
         options:[
             {text:'全部', value:''},
@@ -89,7 +89,7 @@ var FILTER_OPTIONS = [
     },
     {
         label:'会长名称',
-        name:'uname',
+        name:'guildName',
         type:'text',
         placeholder:'',
         validate: null

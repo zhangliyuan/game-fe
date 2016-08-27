@@ -29,7 +29,7 @@ var FILTER_OPTIONS = [
     },
     {
         label:'礼包类型',
-        name:'type',
+        name:'giftType',
         type:'select',
         options:[
             {text:'全部', value:''},
@@ -41,14 +41,14 @@ var FILTER_OPTIONS = [
     },
     {
         label:'礼包名称',
-        name:'packageName',
+        name:'giftName',
         type:'text',
         placeholder:'',
         validate: null
     },
     {
         label:'发放方式',
-        name:'distribute-type',
+        name:'giftUseMethod',
         type:'select',
         options:[
             {text:'全部', value:''},
@@ -60,14 +60,14 @@ var FILTER_OPTIONS = [
     },
     {
         label:'礼包编号',
-        name:'packageNo',
+        name:'giftNum',
         type:'text',
         placeholder:'',
         validate: null
     },
     {
         label:'发布状态',
-        name:'status',
+        name:'isOnline',
         type:'select',
         options:[
             {text:'全部', value:''},
