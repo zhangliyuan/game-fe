@@ -1,58 +1,58 @@
 <!--訂單詳情-->
 
-<div class="order-detail">
+<div class="order-detail detail-dialog">
 
     <div class="box-body">
         <div class="form-group">
-            <label> 礼包编号:</label>
+            <label class="text-label"> 礼包编号:</label>
             <label  class="label-value"> {{packageNo}}</label>
         </div>
         <div class="form-group">
-            <label> 游戏名称:</label>
+            <label class="text-label"> 游戏名称:</label>
             <label class="label-value"> {{gameName}}</label>
         </div>
         <div class="form-group">
-            <label> 礼包名称:</label>
+            <label class="text-label"> 礼包名称:</label>
             <label  class="label-value"> {{packageName}}</label>
         </div>
         <div class="form-group">
-            <label> 有效期:</label>
+            <label class="text-label"> 有效期:</label>
             <label  class="label-value"> {{startTime}}至{{endTime}}</label>
         </div>
         <div class="form-group">
-            <label> 礼包状态:</label>
+            <label class="text-label"> 礼包状态:</label>
             <label  class="label-value"> {{status}}</label>
         </div>
 
 
         <div class="form-group">
-            <label> 上架时间:</label>
+            <label class="text-label"> 上架时间:</label>
             <label  class="label-value"> {{onShelfTime}}</label>
         </div>
         <div class="form-group">
-            <label> 类型:</label>
+            <label class="text-label"> 类型:</label>
             <label  class="label-value"> {{type}}</label>
         </div>
         <div class="form-group">
-            <label> 库存:</label>
+            <label class="text-label"> 库存:</label>
             <label  class="label-value"> {{count}}</label>
         </div>
         <div class="form-group">
-            <label> 发放量:</label>
+            <label class="text-label"> 发放量:</label>
             <label  class="label-value"> {{distributeCount}}</label>
         </div>
         <div class="form-group">
-            <label> 发放方式:</label>
+            <label class="text-label"> 发放方式:</label>
             <label  class="label-value"> {{distributeType}}</label>
 
         </div>
         <div class="form-group">
-            <label>礼包内容:</label>
+            <label class="text-label"> 礼包内容:</label>
             <div class="" style="max-height: 100px;overflow-y: auto;"> {{#each  packageContent}} {{{this}}}<br />   {{/each}} </div>
 
         </div>
         <div class="form-group">
-            <label>激活方式:</label>
+            <label class="text-label"> 激活方式:</label>
             <label  class="label-value"> {{activeMethod}}</label>
 
         </div>

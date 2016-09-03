@@ -276,7 +276,7 @@ var OrderList = Class(function (opts) {
 
 
         Ajax.get('/admin/order_detail',{id:id},function (data) {
-            var content = ORDER_LIST.ORDER_EDIT($.extend(data,{statusMap:ORDER_STATUS, typeMap: ORDER_TYPE}));
+            var content = ORDER_LIST.ORDER_EDIT($.extend({},data,{statusMap:ORDER_STATUS, typeMap: ORDER_TYPE}));
 
 
             Dialog.confirm(content, {
@@ -309,8 +309,10 @@ var OrderList = Class(function (opts) {
                         e.preventDefault();
                         e.stopImmediatePropagation();
                         e.stopPropagation();
-
-                        me.editOrder(me.getEditData('#order-edit'));
+                        var _dialog = this;
+                        me.editOrder($.extend({},data, me.getEditData('#order-edit')), function () {
+                            $(_dialog).dialog('close');
+                        });
                     }
                 },{
                     'text': '取消',
@@ -348,12 +350,13 @@ var OrderList = Class(function (opts) {
         return data;
     },
 
-    editOrder: function (data) {
+    editOrder: function (data, cb) {
 
         var me  =this;
 
         Ajax.post('/admin/order_update',data, function (data) {
            PopTip(data.msg || '编辑成功！');
+            cb && cb();
         });
     },
 

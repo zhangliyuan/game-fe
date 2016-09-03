@@ -53,4 +53,18 @@
   }
 
 
+
+
+  .edit-dialog,.detail-dialog{
+    .text-label{
+      width: 100px;
+      text-align: right;
+    }
+
+    .form-control{
+      display: inline-block;
+    }
+  }
+
+
 }
