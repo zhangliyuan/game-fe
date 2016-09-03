@@ -75,7 +75,7 @@ var AccountList = Class(function (opts) {
                 callback: function(page){
                     me.getAccountList({page:page});
                 },
-                pn: Number(data.current_page)
+                pn: Number(data.current_page || params.pageincoming)
             });
         });
 

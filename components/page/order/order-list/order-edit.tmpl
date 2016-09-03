@@ -4,27 +4,27 @@
 
     <div class="box-body">
         <div class="form-group">
-            <label> 订单编号:</label>
+            <label class="text-label"> 订单编号:</label>
             <label > {{orderId}}</label>
         </div>
         <div class="form-group">
-            <label> 商品名称:</label>
-            <label > {{productName}}</label>
+            <label class="text-label"> 商品名称:</label>
+            <label > {{goodName}}</label>
         </div>
         <div class="form-group">
-            <label> 单价:</label>
-            <input type="text" class="form-control" id="order-price"  name="unitPrice" value="{{price}}" />
+            <label class="text-label"> 单价:</label>
+            <input type="text" class="form-control" id="order-price"  name="unitPrice" value="{{unitPrice}}" />
         </div>
         <div class="form-group">
-            <label> 数量:</label>
-            <input type="text" class="form-control" id="order-count" name="count" value="{{count}}" />
+            <label class="text-label"> 数量:</label>
+            <input type="text" class="form-control" id="order-count" name="count" value="{{gameCount}}" />
         </div>
         <div class="form-group">
-            <label> 用户:</label>
-            <label > {{buyer}}</label>
+            <label class="text-label"> 用户:</label>
+            <label > {{uname}}</label>
         </div>
         <div class="form-group">
-            <label> 状态:</label>
+            <label class="text-label"> 状态:</label>
             <select class="form-control data-item" name="orderStatus" data-name="orderStatus">
                 <option value="1">等待付款</option>
                 <option value="2">等待发货</option>
@@ -35,19 +35,19 @@
             </select>
         </div>
         <div class="form-group">
-            <label> 总金额:</label>
-            <input type="text" class="form-control" id="order-totalCost" name="totalPrice"  value="{{totalCost}}" />
+            <label class="text-label"> 总金额:</label>
+            <input type="text" class="form-control" id="order-totalCost" name="totalPrice"  value="{{totalPrice}}" />
         </div>
         <div class="form-group">
-            <label> 下单时间:</label>
-            <label > {{totalCost}}</label>
+            <label class="text-label"> 下单时间:</label>
+            <label > {{createTime}}</label>
         </div>
         <div class="form-group">
-            <label> 充值账号:</label>
-            <input type="text" class="form-control" id="order-chargeAccount"  name="orderId" value="{{chargeAccount}}"/>
+            <label class="text-label"> 充值账号:</label>
+            <input type="text" class="form-control" id="order-chargeAccount"  name="orderId" value="{{payGameAccount}}"/>
         </div>
         <div class="form-group">
-            <label> 支付方式:</label>
+            <label class="text-label"> 支付方式:</label>
             <select class="form-control data-item"  name="payWay" data-name="payWay">
                 <option value="1">weChat</option>
                 <option value="2">aliPay</option>
@@ -55,12 +55,12 @@
             </select>
         </div>
         <div class="form-group">
-            <label>支付时间:</label>
+            <label class="text-label">支付时间:</label>
             <input type="text" class="form-control" id="order-payTime"  name="payTime" value="{{payTime}}"/>
         </div>
 
         <div class="form-group">
-            <label>备注:</label>
+            <label class="text-label">备注:</label>
             <textarea  id="notice-content" class="form-control"  name="remark" rows="5" >{{remark}}</textarea>
         </div>
 

@@ -160,7 +160,7 @@ var Union = Class(function(opts){
                 callback: function(page){
                     me.getUnionList({page:page});
                 },
-                pn: Number(data.current_page)
+                pn: Number(data.current_page || params.pageincoming)
             });
 
             if(!data.list || data.list.length == 0){
@@ -344,9 +344,9 @@ var Union = Class(function(opts){
                 pageCount: Number(data.total_count),
                 pageSize: 10,
                 callback: function(page){
-                    me.getDetailTab($.extend(params.data,{pageNo:page}));
+                    me.getDetailTab($.extend(params.data,{page:page}));
                 },
-                pn: Number(data.current_page)
+                pn: Number(data.current_page || params.pageincoming)
             });
 
         });

@@ -52,13 +52,13 @@ var FILTER_OPTIONS = [
         type:'select',
         options:[
             {text:'全部', value:''},
-            {text:'交易成功', value:'1'},
-            {text:'等待发货', value:'2'},
-            {text:'已退款', value:'3'},
-            {text:'用户取消', value:'4'},
-            {text:'订单关闭', value:'5'},
-            {text:'超时关闭', value:'6'},
-            {text:'订单锁定', value:'7'}
+            {text:'待付款', value:'1'},
+            {text:'待发货', value:'2'},
+            {text:'已发货', value:'3'},
+            {text:'已完成', value:'4'},
+            {text:'已退款', value:'5'},
+            {text:'已取消', value:'6'},
+            {text:'已锁定', value:'7'}
         ],
         placeholder:'',
         validate: null
@@ -83,11 +83,21 @@ var FILTER_OPTIONS = [
         validate: null
     }
 ];
+//订单类型：1，游戏充值，2话费充值，
+var ORDER_TYPE = {
+    '1': '话费充值',
+    '2': '话费充值'
+};
 
+//订单状态：1，等待用户付款2，等待发货，3，已发货，4，成功订单5，退款订单6，取消订单 7已锁定
 var ORDER_STATUS = {
-    'normal': '正常',
-    'blocked': '封停',
-    'error': '异常'
+    '1': '待付款',
+    '2': '待发货',
+    '3': '已发货',
+    '4': '已完成',
+    '5': '已退款',
+    '6': '已取消',
+    '7': '已锁定'
 };
 
 
@@ -116,7 +126,7 @@ var OrderList = Class(function (opts) {
         if(!params){
             params = me.getFilterData();
         }else{
-            params = $.extend(me.getFilterData(),params);
+            params = $.extend({},me.getFilterData(),params);
         }
 
         Ajax.post('/admin/order_list', params, function (data) {
@@ -131,9 +141,9 @@ var OrderList = Class(function (opts) {
                 pageCount: Number(data.total_count),
                 pageSize: 10,
                 callback: function(page){
-                    me.getOrderList({pageNo:page});
+                    me.getOrderList({page:page});
                 },
-                pn: Number(data.current_page)
+                pn: Number(data.current_page || params.page)
             });
         });
     },
@@ -180,7 +190,7 @@ var OrderList = Class(function (opts) {
 
         me.container.off('click');
         me.container.on('click','#exec-search-btn', function () {
-            me.getOrderList();
+            me.getOrderList({page:1});
         });
         me.container.on('click','#export-table-data', function () {
             me.exportTable();
@@ -192,6 +202,7 @@ var OrderList = Class(function (opts) {
             var _value = obj.data('value');
             var params = {};
             params[_name] = _value;
+            params.page = 1;
             me.getOrderList(params);
 
         });
@@ -208,11 +219,11 @@ var OrderList = Class(function (opts) {
                 case 'edit':
                     me.showOrderEdit(id);break;
                 case 'cancel':
-                    me.changeOrderStatus(id,'cancel');break;
+                    me.changeOrderStatus(id,'6');break;
                 case 'block':
                     me.changeOrderStatus(id,'block');break;
                 case 'refund':
-                    me.changeOrderStatus(id,'refund');break;
+                    me.changeOrderStatus(id,'5');break;
                 default:
                     console.log('do nothing');
 
@@ -225,7 +236,7 @@ var OrderList = Class(function (opts) {
 
         
         Ajax.get('/admin/order_detail',{id:id},function (data) {
-            var content = ORDER_LIST.ORDER_DETAIL(data);
+            var content = ORDER_LIST.ORDER_DETAIL($.extend(data,{statusMap:ORDER_STATUS, typeMap: ORDER_TYPE}));
 
             Dialog.confirm(content, {
                 'width': '800px',
@@ -265,7 +276,7 @@ var OrderList = Class(function (opts) {
 
 
         Ajax.get('/admin/order_detail',{id:id},function (data) {
-            var content = ORDER_LIST.ORDER_EDIT(data);
+            var content = ORDER_LIST.ORDER_EDIT($.extend(data,{statusMap:ORDER_STATUS, typeMap: ORDER_TYPE}));
 
 
             Dialog.confirm(content, {
@@ -284,6 +295,11 @@ var OrderList = Class(function (opts) {
                     'effect': 'drop',
                     'direction': 'down',
                     'duration': 200
+                },
+
+                'open': function () {
+                    $('select[name="orderStatus"] option[value="'+data.orderStatus+'"]')[0].click();
+                    $('select[name="payWay"] option[value="'+data.orderStatus+'"]').trigger('click');
                 },
 
                 'buttons': [{

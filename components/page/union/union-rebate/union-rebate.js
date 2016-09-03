@@ -103,7 +103,7 @@ var UnionRebate = Class(function(opts){
                 callback: function(page){
                     me.getUnionRebateList({page:page});
                 },
-                pn: Number(data.current_page)
+                pn: Number(data.current_page || params.pageincoming)
             });
         });
 

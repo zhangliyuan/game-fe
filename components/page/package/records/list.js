@@ -123,9 +123,9 @@ var PackageRecords = Class(function (opts) {
                 pageCount: Number(data.total_count),
                 pageSize: 10,
                 callback: function(page){
-                    me.getPackageRecordList({pageNo:page});
+                    me.getPackageRecordList({page:page});
                 },
-                pn: Number(data.current_page)
+                pn: Number(data.current_page || params.pageincoming)
             });
         });
     },

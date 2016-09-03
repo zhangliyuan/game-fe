@@ -125,9 +125,9 @@ var PackageList = Class(function (opts) {
                 pageCount: Number(data.total_count),
                 pageSize: 10,
                 callback: function(page){
-                    me.getPackageList({pageNo:page});
+                    me.getPackageList({page:page});
                 },
-                pn: Number(data.current_page)
+                pn: Number(data.current_page || params.pageincoming)
             });
         });
     },
