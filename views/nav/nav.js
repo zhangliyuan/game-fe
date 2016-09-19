@@ -103,20 +103,20 @@ $(function() {
     function _fix() {
         //Get window height and the wrapper height
         var height = $(window).height() - $("body > .header").height();
-        $(".wrapper").css("min-height", height + "px");
+        $(".wrapper").css("min-height", (height-100) + "px");
         var content = $(".wrapper").height();
         //If the wrapper height is greater than the window
         if (content > height)
         //then set sidebar height to the wrapper
             $(".left-side, html, body").css({
                 "overflow-y": "auto",
-                "min-height": content + "px"
+                "min-height": (content-100) + "px"
             });
         else {
             //Otherwise, set the sidebar to the height of the window
             $(".left-side, html, body").css({
                 "overflow-y": "auto",
-                "min-height": height + "px"
+                "min-height": (height-100) + "px"
             });
         }
     }

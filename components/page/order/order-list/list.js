@@ -130,10 +130,14 @@ var OrderList = Class(function (opts) {
         }
 
         Ajax.post('/admin/order_list', params, function (data) {
-        //Ajax.post('/getOrderInfo.action', params, function (data) {
 
-            //me.renderOrderList(data);
-            $('#order-list', me.container).empty().append(ORDER_LIST.ORDER_ITEM($.extend({statusMap:ORDER_STATUS},data)));
+            if(data && data.list && data.list.length > 0){
+                $('#order-list', me.container).empty().append(ORDER_LIST.ORDER_ITEM($.extend({statusMap:ORDER_STATUS},data)));
+
+
+            }else{
+                $('#order-list', me.container).empty().append('<tr class="text-center"><td colspan="9">没有任何数据！！！</td></tr>');
+            }
 
             new Page({
                 target: '#order-list-page-wrap',
@@ -145,6 +149,7 @@ var OrderList = Class(function (opts) {
                 },
                 pn: Number(data.current_page || params.page)
             });
+
         });
     },
 

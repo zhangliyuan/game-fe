@@ -73,7 +73,7 @@ var FILTER_OPTIONS = [
         options:[
             {text:'全部', value:''},
             {text:'售卖中', value:'1'},
-            {text:'为售卖', value:'2'}
+            {text:'未售卖', value:'2'}
         ],
         placeholder:'',
         validate: null
@@ -81,9 +81,8 @@ var FILTER_OPTIONS = [
 ];
 
 var PRODUCT_STATUS = {
-    'normal': '正常',
-    'blocked': '封停',
-    'error': '异常'
+    '1': '售卖中',
+    '2': '未售卖'
 };
 
 
@@ -118,7 +117,7 @@ var ProductList = Class(function (opts) {
         Ajax.get('/admin/product_list', params, function (data) {
 
             //me.renderProductList(data);
-            $('#product-list', me.container).empty().append(PRODUCT_LIST.PRODUCT_ITEM(data));
+            $('#product-list', me.container).empty().append(PRODUCT_LIST.PRODUCT_ITEM($.extend({},data,{STATUS_MAP:PRODUCT_STATUS})));
 
 
 
@@ -184,7 +183,7 @@ var ProductList = Class(function (opts) {
                 case 'edit':
                     me.editProductDetail(id);break;
                 case 'offShelf':
-                    me.changeProductStatus(id,'offShelf');break;
+                    me.changeProductStatus(id,'isOnline');break;
                 case 'block':
                     me.changeProductStatus(id,'block');break;
                 case 'copyLink':
@@ -316,7 +315,7 @@ var ProductList = Class(function (opts) {
         });
     },
     changeProductStatus:function (id,status) {
-        Ajax.post('/admin/product_update_data',{id:id, value:status, name:'status'}, function (data) {
+        Ajax.post('/admin/' + status ||'product_update_data',{id:id}, function (data) {
            PopTip('操作成功！！');
         });
     },
