@@ -208,6 +208,17 @@ var Filter = Class(function (opts) {
     },
 
     getFilterData: function () {
+        var me = this;
+        if($.trim(me.container.find('li[data-name="createTime"]').text()) == ''){
+            delete  this.opts.filterData.createTime;
+        }
+        if($.trim(me.container.find('li[data-name="endTime"]').text()) == ''){
+            delete  this.opts.filterData.endTime;
+        }
+        if($.trim(me.container.find('li[data-name="date"]').text()) == ''){
+            delete  this.opts.filterData.date;
+        }
+
         return this.opts.filterData;
     },
 

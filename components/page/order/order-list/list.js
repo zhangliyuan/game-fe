@@ -348,7 +348,8 @@ var OrderList = Class(function (opts) {
         $.each(forms, function (i, v) {
             var name = $(v).attr('name');
                 var value = $(v).val();
-
+            
+            
             data[name] = value;
         });
 

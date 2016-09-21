@@ -116,7 +116,7 @@ var ProductList = Class(function (opts) {
 
         Ajax.get('/admin/product_list', params, function (data) {
 
-            //me.renderProductList(data);
+
             $('#product-list', me.container).empty().append(PRODUCT_LIST.PRODUCT_ITEM($.extend({},data,{STATUS_MAP:PRODUCT_STATUS})));
 
 
