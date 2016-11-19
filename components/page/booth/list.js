@@ -32,6 +32,22 @@ var BoothList = Class(function (opts) {
         var me = this;
         
         me.container.off('click');
+
+        me.container.on('click', '.fa-arrow-down, .fa-arrow-up', function (e) {
+
+            var cTr = $(this).closest('tr');
+            var direction = $(this).hasClass('fa-arrow-up') ? 'up' : 'down';
+
+            if ('up' === direction && cTr.prev('tr').length > 0) {
+                cTr.prev('tr').before(cTr.prop('outerHTML'));
+                cTr.remove();
+            } else if( 'down' == direction && cTr.next('tr').length > 0) {
+                cTr.next('tr').after(cTr.prop('outerHTML'));
+                cTr.remove();
+            }
+
+
+        });
         
         me.container.on('click', '.bottom-title .fa', function () {
            $(this).closest('.game-item').remove();

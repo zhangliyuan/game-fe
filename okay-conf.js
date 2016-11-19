@@ -58,7 +58,7 @@ fis.util.map([{
 	port: '8999'
 }], function (index, item) {
 
-	var static_domain   = 'http://115.28.167.5:8001',
+	var static_domain   = 'http://115.28.167.5/static',
 		static_path     = item.host+':'+item.port+'/receiver',
 		vm_path       = item.host + ':' + item.port + '/receiver',
 		release_path = '/usr/local/tomcat/apache-tomcat-7.0.70/webapps/fe-admin';
@@ -103,6 +103,12 @@ fis.util.map([{
 				optimizer: false
 			})
 
+			//TODO: 将已压缩的js排除, 会影响编译速度;
+			.match('/components/common/theme/fonts/**', {
+				optimizer: false,
+				useHash:false
+			})
+
 			.match('{/test/**,/server\.conf}', {
 				release: false
 			})
@@ -111,7 +117,7 @@ fis.util.map([{
 				domain: static_domain,
 				deploy: fis.plugin('http-push', {
 					receiver: static_path,
-					to: '/game/static'
+					to: '/game/static_files/static'
 				})
 			})
 			.match('/views/(**.{vm,jsp,html})', {
