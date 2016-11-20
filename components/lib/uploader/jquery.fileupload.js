@@ -12,6 +12,9 @@
 /* jshint nomen:false */
 /* global define, require, window, document, location, Blob, FormData */
 var $ = require('/components/lib/jquery/jquery.js');
+$.widget = require('/components/lib/jquery.ui/widget.js');
+
+
 ;/*(function (factory) {
     'use strict';
     if (typeof define === 'function' && define.amd) {

@@ -1,0 +1,32 @@
+{
+  "code": 0,
+  "msg": "success",
+  "data":{
+    "list":[
+      {
+        "GoodsID": "23434",
+        "GoodsParvalue": "10"
+      },{
+        "GoodsID": "3453411",
+        "GoodsParvalue": "20"
+      }
+      ,{
+        "GoodsID": "3453411",
+        "GoodsParvalue": "50"
+      }
+      ,{
+        "GoodsID": "3453411",
+        "GoodsParvalue": "100"
+      }
+      ,{
+        "GoodsID": "3453411",
+        "GoodsParvalue": "200"
+      }
+      ,{
+        "GoodsID": "3453411",
+        "GoodsParvalue": "500"
+      }
+
+    ]
+  }
+}

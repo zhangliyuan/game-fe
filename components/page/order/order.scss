@@ -58,18 +58,22 @@
         width: 130px;
         display: inline-block;
         margin: 0 5px;
-        border-right: 1px dashed #999;
+        //border-right: 1px dashed #999;
         .item{
 
           line-height: 39px;
 
           .form-control{
-            width: 90px;
+            width: 128px;
             display: inline-block;
           }
 
           .value-label{
             line-height: 28px;
+          }
+
+          .fa-plus-circle{
+            display: none;
           }
         }
 
@@ -80,6 +84,50 @@
   }
 }
 .add-product{
+
+
+  #selected-game{
+    color: black;
+    /*display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;*/
+  }
+}
+
+
+.select-game-dialog{
+
+  #label-info{
+
+    .game-name{
+      color:#2f99d8;
+    }
+
+  }
+
+  .game-list{
+
+    padding: 10px;
+    border: 1px solid #eee;
+    @include  fis-border-radius(3px);
+    overflow: hidden;
+
+    .game-item{
+      width: 80px;
+      padding: 5px;
+
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      @include  fis-border-radius(3px);
+
+      &.current{
+        background: #eee;
+      }
+    }
+
+  }
 
 }
 

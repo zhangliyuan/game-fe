@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <script type="text/javascript">__inline('/components/lib/fdata/fdata.js');</script>
+    <script type="text/javascript" src="/components/lib/router/router.js"></script>
+    <script type="text/javascript" src="/components/lib/require/require.js"></script>
+    <script type="text/javascript" src="/components/lib/handlebars/handlebars.js"></script>
+    <script type="text/javascript" src="/components/lib/handlebars/handlebars-extend.js"></script>
+    <title>demo page</title>
+</head>
+<body>
+<!-- The fileinput-button span is used to style the file input field as button -->
+    <span class="btn btn-success fileinput-button">
+        <i class="glyphicon glyphicon-plus"></i>
+        <span>Select files...</span>
+        <!-- The file input field used as target for the file upload widget -->
+        <input id="fileupload" type="file" name="files[]" multiple>
+    </span>
+<br>
+<br>
+<!-- The global progress bar -->
+<div id="progress" class="progress">
+    <div class="progress-bar progress-bar-success"></div>
+</div>
+<!-- The container for the uploaded files -->
+<div id="files" class="files"></div>
+
+
+<script type="text/javascript">
+
+    require.async([
+        '/components/common/base/base.js',
+        '/components/lib/uploader/jquery.fileupload.js'
+        ], function($, Uplaoder){
+        $('#fileupload').fileupload({
+            url: '/game/admin/uploadVideo',
+            dataType: 'json',
+            sequentialUploads:true,
+            done: function (e, data) {
+                $.each(data.result.files, function (index, file) {
+                    $('<p/>').text(file.name).appendTo('#files');
+                });
+            },
+            progressall: function (e, data) {
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+                $('#progress .progress-bar').css(
+                        'width',
+                        progress + '%'
+                );
+            }
+        }).prop('disabled', !$.support.fileInput)
+                .parent().addClass($.support.fileInput ? undefined : 'disabled');
+    });
+
+
+</script>
+</body>
+</html>

@@ -3,25 +3,37 @@
 <div class="add-page add-product">
 
     <div class="box-body ">
+
         <div class="form-group">
-            <label> 商品分类:</label>
-            <select class="form-control" name="class">
+            <label> 商品类型：</label>
+            <select class="form-control product-type" name="type">
+                <option value="1">游戏充值</option>
+                <option value="2">话费充值</option>
+            </select>
+        </div>
+
+         <div class="form-group">
+            <label> 游戏名称：</label>
+             <select class="form-control" name="gameId">
+                 <option value="1" title="title">xxx公司1</option>
+                 <option value="2" title="title">xxx公司2</option>
+                 <option value="3" title="title">xxx公司3</option>
+                 <option value="4" title="title">xxx公司4</option>
+                 <option value="5" title="title">xxx公司5</option>
+             </select>
+        </div>
+
+        <div class="form-group">
+            <label> 商品分类：</label>
+            <select class="form-control" name="goodType">
                 <option value="1">虚拟类</option>
                 <option value="2">实体类</option>
             </select>
         </div>
 
         <div class="form-group">
-            <label> 商品类型:</label>
-            <select class="form-control" name="type">
-                <option value="1">话费充值</option>
-                <option value="2">游戏充值</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label> 属性:</label>
-            <select class="form-control" name="attribute">
+            <label> 属性：</label>
+            <select class="form-control" name="cardType">
                 <option value="1">游戏点券</option>
                 <option value="2">游戏时长</option>
                 <option value="3">月卡</option>
@@ -31,13 +43,13 @@
         </div>
 
         <div class="form-group">
-            <label> 商品名称:</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="" />
+            <label> 商品名称：</label>
+            <input type="text" class="form-control" id="name" name="goodName" placeholder="" />
         </div>
 
         <div class="form-group">
-            <label> 供应商:</label>
-            <select class="form-control" name="supplier">
+            <label> 供应商：</label>
+            <select class="form-control" name="supplierId">
                 <option value="1" title="title">xxx公司1</option>
                 <option value="2" title="title">xxx公司2</option>
                 <option value="3" title="title">xxx公司3</option>
@@ -45,17 +57,23 @@
                 <option value="5" title="title">xxx公司5</option>
             </select>
         </div>
-        <div class="value-group">
+
+        <div class="form-group ">
+            <label> 游戏名称：</label>
+            <a id="selected-game" class="value-label">请先选择供应商</a><a class="modify-game none"> 修改</a>
+        </div>
+
+        <div class="value-group banknote-wrap none">
             <div class="label-wrap" style="width: 100px;display: inline-block;">
-                <label> 面值:</label>
-                <label> 进货价格:</label>
-                <label> 销售价格:</label>
-                <label> 商品数量:</label>
+                <label> 面值：</label>
+                <label> 进货价格：</label>
+                <label> 销售价格：</label>
+                <label> 商品数量：</label>
             </div>
             <div class="value-item-wrap" style="">
                 <div class="value-item" style="">
                     <div class="item">
-                        <select class="form-control select-form" name="banknote "  data-banknote="20" >
+                        <select class="form-control select-form" id="banknote-select"  name="facePrice "  data-banknote="20" >
                             <option value="1" title="title">10元</option>
                             <option value="2" title="title">20元</option>
                             <option value="3" title="title">50元</option>
@@ -65,8 +83,8 @@
                         <i class="fa fa-1x fa-plus-circle"></i>
                     </div>
                     <div class="item"> <label class="value-label"  data-banknote="20" > 20.1元</label></div>
-                    <div class="item"> <input type="text" class="form-control" name="price"  data-banknote="20" />元</div>
-                    <div class="item"> <input type="text" class="form-control" name="price"  data-banknote="20" />元</div>
+                    <div class="item"> <input type="text" class="form-control" name="salePrice"  data-banknote="20" />元</div>
+                    <div class="item"> <input type="text" class="form-control" name="goodTotal"  data-banknote="20" /></div>
 
                 </div>
 
@@ -78,19 +96,19 @@
 
 
         <div class="form-group">
-            <label> 商品图片:</label>
-            <input type="hidden"  class="form-control" name="image" id="product-thumbnail" value=""/>
+            <label> 商品图片：</label>
+            <input type="hidden"  class="form-control" name="goodDir" id="product-thumbnail" value="http://images.xdf.cn/cms20150819/noschool/img/gjgz.png"/>
             <input type="file" class="form-control" />
         </div>
 
         <div class="form-group">
-            <label>详情说明:</label>
-            <textarea  id="remark" name="remark" class="form-control" rows="5" placeholder="这里是文字编辑器，只支持文字限制最多1000字"></textarea>
+            <label>详情说明：</label>
+            <textarea  id="remark" name="goodDes" class="form-control" rows="5" placeholder="这里是文字编辑器，只支持文字限制最多1000字"></textarea>
         </div>
 
         <div class="form-group">
-            <label> 开始时间:</label>
-            <select class="form-control online-time-select" name="online-time">
+            <label> 开始时间：</label>
+            <select class="form-control online-time-select" name="isAutoOnline">
                 <option value="1">立即上线</option>
                 <option value="2">设定时间</option>
                 <option value="3">放入仓库</option>
