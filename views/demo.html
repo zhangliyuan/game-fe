@@ -16,7 +16,7 @@
         <i class="glyphicon glyphicon-plus"></i>
         <span>Select files...</span>
         <!-- The file input field used as target for the file upload widget -->
-        <input id="fileupload" type="file" name="files[]" multiple>
+        <input id="fileupload" type="file" name="upFile" multiple>
     </span>
 <br>
 <br>
@@ -33,11 +33,11 @@
     require.async([
         '/components/common/base/base.js',
         '/components/lib/uploader/jquery.fileupload.js'
-        ], function($, Uplaoder){
+        ], function($, Uplaoder) {
         $('#fileupload').fileupload({
-            url: '/game/admin/uploadVideo',
+            url: '/game/common/upload_image',
             dataType: 'json',
-            sequentialUploads:true,
+            sequentialUploads: true,
             done: function (e, data) {
                 $.each(data.result.files, function (index, file) {
                     $('<p/>').text(file.name).appendTo('#files');

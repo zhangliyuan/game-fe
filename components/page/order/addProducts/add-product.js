@@ -7,6 +7,7 @@ var $=require('/components/common/base/base.js');
 var Class=require('/components/common/class/class.js');
 require("/components/common/laydate/laydate.js");
 var Ajax=require('/components/common/ajax/ajax.js');
+var Uplaoder=require('/components/lib/uploader/jquery.fileupload.js');
 var Dialog = require('/components/common/dialog/dialog.js');
 var PopTip = require('/components/common/pop-tip/pop-tip.js');
 
@@ -24,7 +25,7 @@ var BANKNOTE='<div class="value-item"><select class="form-control select-form" n
 var SUPPLIERS = [
     {id:0,name:'---请选择供应商---'},
     {id:1,name:'福禄充值'},
-    {id:2,name:'瑞联充值'}
+    {id:2,name:'芜娱充值'}
 ];
 
 var ADD_PRODUCTS = {
@@ -58,6 +59,8 @@ var AddProducts = Class(function (opts) {
         }
 
         me.initOnlineTime();
+
+        me.initUpload();
 
     },
     
@@ -121,7 +124,35 @@ var AddProducts = Class(function (opts) {
 
 
         me.container.find('.value-item-wrap').find('.value-item[data-id="'+_uuid+'"]').find('select').val(item.value);
-
+    },
+    
+    initUpload:function () {
+        var me = this;
+        $('#uploadPic', me.container).fileupload({
+            url: '/game/common/upload_image',
+            dataType: 'json',
+            sequentialUploads: true,
+            done: function (e, data) {
+                var $fileUploader = $("#uploadPic", me.container);
+                var response = data.jqXHR.responseJSON;
+                if(response.code != 0){
+                    PopTip('上传失败~~，请重试');
+                    return;
+                }
+                $("#product-thumbnail").val(response.picUrl);
+                $fileUploader.siblings('.pic-box').remove().end().before('<div class="pic-box inline-block">'+
+                    '<img width="280" height="240" src="'+response.url+'">'+
+                    '</div>');
+            },
+            progressall: function (e, data) {
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+                $('#progress .progress-bar').css(
+                    'width',
+                    progress + '%'
+                );
+            }
+        }).prop('disabled', !$.support.fileInput)
+            .parent().addClass($.support.fileInput ? undefined : 'disabled');  
     },
 
     initEvent:function () {
@@ -132,12 +163,17 @@ var AddProducts = Class(function (opts) {
         $('.product-type', me.container).on('change',  function (e) {
 
             var value = $(this).val();
+            !me.currentGame ? me.currentGame = {type:value}:me.currentGame.type = value;
             
-            if('2' == value){
-                console.log(value);
+            if(/^(2|3)$/.test(value)){
+                $('[name="gameId"],[name="goodType"],[name="cardType"]').closest('.form-group').addClass('none');
+                $('[name="yld"]').closest('.form-group').removeClass('none');
             } else {
-                console.log(value);
+                $('[name="gameId"],[name="goodType"],[name="cardType"]').closest('.form-group').removeClass('none');
+                $('[name="yld"]').closest('.form-group').addClass('none');
             }
+            me.currentGame.name = '';
+            me.currentGame.id = '';
         });
         
         $('.form-control[name="supplierId"]', me.container).on('change', function () {
@@ -151,9 +187,15 @@ var AddProducts = Class(function (opts) {
             if(supplier){
 
                 me.suppliers = supplier;
-
-                Ajax.get('/admin/getFLLeim',{type: supplier},function (data) {
-
+                var _params = {
+                    types: supplier,
+                    type: ($('.product-type').val() || '' )
+                };
+                var url = '/admin/' + (/^(2|3)$/.test(_params.type) ? 'getFLPhone' :'getFLLeim');
+                if(/^(2|3)$/.test(_params.type)){
+                    _params.yld=$('[name="yld"]').val();
+                }
+                Ajax.get(url, _params, function (data) {
 
                     me.gameList = data.list;
 
@@ -290,7 +332,7 @@ var AddProducts = Class(function (opts) {
 
         var me = this;
         id = id || me.currentGame.id;
-        Ajax.get('/admin/getFLGoods',{type:me.suppliers, nums: id},function (data) {
+        Ajax.get('/admin/getFLGoods',{types:me.suppliers, nums: id},function (data) {
 
             var banknoteSelect = $('#banknote-select', me.container);
 
@@ -299,7 +341,8 @@ var AddProducts = Class(function (opts) {
                 banknoteSelect.empty();
                 //banknoteSelect.append('<option value="0" >--请选择面值--</option>');
                 $.each(data.list,function (i,v) {
-                    banknoteSelect.append('<option value="'+v.GoodsID+'" data-inner-price="'+v.PurchasePrice+'" title="'+v.GoodsParvalue+'元">'+v.GoodsParvalue+'元</option>');
+                    var _optionText = v.GoodsParvalue + '元 '+ v.GoodsName+ ' '+ v.GoodsType;
+                    banknoteSelect.append('<option value="'+v.GoodsID+'" data-inner-price="'+v.PurchasePrice+'" title="'+_optionText+'">'+_optionText +'</option>');
                 });
 
                 $('.value-group', me.container).removeClass('none');
@@ -325,7 +368,7 @@ var AddProducts = Class(function (opts) {
         list = list || me.gameList;
 
         var content = '<div ><div id="label-info">';
-        if (me.currentGame){
+        if (me.currentGame && me.currentGame.name){
             content += '已选择游戏：<span class="game-name">'+ me.currentGame.name + '</span>';
         } else {
             content += '请选择游戏:';

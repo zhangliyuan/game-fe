@@ -9,6 +9,16 @@
             <select class="form-control product-type" name="type">
                 <option value="1">游戏充值</option>
                 <option value="2">话费充值</option>
+                <option value="3">流量充值</option>
+            </select>
+        </div>
+
+         <div class="form-group none">
+            <label> 商品类型：</label>
+            <select class="form-control" name="yld">
+                <option value="1">移动</option>
+                <option value="2">联通</option>
+                <option value="3">电信</option>
             </select>
         </div>
 
@@ -73,7 +83,7 @@
             <div class="value-item-wrap" style="">
                 <div class="value-item" style="">
                     <div class="item">
-                        <select class="form-control select-form" id="banknote-select"  name="facePrice "  data-banknote="20" >
+                        <select class="form-control select-form" id="banknote-select"  name="sellGoodsId"  data-banknote="20" >
                             <option value="1" title="title">10元</option>
                             <option value="2" title="title">20元</option>
                             <option value="3" title="title">50元</option>
@@ -97,8 +107,8 @@
 
         <div class="form-group">
             <label> 商品图片：</label>
-            <input type="hidden"  class="form-control" name="goodDir" id="product-thumbnail" value="http://images.xdf.cn/cms20150819/noschool/img/gjgz.png"/>
-            <input type="file" class="form-control" />
+            <input type="hidden"  class="form-control" name="goodDir" id="product-thumbnail" value=""/>
+            <input type="file"    class="form-control" name="upFile"  id="uploadPic" />
         </div>
 
         <div class="form-group">

@@ -31,7 +31,13 @@
       }
     }
 
-
+    .pic-box{
+      width: 300px;
+      text-align: center;
+      img{
+        max-width: 300px;
+      }
+    }
 
   }
   .value-group{
@@ -64,7 +70,7 @@
           line-height: 39px;
 
           .form-control{
-            width: 128px;
+            width: 300px;
             display: inline-block;
           }
 
