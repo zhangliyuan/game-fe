@@ -31,10 +31,11 @@ var IndexPage = Class(function (opts) {
 
     render: function () {
         var me = this;
-        Ajax.get('/admin/index', {}, function (data) {
+        Ajax.get('/admin/getUserCount', {}, function (data) {
+            data.userInfo = data;
             var _html = INDEX_PAGE.LAYOUT(data);
             me.container.empty().html(_html);
-            me.getNoticeList()
+            //me.getNoticeList()
         });
 
     },

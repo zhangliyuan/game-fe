@@ -12,59 +12,26 @@
             </tr>
             </thead>
             <tbody>
-            <tr data-id="123456799">
+            {{#each videoList }}
+            <tr data-id="{{id}}" data-videosort="{{videoSort}}">
                 <td>
-                    全职大师宣传片1
+                    {{videoName}}
 
                 </td>
                 <td>
-                    5:31
+                    {{videoTime}}
                 </td>
                 <td>
-                    65 MB
+                   {{videoSize}}
                 </td>
                 <td>
-                    <a> 删除</a>
-                    <a> 预览</a>
+                    <a  class="operation " data-oper="delete" > 删除</a>
+                    <a data-src="{{videoUrl}}"  class="operation " data-oper="preview"> 预览</a>
                     <a> <i class="fa fa-arrow-up fa-lg"></i> </a>
                     <a> <i class="fa fa-arrow-down fa-lg"></i> </a>
                 </td>
             </tr>
-            <tr data-id="123456799">
-                <td>
-                    全职大师宣传片2
-
-                </td>
-                <td>
-                    5:31
-                </td>
-                <td>
-                    65 MB
-                </td>
-                <td>
-                    <a> 删除</a>
-                    <a> 预览</a>
-                    <a> <i class="fa fa-arrow-up fa-lg"></i> </a>
-                    <a> <i class="fa fa-arrow-down fa-lg"></i> </a>
-                </td>
-            </tr><tr data-id="123456799">
-                <td>
-                    全职大师宣传片3
-
-                </td>
-                <td>
-                    5:31
-                </td>
-                <td>
-                    65 MB
-                </td>
-                <td>
-                    <a> 删除</a>
-                    <a> 预览</a>
-                    <a> <i class="fa fa-arrow-up fa-lg"></i> </a>
-                    <a> <i class="fa fa-arrow-down fa-lg"></i> </a>
-                </td>
-            </tr>
+            {{/each}}
 
 
 
@@ -74,7 +41,7 @@
 
     <div class="game-booth-list">
         <div class="game-item">
-            <img src="http://placehold.it/200x200">
+            <img src="http://placehold.it/200x200" />
                     <div class="bottom-title">
                         <span>DOTA2</span>
                         <span class="fa-stack ">
@@ -85,7 +52,7 @@
         </div>
 
         <div class="game-item">
-            <img src="http://placehold.it/200x200">
+            <img src="http://placehold.it/200x200" />
             <div class="bottom-title">
                 <span>DOTA2</span>
                         <span class="fa-stack ">
@@ -94,7 +61,7 @@
                         </span>
             </div>
         </div><div class="game-item">
-        <img src="http://placehold.it/200x200">
+        <img src="http://placehold.it/200x200" />
         <div class="bottom-title">
             <span>DOTA2</span>
                         <span class="fa-stack ">
@@ -103,7 +70,7 @@
                         </span>
         </div>
     </div><div class="game-item">
-        <img src="http://placehold.it/200x200">
+        <img src="http://placehold.it/200x200" />
         <div class="bottom-title">
             <span>DOTA2</span>
                         <span class="fa-stack ">
@@ -112,7 +79,7 @@
                         </span>
         </div>
     </div><div class="game-item">
-        <img src="http://placehold.it/200x200">
+        <img src="http://placehold.it/200x200" />
         <div class="bottom-title">
             <span>DOTA2</span>
                         <span class="fa-stack ">
@@ -121,7 +88,7 @@
                         </span>
         </div>
     </div><div class="game-item">
-        <img src="http://placehold.it/200x200">
+        <img src="http://placehold.it/200x200" />
         <div class="bottom-title">
             <span>DOTA2</span>
                         <span class="fa-stack ">

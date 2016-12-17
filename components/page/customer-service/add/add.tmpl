@@ -5,7 +5,7 @@
     <div class="box-body ">
         <div class="form-group">
             <label> 来电号码:</label>
-            <input type="text" class="form-control" id="phoneNo" name="phoneNo" placeholder="" />
+            <input type="text" class="form-control" id="phoneNo" name="mobile" placeholder="" />
         </div>
 
          <div class="form-group">
@@ -15,7 +15,7 @@
 
         <div class="form-group">
             <label> 用户名:</label>
-            <input type="text" class="form-control" id="userName" name="userName" placeholder="" />
+            <input type="text" class="form-control" id="userName" name="username" placeholder="" />
         </div>
 
         <div class="form-group">
@@ -25,7 +25,7 @@
 
         <div class="form-group">
             <label>问题类型:</label>
-            <select class="form-control" name="type">
+            <select class="form-control" name="messType">
                 <option value="1">全部</option>
                 <option value="2">订单问题</option>
                 <option value="3">支付问题</option>
@@ -36,16 +36,16 @@
 
         <div class="form-group">
             <label> 账户状态:</label>
-            <input type="text" class="form-control" id="status" name="status" placeholder="" />
+            <input type="text" class="form-control" id="status" name="msgStatus" placeholder="" />
         </div>
 
         <div class="form-group">
             <label> 咨询内容:</label>
-            <textarea  id="question" name="question" class="form-control" rows="5" placeholder="这里是文字编辑器，只支持文字限制最多1000字"></textarea>
+            <textarea  id="question" name="content" class="form-control" rows="5" placeholder="这里是文字编辑器，只支持文字限制最多1000字"></textarea>
         </div>
         <div class="form-group">
             <label>解决方案:</label>
-            <textarea  id="resolution" name="resolution" class="form-control" rows="5" placeholder="这里是文字编辑器，只支持文字限制最多1000字"></textarea>
+            <textarea  id="resolution" name="handleType" class="form-control" rows="5" placeholder="这里是文字编辑器，只支持文字限制最多1000字"></textarea>
         </div>
 
         <div class="form-group">
@@ -74,7 +74,7 @@
                     <option value="6">48小时回复</option>
                 </select>
 
-                <select class="form-control no-data" name="type">
+                <select class="form-control no-data" name="replyType">
                     <option value="1">短信回复</option>
                     <option value="2">电话回复</option>
                     <option value="3">邮件回复</option>

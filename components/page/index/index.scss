@@ -5,6 +5,12 @@
       display: inline-block;
       h3{
         text-align: center;
+        margin:0;
+        font-size: 36px;
+
+        .count{
+          margin-left:10px;
+        }
       }
       .label{
         display: block;
