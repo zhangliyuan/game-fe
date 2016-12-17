@@ -13,7 +13,7 @@
         </div>
         <div class="form-group">
             <label class="text-label"> 礼包名称:</label>
-            <label  class="label-value"> {{packageName}}</label>
+            <label  class="label-value"> {{giftName}}</label>
         </div>
         <div class="form-group">
             <label class="text-label"> 有效期:</label>
@@ -21,34 +21,34 @@
         </div>
         <div class="form-group">
             <label class="text-label"> 礼包状态:</label>
-            <label  class="label-value"> {{status}}</label>
+            <label  class="label-value"> {{giftStatus}}</label>
         </div>
 
 
         <div class="form-group">
             <label class="text-label"> 上架时间:</label>
-            <label  class="label-value"> {{onShelfTime}}</label>
+            <label  class="label-value"> {{onlineTime}}</label>
         </div>
         <div class="form-group">
             <label class="text-label"> 类型:</label>
-            <label  class="label-value"> {{type}}</label>
+            <label  class="label-value"> {{giftType}}</label>
         </div>
         <div class="form-group">
             <label class="text-label"> 库存:</label>
-            <label  class="label-value"> {{count}}</label>
+            <label  class="label-value"> {{giftCount}}</label>
         </div>
         <div class="form-group">
             <label class="text-label"> 发放量:</label>
-            <label  class="label-value"> {{distributeCount}}</label>
+            <label  class="label-value"> {{giftUsed}}</label>
         </div>
         <div class="form-group">
             <label class="text-label"> 发放方式:</label>
-            <label  class="label-value"> {{distributeType}}</label>
+            <label  class="label-value"> {{giftUseMethod}}</label>
 
         </div>
         <div class="form-group">
             <label class="text-label"> 礼包内容:</label>
-            <div class="" style="max-height: 100px;overflow-y: auto;"> {{#each  packageContent}} {{{this}}}<br />   {{/each}} </div>
+            <div class="" style="max-height: 100px;overflow-y: auto;">{{giftContent}} {{!-- {{#each  packageContent}} {{{this}}}<br />   {{/each}} --}}</div>
 
         </div>
         <div class="form-group">
