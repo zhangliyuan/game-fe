@@ -121,7 +121,7 @@ var CustomerServiceList = Class(function (opts) {
             var content = CUSTOMER_SERVICE_LIST.REPLY_SERVICE();
 
             Dialog.confirm(content, {
-                'width': '800px',
+                'width': '500px',
                 'height': 'auto',
                 'minHeight': 0,
                 'dialogClass': 'confirm-dialog',

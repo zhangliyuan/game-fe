@@ -135,7 +135,7 @@ var BoothList = Class(function (opts) {
                 '</video></div>';
 
         Dialog.confirm(content, {
-            'width': '800px',
+            'width': '500px',
             'height': 'auto',
             'minHeight': 0,
             'dialogClass': 'confirm-dialog',

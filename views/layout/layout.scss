@@ -1,8 +1,14 @@
 .game-theme{
 	.left-side{
+        position: fixed;
 	    border-right: 1px solid #ddd;
 	}
   .header{
+
+      position: fixed;
+      border-bottom: 1px solid #ccc;
+      background: white;
+
     .logo{
       display: inline-block;
       width: 220px;

@@ -63,7 +63,7 @@ var IndexPage = Class(function (opts) {
                 var content = INDEX_PAGE.NOTICE_DETAIL(data);
 
                 Dialog.confirm(content, {
-                    'width': '800px',
+                    'width': '500px',
                     'height': 'auto',
                     'minHeight': 0,
                     'dialogClass': 'confirm-dialog',
@@ -122,7 +122,7 @@ var IndexPage = Class(function (opts) {
         var content = INDEX_PAGE.ADD_NOTICE({});
 
         Dialog.confirm(content, {
-            'width': '800px',
+            'width': '500px',
             'height': 'auto',
             'minHeight': 0,
             'dialogClass': 'confirm-dialog',

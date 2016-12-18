@@ -93,8 +93,8 @@
                         <i class="fa fa-1x fa-plus-circle"></i>
                     </div>
                     <div class="item"> <label class="value-label"  data-banknote="20" > 20.1元</label></div>
-                    <div class="item"> <input type="text" class="form-control" name="salePrice"  data-banknote="20" />元</div>
-                    <div class="item"> <input type="text" class="form-control" name="goodTotal"  data-banknote="20" /></div>
+                    <div class="item"> <input class="form-control" name="salePrice"  data-banknote="20" type="text" maxlength="20" onkeyup="value=value.replace(/[^\d\.]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" />元</div>
+                    <div class="item"> <input type="number" class="form-control" name="goodTotal"  data-banknote="20" /></div>
 
                 </div>
 

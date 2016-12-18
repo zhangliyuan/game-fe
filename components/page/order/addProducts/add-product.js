@@ -143,6 +143,8 @@ var AddProducts = Class(function (opts) {
                 $fileUploader.siblings('.pic-box').remove().end().before('<div class="pic-box inline-block">'+
                     '<img width="280" height="240" src="'+response.url+'">'+
                     '</div>');
+
+                me.goodShowPath = response.url;
             },
             progressall: function (e, data) {
                 var progress = parseInt(data.loaded / data.total * 100, 10);
@@ -166,19 +168,37 @@ var AddProducts = Class(function (opts) {
             !me.currentGame ? me.currentGame = {type:value}:me.currentGame.type = value;
             
             if(/^(2|3)$/.test(value)){
-                $('[name="gameId"],[name="goodType"],[name="cardType"]').closest('.form-group').addClass('none');
+                $('[name="gameId"],[name="goodType"],[name="cardType"],[id="selected-game"]').closest('.form-group').addClass('none');
                 $('[name="yld"]').closest('.form-group').removeClass('none');
+                me.getGameList();
             } else {
-                $('[name="gameId"],[name="goodType"],[name="cardType"]').closest('.form-group').removeClass('none');
+                $('[name="gameId"],[name="goodType"],[name="cardType"],[id="selected-game"]').closest('.form-group').removeClass('none');
                 $('[name="yld"]').closest('.form-group').addClass('none');
             }
             me.currentGame.name = '';
             me.currentGame.id = '';
         });
+
+        $('.form-control[name="yld"]', me.container).on('change', function () {
+
+            var supplier =  $('select[name="supplierId"]').val();
+
+            if(supplier == 0){
+                return false;
+            }
+
+            if(supplier){
+
+                me.getGameList(supplier);
+
+            } else {
+                PopTip('supplier id is empty');
+            }
+        });
         
         $('.form-control[name="supplierId"]', me.container).on('change', function () {
             
-            var supplier = $(this).val();
+            var supplier = $('select[name="supplierId"]').val();
 
             if(supplier == 0){
                 return false;
@@ -186,22 +206,7 @@ var AddProducts = Class(function (opts) {
             
             if(supplier){
 
-                me.suppliers = supplier;
-                var _params = {
-                    types: supplier,
-                    type: ($('.product-type').val() || '' )
-                };
-                var url = '/admin/' + (/^(2|3)$/.test(_params.type) ? 'getFLPhone' :'getFLLeim');
-                if(/^(2|3)$/.test(_params.type)){
-                    _params.yld=$('[name="yld"]').val();
-                }
-                Ajax.get(url, _params, function (data) {
-
-                    me.gameList = data.list;
-
-                    me.dialogGameList();
-
-                });
+                me.getGameList(supplier);
                 
             } else {
                 PopTip('supplier id is empty');
@@ -259,21 +264,60 @@ var AddProducts = Class(function (opts) {
 
         me.container.on('click','#confirm-add-btn', function () {
             var productData = {};
+            var _flag = true;
             me.container.find('.box-body > .form-group').each(function () {
                 var obj = $(this);
                 var item = obj.find('.form-control');
                 var name = item.attr('name');
                 var value = item.val();
+                if('goodName' == name && !value){
+                    PopTip('商品名称不能为空~~');
+                    _flag = false;
+                    return true;
+                }
                 productData[name] = value;
             });
+
+            if(!_flag){
+                return;
+            }
 
             if(productData['online-time'] == 2 ){
                 productData['onlineTime'] = $('#set-online-time').text();
             }
+            productData.goodShowPath = me.goodShowPath;
             //productData['banknotes'] = $.json.stringify(me.getBanknoteData());
             productData = $.extend(true,productData, me.getBanknoteData()[0]);
 
             me.addProductData(productData);
+        });
+    },
+
+    getGameList: function(supplier){
+        var me = this;
+        supplier = supplier || $('select[name="supplierId"]').val() || '';
+        if(supplier == 0){
+            return;
+        }
+        me.suppliers = supplier;
+        var _params = {
+            types: supplier,
+            type: ($('.product-type').val() || '' )
+        };
+        var url = '/admin/' + (/^(2|3)$/.test(_params.type) ? 'getFLPhone' :'getFLLeim');
+        if(/^(2|3)$/.test(_params.type)){
+            _params.yld=$('[name="yld"]').val();
+        }
+        Ajax.get(url, _params, function (data) {
+
+            me.gameList = data.list;
+
+            if(_params.type == 1){
+                me.dialogGameList();
+            } else {
+                me.setBankNoteSelect(data.list);
+            }
+
         });
     },
 
@@ -334,21 +378,9 @@ var AddProducts = Class(function (opts) {
         id = id || me.currentGame.id;
         Ajax.get('/admin/getFLGoods',{types:me.suppliers, nums: id},function (data) {
 
-            var banknoteSelect = $('#banknote-select', me.container);
-
-
             if(data.list){
-                banknoteSelect.empty();
-                //banknoteSelect.append('<option value="0" >--请选择面值--</option>');
-                $.each(data.list,function (i,v) {
-                    var _optionText = v.GoodsParvalue + '元 '+ v.GoodsName+ ' '+ v.GoodsType;
-                    banknoteSelect.append('<option value="'+v.GoodsID+'" data-inner-price="'+v.PurchasePrice+'" title="'+_optionText+'">'+_optionText +'</option>');
-                });
 
-                $('.value-group', me.container).removeClass('none');
-                banknoteSelect.closest('.value-item').find('.value-label').text(data.list[0].PurchasePrice + '元');
-                banknoteSelect.closest('.value-item').find('.form-control[name="salePrice"]').val(data.list[0].innerPrice);
-
+                me.setBankNoteSelect(data.list);
 
             }else{
                 PopTip('该游戏面值列表为空~');
@@ -358,6 +390,26 @@ var AddProducts = Class(function (opts) {
 
 
         });
+    },
+
+
+    setBankNoteSelect: function(list){
+        var me = this;
+        var banknoteSelect = $('#banknote-select', me.container);
+        banknoteSelect.empty();
+
+        banknoteSelect.closest('.item').next().find('label').text('');
+        $('input[name="salePrice"]',me.container).val('');
+
+
+        $.each(list,function (i,v) {
+            var _optionText = v.GoodsParvalue + '元 '+ v.GoodsName+ ' '+ v.GoodsType;
+            banknoteSelect.append('<option value="'+v.GoodsID+'" data-inner-price="'+v.PurchasePrice+'" title="'+_optionText+'">'+_optionText +'</option>');
+        });
+
+        $('.value-group', me.container).removeClass('none');
+        banknoteSelect.closest('.value-item').find('.value-label').text(list[0].PurchasePrice + '元');
+        banknoteSelect.closest('.value-item').find('.form-control[name="salePrice"]').val(list[0].innerPrice);
     },
 
 
@@ -403,6 +455,8 @@ var AddProducts = Class(function (opts) {
             },
 
             'open': function () {
+
+                $('.select-game-dialog').css('top', '100px');
 
                 $('body .select-game-dialog .game-item').on('click', function (e) {
 

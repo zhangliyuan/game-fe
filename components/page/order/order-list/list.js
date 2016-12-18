@@ -244,7 +244,7 @@ var OrderList = Class(function (opts) {
             var content = ORDER_LIST.ORDER_DETAIL($.extend(data,{statusMap:ORDER_STATUS, typeMap: ORDER_TYPE}));
 
             Dialog.confirm(content, {
-                'width': '800px',
+                'width': '500px',
                 'height': 'auto',
                 'minHeight': 0,
                 'dialogClass': 'confirm-dialog',
