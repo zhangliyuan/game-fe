@@ -13,21 +13,21 @@
         </div>
         <div class="form-group">
             <label class="text-label"> 面值:</label>
-            <label > {{goodProfit}}</label>
+            <label > {{facePrice}}元</label>
             <!--<input type="text" class="form-control" id="order-price" value="{{banknote}}" />-->
         </div>
         <div class="form-group">
             <label class="text-label"> 类型:</label>
-            <label > {{goodType}}</label>
+            <label > {{convert type PRODUCT_TYPE}}</label>
         </div>
         <div class="form-group">
             <label class="text-label"> 进价:</label>
-            <label > {{goodSales}}</label>
+            <label > {{buyPrice}}元</label>
             <!--<input type="text" class="form-control" id="order-buyer" value="{{innerPrice}}">-->
         </div>
         <div class="form-group">
             <label class="text-label"> 售价:</label>
-            <label > {{salePrice}}</label>
+            <label > {{salePrice}}元</label>
         </div>
         <div class="form-group">
             <label class="text-label"> 库存:</label>
@@ -36,16 +36,16 @@
         </div>
         <div class="form-group">
             <label class="text-label"> 总销量:</label>
-            <label > {{goodTotal}}</label>
+            <label > {{goodSales}}</label>
         </div>
         <div class="form-group">
             <label class="text-label"> 在售状态:</label>
-            <label > {{goodStatus}}</label>
+            <label > {{convert goodStatus STATUS_MAP}}</label>
             <!--<input type="text" class="form-control" id="order-chargeAccount" value="{{status}}">-->
         </div>
         <div class="form-group">
             <label class="text-label"> 商品分类:</label>
-            <label > {{class}}</label>
+            <label > {{convert goodType PRODUCT_CLASS}}</label>
             <!--<input type="text" class="form-control" id="order-payType" value="{{class}}">-->
         </div>
         <div class="form-group">

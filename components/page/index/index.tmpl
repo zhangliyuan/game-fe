@@ -32,10 +32,10 @@
                 <h6 class="box-title">待办事宜</h6>
             </div>
             <div class="box-body">
-                <div class="label"><a>支付待发货（{{waitResolved.delivery}}）</a></div>
-                <div class="label"><a>客户问题待处理（{{waitResolved.waitResolvedQ}}）</a></div>
-                <div class="label"><a>客户问题超时处理（{{waitResolved.overTime}}）</a></div>
-                <div class="label"><a>新公会审核（{{waitResolved.unionCheck}}）</a></div>
+                <div class="label"><a href="/fe-admin/views/index.html#/order/list">支付待发货（{{first_info.waitSend}}）</a></div>
+                <div class="label"><a href="/fe-admin/views/index.html#/customer_service/list">客户问题待处理（{{first_info.customerQuestion}}）</a></div>
+                <div class="label"><a href="/fe-admin/views/index.html#/customer_service/list">客户问题超时处理（{{first_info.customerOvertimeQuestion}}）</a></div>
+                <div class="label"><a href="/fe-admin/views/index.html#/union/check">新公会审核（{{first_info.newGuildCheck}}）</a></div>
             </div><!-- /.box-body -->
         </div>
     </div>
@@ -50,25 +50,25 @@
                     <tr>
                         <td>
                             <div>
-                                <span>交易成功：{{realTimeInfo.order.successOrder}}</span>
-                                <span class="pull-right">订单取消：{{realTimeInfo.order.cancelOrder}}</span>
+                                <span>交易成功：{{first_info.succOrder}}</span>
+                                <span class="pull-right">订单取消：{{first_info.cancleOrder}}</span>
                             </div>
-                            <h3 class="text-center">{{realTimeInfo.order.totalPrice}}</h3>
+                            <h3 class="text-center">{{first_info.totalMoney}}</h3>
                             <div class="text-center">销售金额</div>
                         </td>
                         <td>
                             <div>
-                                <span>礼包领取：{{realTimeInfo.package.receive}}</span>
-                                <span class="pull-right">补充请求：{{realTimeInfo.package.addtionalRequest}}</span>
-                                <h3 class="text-center">{{realTimeInfo.package.receiveUV}}</h3>
+                                <span>礼包领取：{{first_info.giftCount}}</span>
+                                <span class="pull-right">补充请求：{{first_info.giftSupplement}}</span>
+                                <h3 class="text-center">{{first_info.giftTotal}}</h3>
                                 <div class="text-center">礼包领取UV</div>
                             </div>
                         </td>
                         <td>
                             <div>
-                                <span>公会数量：{{realTimeInfo.union.count}}</span>
-                                <span class="pull-right">成员数量：{{realTimeInfo.union.member}}</span>
-                                <h3 class="text-center">{{realTimeInfo.union.newAdd}}</h3>
+                                <span>公会数量：{{first_info.guildCount}}</span>
+                                <span class="pull-right">成员数量：{{first_info.memberCount}}</span>
+                                <h3 class="text-center">{{first_info.newGuild}}</h3>
                                 <div class="text-center">新增公会</div>
                             </div>
                         </td>
@@ -76,25 +76,25 @@
                     <tr>
                         <td>
                             <div>
-                                <span>游戏图片：{{realTimeInfo.game.picture}}</span>
-                                <span class="pull-right">游戏视频：{{realTimeInfo.game.video}}</span>
+                                <span>游戏图片：{{first_info.gamePicture}}</span>
+                                <span class="pull-right">游戏视频：{{first_info.gameVideo}}</span>
                             </div>
-                            <h3 class="text-center">{{realTimeInfo.game.gameCircle}}</h3>
+                            <h3 class="text-center">{{first_info.gameCircle}}</h3>
                             <div class="text-center">发布游戏圈</div>
                         </td>
                         <td>
                             <div>
-                                <span>网站PV：{{realTimeInfo.site.PV}}</span>
-                                <span class="pull-right">网站UV：{{realTimeInfo.site.UV}}</span>
-                                <h3 class="text-center">{{realTimeInfo.site.stayTime}}</h3>
+                                <span>网站PV：{{first_info.webPv}}</span>
+                                <span class="pull-right">网站UV：{{first_info.webUv}}</span>
+                                <h3 class="text-center">{{first_info.stayTime}}</h3>
                                 <div class="text-center">停留时间（秒）</div>
                             </div>
                         </td>
                         <td>
                             <div>
-                                <span>解决问题：{{realTimeInfo.question.resolved}}</span>
-                                <span class="pull-right">等待解决：{{realTimeInfo.question.waitResolve}}</span>
-                                <h3 class="text-center">{{realTimeInfo.question.userQuestion}}</h3>
+                                <span>解决问题：{{first_info.solveQuestion}}</span>
+                                <span class="pull-right">等待解决：{{first_info.customerQuestion}}</span>
+                                <h3 class="text-center">{{first_info.customerFeedback}}</h3>
                                 <div class="text-center">客户问题反馈</div>
                             </div>
                         </td>

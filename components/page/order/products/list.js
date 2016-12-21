@@ -80,9 +80,18 @@ var FILTER_OPTIONS = [
     }
 ];
 
+var PRODUCT_TYPE = {
+    '1': '游戏充值',
+    '2': '话费充值',
+    '3': '流量充值'
+};
 var PRODUCT_STATUS = {
     '1': '售卖中',
     '2': '未售卖'
+};
+var PRODUCT_CLASS = {
+    '1': '虚拟类',
+    '2': '实体类'
 };
 
 
@@ -117,7 +126,7 @@ var ProductList = Class(function (opts) {
         Ajax.get('/admin/product_list', params, function (data) {
 
 
-            $('#product-list', me.container).empty().append(PRODUCT_LIST.PRODUCT_ITEM($.extend({},data,{STATUS_MAP:PRODUCT_STATUS})));
+            $('#product-list', me.container).empty().append(PRODUCT_LIST.PRODUCT_ITEM($.extend({},data,{STATUS_MAP:PRODUCT_STATUS, PRODUCT_TYPE:PRODUCT_TYPE})));
 
 
 
@@ -200,7 +209,7 @@ var ProductList = Class(function (opts) {
 
         
         Ajax.get('/admin/product_detail',{id:id},function (data) {
-            var content = PRODUCT_LIST.PRODUCT_DETAIL(data);
+            var content = PRODUCT_LIST.PRODUCT_DETAIL($.extend({},data,{STATUS_MAP:PRODUCT_STATUS, PRODUCT_TYPE:PRODUCT_TYPE, PRODUCT_CLASS:PRODUCT_CLASS}));
 
             Dialog.confirm(content, {
                 'width': '800px',
@@ -258,6 +267,18 @@ var ProductList = Class(function (opts) {
                     'effect': 'drop',
                     'direction': 'down',
                     'duration': 200
+                },
+                open: function () {
+
+                    var _top = parseInt($(this).closest('.ui-dialog').css('top'));
+                    $(this).closest('.ui-dialog').css('top', (_top + 80) + 'px');
+
+                    var _$dialog = $(this);
+
+                    $('select[name="type"]', _$dialog).val(data.type);
+                    $('select[name="goodType"]', _$dialog).val(data.goodType);
+                    $('select[name="goodStatus"]', _$dialog).val(data.goodStatus);
+
                 },
 
                 'buttons': [{

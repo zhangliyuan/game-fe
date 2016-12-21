@@ -5,60 +5,61 @@
     <div class="box-body">
         <div class="form-group">
             <label class="text-label"> 商品编号:</label>
-            <label > {{productNo}}</label>
+            <label > {{goodNum}}</label>
         </div>
         <div class="form-group">
             <label class="text-label"> 商品名称:</label>
-            <input type="text" class="form-control" id="product-name" name="name" value="{{productName}}" />
+            <input type="text" class="form-control" id="product-name" name="goodName" value="{{goodName}}" />
         </div>
         <div class="form-group">
             <label class="text-label"> 面值:</label>
-            <input type="text" class="form-control" id="product-banknote" name="banknote" value="{{banknote}}" />
+            <input type="text" class="form-control" id="product-banknote" name="banknote" value="{{facePrice}}" />
         </div>
         <div class="form-group">
             <label class="text-label"> 类型:</label>
             <select class="form-control data-item" name="type" data-name="type">
-                <option value="1">话费充值</option>
-                <option value="2">游戏充值</option>
+                <option value="1">游戏充值</option>
+                <option value="2">话费充值</option>
+                <option value="3">流量充值</option>
             </select>
         </div>
         <div class="form-group">
             <label class="text-label"> 进价:</label>
-            <input type="text" class="form-control" id="product-innerPrice" value="{{innerPrice}}" />
+            <input type="text" class="form-control" id="product-innerPrice" name="" value="{{buyPrice}}" />
         </div>
         <div class="form-group">
             <label class="text-label"> 售价:</label>
-            <input type="text" class="form-control" id="product-price" name="price" value="{{price}}" />
+            <input type="text" class="form-control" id="product-price" name="price" value="{{salePrice}}" />
         </div>
         <div class="form-group">
             <label class="text-label"> 库存:</label>
-            <input type="text" class="form-control" id="product-stock" name="stock" value="{{stock}}" />
+            <input type="text" class="form-control" id="product-stock" name="stock" value="{{goodTotal}}" />
         </div>
         <div class="form-group">
             <label class="text-label"> 总销量:</label>
-            <input type="text" class="form-control" id="product-totalCount" name="totalCount" value="{{totalCount}}" />
+            <input type="text" class="form-control" id="product-totalCount" name="totalCount" value="{{goodSales}}" />
         </div>
         <div class="form-group">
             <label class="text-label"> 在售状态:</label>
-            <select class="form-control data-item" name="status" data-name="status">
+            <select class="form-control data-item" name="goodStatus" data-name="goodStatus">
                 <option value="1">在售中</option>
                 <option value="2">已下架</option>
             </select>
         </div>
         <div class="form-group">
             <label class="text-label"> 商品分类:</label>
-            <select class="form-control data-item" name="class" data-name="class">
+            <select class="form-control data-item" name="goodType" data-name="class">
                 <option value="1">虚拟类</option>
                 <option value="2">实体类</option>
             </select>
         </div>
         <div class="form-group">
             <label class="text-label"> 供货商户:</label>
-            <input type="text" class="form-control" id="product-supplier" name="supplier" value="{{supplier}}" />
+            <input type="text" class="form-control" id="product-supplier" name="supplier" value="{{supplierId}}" />
         </div>
         <div class="form-group">
             <label class="text-label"> 商品说明:</label>
-            <textarea  id="notice-content" class="form-control"  name="description" rows="5" >{{description}}</textarea>
+            <textarea  id="notice-content" class="form-control"  name="description" rows="5" >{{goodDes}}</textarea>
         </div>
 
 

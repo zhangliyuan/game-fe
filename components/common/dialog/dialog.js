@@ -182,6 +182,10 @@ module.exports = $.extend(Dialog, {
 		return new Dialog(options);
 	},
 	'confirm': function(content, options) {
+		options.open =  options.open || function() {
+			var _top = parseInt($(this).closest('.ui-dialog').css('top'));
+			$(this).closest('.ui-dialog').css('top', (_top + 100) + 'px');
+		};
 		options.buttons = options.buttons || [{
 			'text': '确定',
 			'click': function() {

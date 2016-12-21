@@ -31,11 +31,28 @@ var IndexPage = Class(function (opts) {
 
     render: function () {
         var me = this;
+        var i = 2;
+        var tmpData = {};
         Ajax.get('/admin/getUserCount', {}, function (data) {
-            data.userInfo = data;
-            var _html = INDEX_PAGE.LAYOUT(data);
-            me.container.empty().html(_html);
-            //me.getNoticeList()
+            i--;
+            tmpData.userInfo = data;
+            if(i == 0){
+
+                var _html = INDEX_PAGE.LAYOUT(tmpData);
+                me.container.empty().html(_html);
+                me.getNoticeList();
+            }
+        });
+
+        Ajax.get('/admin/first_info', {}, function (data) {
+            i--;
+            tmpData.first_info = data;
+            if(i == 0 ){
+
+                var _html = INDEX_PAGE.LAYOUT(tmpData);
+                me.container.empty().html(_html);
+                me.getNoticeList();
+            }
         });
 
     },
@@ -144,15 +161,15 @@ var IndexPage = Class(function (opts) {
                     var title = $('#notice-title').val();
                     var content = $('#notice-content').val();
 
-                    Ajax.get('/admin/notice_add', {
+                    /*Ajax.get('/admin/notice_add', {
                         title:title,
-                        content: content
+                        notice: content
                     }, function(data){
                         PopTip("操作成功！！");
                         $(_dialog).dialog('close');
                     }, function (data) {
                         PopTip(data.msg || '操作失败~~');
-                    });
+                    });*/
                 });
 
 
@@ -172,7 +189,7 @@ var IndexPage = Class(function (opts) {
 
                     Ajax.get('/admin/notice_add', {
                         title:title,
-                        content: content
+                        notice: content
                     }, function(data){
                         PopTip("操作成功！！");
                         $(_dialog).dialog('close');
