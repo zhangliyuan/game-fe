@@ -89,7 +89,7 @@ var FILTER_OPTIONS = [
     },
     {
         label:'会长名称',
-        name:'guildName',
+        name:'linkUsername ',
         type:'text',
         placeholder:'',
         validate: null

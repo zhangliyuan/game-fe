@@ -11,13 +11,13 @@
             <th></th>
         </tr>
         {{#each list}}
-        <tr data-id="{{unionNo}}" class="union-item">
-            <td>{{unionNo}}</td>
-            <td><img src="{{src}}" class="union-item-img" />{{name}}</td>
-            <td>{{peopleCount}}</td>
-            <td>{{unionPresident}}</td>
-            <td>{{createTime}}</td>
-            <td>{{convert status ../mStatus}}</td>
+        <tr data-id="{{id}}" class="union-item">
+            <td>{{id}}</td>
+            <td><img src="{{guildIcon}}" class="union-item-img" />{{guildName}}</td>
+            <td>{{memCount}}</td>
+            <td>{{linkUserName}}</td>
+            <td>{{applyTime}}</td>
+            <td>{{convert guildStatus ../mStatus}}</td>
             <td>{{rank}}</td>
             <td><a class="showDetail">详情</a></td>
         </tr>

@@ -61,7 +61,7 @@ var FILTER_OPTIONS = [
     },
     {
         label:'商品面值',
-        name:'goodSales',
+        name:'facePrice',
         type:'text',
         placeholder:'',
         validate: null
@@ -175,7 +175,11 @@ var ProductList = Class(function (opts) {
             var obj = $(this);
             var _name = obj.data('name');
             var _value = obj.data('value');
-            var params = {};
+            var params = {
+                'goodProfit':'',
+                'goodTotal':''
+            };
+
             params[_name] = _value;
             me.getProductList(params);
 
