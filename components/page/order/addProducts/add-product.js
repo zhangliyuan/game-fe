@@ -282,7 +282,7 @@ var AddProducts = Class(function (opts) {
                 return;
             }
 
-            if(productData['online-time'] == 2 ){
+            if(productData.isAutoOnline == 2 ){
                 productData['onlineTime'] = $('#set-online-time').text();
             }
             productData.goodShowPath = me.goodShowPath;
